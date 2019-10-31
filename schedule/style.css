@@ -1,0 +1,13 @@
+#semesters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.semester {
+    width: calc(100% - 40px);
+    padding: 20px;
+}
+
+.semester h2 {
+    margin: 0;
+}
