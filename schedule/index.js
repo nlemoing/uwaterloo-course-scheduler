@@ -4,10 +4,7 @@ class ScheduleModel {
         return this._schedule;
     }
 
-    create({ name, semesters, courses, }) {
-        name = name || '';
-        semesters = semesters || [];
-        courses = courses || [];
+    create({ name = '', semesters = [], courses = [], } = {}) {
         this._schedule = { name, semesters, courses, }
     }
 
@@ -38,6 +35,24 @@ class ScheduleModel {
         });
         return this.getCourse(id);
     }
+
+    getSemester(id) {
+        return this._schedule.semesters.find((semester) => {
+            return semester.id === id;
+        });
+    }
+
+    addSemester({ id, name, }) {
+        this._schedule.semesters.push({ id, name, });
+        return this.getSemester(id);
+    }
+
+    deleteSemester(id) {
+        this._schedule.semesters = this._schedule.semesters.filter((semester) => {
+            return semester.id !== id;
+        });
+        return id;
+    }
 }
 
 class ScheduleView {
@@ -49,6 +64,8 @@ class ScheduleView {
     }
 
     _reset() {
+        this.semesters = {};
+        this.courses = {};
         this.container.innerHTML = '';
         this.initialized = false;
     }
@@ -63,17 +80,26 @@ class ScheduleView {
         semesterHeader.textContent = name;
         semesterContainer.appendChild(semesterHeader);
 
+        this.semesters[id] = semesterContainer;
         const semestersContainer = document.getElementById('semesters');
-    
         semestersContainer.appendChild(semesterContainer);
+    }
+
+    _deleteSemester(id) {
+        const semesterToDelete = document.getElementById(`semester-${id}`);
+        if (semesterToDelete) {
+            semesterToDelete.remove();
+        }
     }
 
     _addCourse(course) {
         const { id, subject, number, semester, } = course;
+        
         const courseContainer = document.createElement('div');
         courseContainer.id = `course-${id}`;
-        courseContainer.innerText = `${subject}${number}`;
+        courseContainer.innerText = `${subject} ${number}`;
         courseContainer.classList.add('course');
+        this.courses[id] = courseContainer;
 
         const semesterContainer = 
             document.getElementById(`semester-${semester}`) ||
@@ -112,17 +138,20 @@ class ScheduleView {
         this.initialized = true;
     }
 
-    // When components are created, attach the relevant DOM listeners that dispatch eventBus events
-
     // Update components of the schedule
     update(operation, data) {
-        if (operation === "addCourse") {
-            this._addCourse(data);
-        } else if (operation === "deleteCourse") {
-            this._deleteCourse(data);
-        } else if (operation === "editCourse") {
-            this._editCourse(data);
+        const updateFns = {
+            addCourse: this._addCourse,
+            deleteCourse: this._deleteCourse,
+            editCourse: this._editCourse,
+            addSemester: this._addSemester,
+            deleteSemester: this._deleteSemester
         }
+        const f = updateFns[operation];
+        if (!f) {
+            return console.error(`Invalid operation: ${operation}`);
+        }
+        f.call(this, data);
     }
 }
 
@@ -158,6 +187,16 @@ class ScheduleController {
     editCourse(id, params) {
         const course = this.model.editCourse(id, params);
         this.view.update("editCourse", course);
+    }
+
+    addSemester(semester) {
+        semester = this.model.addSemester(semester);
+        this.view.update("addSemester", semester);
+    }
+
+    deleteSemester(id) {
+        id = this.model.deleteSemester(id);
+        this.view.update("deleteSemester", id);
     }
 }
 
