@@ -1,6 +1,7 @@
 #semesters {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-gap: 5px;
 }
 
 #semester-misc {
@@ -10,8 +11,15 @@
 .semester {
     width: calc(100% - 40px);
     padding: 20px;
+    background-color: rgb(230, 230, 230);
 }
 
 .semester h2 {
     margin: 0;
+}
+
+.course {
+    background-color: grey;
+    width: 200px;
+    max-width: 100%;
 }

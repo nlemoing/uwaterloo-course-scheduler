@@ -135,6 +135,41 @@ class ScheduleView {
         this._addCourse(course);
     }
 
+    _dragCourse(id, evt) {
+        evt.preventDefault();
+        const { target, } = evt;
+        const x = evt.clientX - target.offsetLeft;
+        const y = evt.clientY - target.offsetTop;
+        document.onmousemove = (e) => {
+            const { clientX, clientY } = e;
+            target.style.position = 'absolute';
+            target.style.left = `${clientX - x}px`;
+            target.style.top = `${clientY - y}px`;
+        }
+        document.onmouseup = (e) => {
+            const { clientX, clientY } = e;
+            const semester = this._getSemesterFromCoordinates(clientX, clientY);
+            if (semester) {
+                this.eventBus.dispatch('editcourse', id, { semester, });
+            }
+            target.style.position = 'static';
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+
+    _getSemesterFromCoordinates(x, y) {
+        for (const semester in this.semesters) {
+            const { 
+                left, top, right, bottom
+            } = this.semesters[semester].getBoundingClientRect();
+            if (x >= left && x <= right && y >= top && y <= bottom) {
+                return semester;
+            }
+        }
+        return null;
+    }
+
     // Render new schedule in the container
     render({ name, semesters, courses, }) {
         this._reset();
