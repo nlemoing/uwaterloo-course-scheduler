@@ -55,6 +55,9 @@ class ScheduleModel {
     }
 }
 
+const ENTER_KEY = 13;
+const ESCAPE_KEY = 27;
+
 class ScheduleView {
     constructor({ container, eventBus, }) {
         this.container = container;
@@ -80,7 +83,7 @@ class ScheduleView {
         semesterHeader.textContent = name;
         semesterContainer.appendChild(semesterHeader);
 
-        if (id !== 'misc') {
+        if (id !== 'misc' && id !== 'draft') {
             const deleteButton = document.createElement('button');
             deleteButton.innerText = 'delete';
             deleteButton.addEventListener('click', () => { this.eventBus.dispatch('deletesemester', id); });
@@ -89,7 +92,28 @@ class ScheduleView {
 
         this.semesters[id] = semesterContainer;
         const semestersContainer = document.getElementById('semesters');
-        semestersContainer.appendChild(semesterContainer);
+        semestersContainer.insertBefore(semesterContainer, this.semesterAddContainer);
+        return semesterContainer;
+    }
+
+    _addDraftSemester() {
+        const draftSemester = this._addSemester({ id: 'draft' });
+        const input = document.createElement('input');
+        input.type = 'text';
+        draftSemester.appendChild(input);
+        input.addEventListener('focusout', () => {
+            const name = input.value;
+            this._deleteSemester('draft');
+            if (name) {
+                this.eventBus.dispatch('addsemester', { id: 69, name, });
+            }
+        });
+        input.addEventListener('keyup', ({ keyCode, }) => {
+            if (keyCode === ENTER_KEY || keyCode === ESCAPE_KEY) {
+                input.blur();
+            }
+        });
+        input.focus();
     }
 
     _deleteSemester(id) {
@@ -194,6 +218,12 @@ class ScheduleView {
         this.container.appendChild(semestersContainer);
 
         this._addSemester({ id: 'misc', name: 'Misc.', });
+        this.semesterAddContainer = document.createElement('div');
+        this.semesterAddContainer.id = 'semester-add';
+        this.semesterAddContainer.classList.add('semester', 'add');
+        this.semesterAddContainer.addEventListener(
+            'click', this._addDraftSemester.bind(this));
+        semestersContainer.appendChild(this.semesterAddContainer);
         semesters.forEach(this._addSemester.bind(this));
         courses.forEach(this._addCourse.bind(this));
 

@@ -18,6 +18,16 @@
     background-color: rgb(200, 200, 200);
 }
 
+.semester.add {
+    background-color: rgb(240, 240, 240);
+    background-image: url("/images/plus.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.semester.add:hover {
+    background-color: rgb(230, 230, 230);
+}
+
 .semester h2 {
     margin: 0;
 }
