@@ -80,6 +80,13 @@ class ScheduleView {
         semesterHeader.textContent = name;
         semesterContainer.appendChild(semesterHeader);
 
+        if (id !== 'misc') {
+            const deleteButton = document.createElement('button');
+            deleteButton.innerText = 'delete';
+            deleteButton.addEventListener('click', () => { this.eventBus.dispatch('deletesemester', id); });
+            semesterContainer.appendChild(deleteButton);
+        }
+
         this.semesters[id] = semesterContainer;
         const semestersContainer = document.getElementById('semesters');
         semestersContainer.appendChild(semesterContainer);
@@ -99,6 +106,15 @@ class ScheduleView {
         courseContainer.id = `course-${id}`;
         courseContainer.innerText = `${subject} ${number}`;
         courseContainer.classList.add('course');
+
+        // Add delete button and attach listener
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = 'delete';
+        deleteButton.addEventListener('click', () => { this.eventBus.dispatch('deletecourse', id); });
+        courseContainer.appendChild(deleteButton);
+
+        // Make course container draggable
+        courseContainer.addEventListener('mousedown', (evt) => this._dragCourse(id, evt));
         this.courses[id] = courseContainer;
 
         const semesterContainer = 
@@ -167,6 +183,10 @@ class ScheduleController {
     _bindEvents() {
         this._eventBus.on('createschedule', this.create.bind(this));
         this._eventBus.on('addcourse', this.addCourse.bind(this));
+        this._eventBus.on('editcourse', this.editCourse.bind(this));
+        this._eventBus.on('deletecourse', this.deleteCourse.bind(this));
+        this._eventBus.on('addsemester', this.addSemester.bind(this));
+        this._eventBus.on('deletesemester', this.deleteSemester.bind(this));
     }
 
     create(schedule) {
