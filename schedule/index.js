@@ -142,11 +142,22 @@ class ScheduleView {
         const y = evt.clientY - target.offsetTop;
         document.onmousemove = (e) => {
             const { clientX, clientY } = e;
+            const semester = this._getSemesterFromCoordinates(clientX, clientY);
+            if (semester && this.semesters[semester] !== this.highlightedSemester) {
+                if (this.highlightedSemester) {
+                    this.highlightedSemester.classList.remove('highlighted');
+                }
+                this.highlightedSemester = this.semesters[semester];
+                this.highlightedSemester.classList.add('highlighted');
+            }
             target.style.position = 'absolute';
             target.style.left = `${clientX - x}px`;
             target.style.top = `${clientY - y}px`;
         }
         document.onmouseup = (e) => {
+            if (this.highlightedSemester) {
+                this.highlightedSemester.classList.remove('highlighted');
+            }
             const { clientX, clientY } = e;
             const semester = this._getSemesterFromCoordinates(clientX, clientY);
             if (semester) {

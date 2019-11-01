@@ -14,6 +14,10 @@
     background-color: rgb(230, 230, 230);
 }
 
+.semester.highlighted {
+    background-color: rgb(200, 200, 200);
+}
+
 .semester h2 {
     margin: 0;
 }
