@@ -73,6 +73,52 @@ class ScheduleView {
         this.initialized = false;
     }
 
+    _makeAddCourseForm(semester) {
+        const form = document.createElement('form');
+        form.classList.add('add-course');
+        form.classList.add('hidden');
+
+        const courseDropDown = document.createElement('select');
+        courseDropDown.name = 'subject';
+        let option;
+        for (const subject of ['ECON', 'MATH']) {
+            option = document.createElement('option');
+            option.value = option.text = subject;
+            courseDropDown.appendChild(option);
+        }
+        form.appendChild(courseDropDown);
+
+        const courseNumberInput = document.createElement('input');
+        courseNumberInput.name = 'number';
+        courseNumberInput.style.width = '40px';
+        form.appendChild(courseNumberInput);
+        
+        const submit = document.createElement('input');
+        submit.type = 'submit';
+        form.appendChild(submit);
+
+        const cancel = document.createElement('button');
+        cancel.type = 'reset';
+        cancel.innerText = 'Cancel';
+        form.appendChild(cancel);
+
+        const reset = () => {
+            form.classList.add('hidden');
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+            const subject = data.get('subject');
+            const number = data.get('number');
+            this.eventBus.dispatch('addcourse', { id: 69, subject, number, semester, });
+            reset();
+        });
+        cancel.addEventListener('click', reset);
+
+        return form;
+    }
+
     _addSemester(semester) {
         const { id, name } = semester;
         const semesterContainer = document.createElement('div');
@@ -88,6 +134,15 @@ class ScheduleView {
             deleteButton.innerText = 'delete';
             deleteButton.addEventListener('click', () => { this.eventBus.dispatch('deletesemester', id); });
             semesterContainer.appendChild(deleteButton);
+        }
+
+        if (id !== 'draft') {
+            const form = this._makeAddCourseForm(id);
+            const addButton = document.createElement('button');
+            addButton.innerText = 'add';
+            addButton.addEventListener('click', () => { form.classList.remove('hidden') });
+            semesterContainer.appendChild(addButton);
+            semesterContainer.appendChild(form);
         }
 
         this.semesters[id] = semesterContainer;

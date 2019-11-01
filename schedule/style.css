@@ -37,3 +37,11 @@
     width: 200px;
     max-width: 100%;
 }
+
+.add-course  {
+    width: 30px;
+}
+
+.add-course.hidden {
+    display: none;
+}
