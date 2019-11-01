@@ -135,7 +135,7 @@ class ScheduleView {
             deleteButton.addEventListener('click', () => { this.eventBus.dispatch('deletesemester', id); });
             semesterContainer.appendChild(deleteButton);
         }
-
+        
         if (id !== 'draft') {
             const form = this._makeAddCourseForm(id);
             const addButton = document.createElement('button');
@@ -193,7 +193,7 @@ class ScheduleView {
         courseContainer.appendChild(deleteButton);
 
         // Make course container draggable
-        courseContainer.addEventListener('mousedown', (evt) => this._dragCourse(id, evt));
+        courseContainer.addEventListener('mousedown', (evt) => this._dragCourse(id, courseContainer, evt));
         this.courses[id] = courseContainer;
 
         const semesterContainer = 
@@ -214,11 +214,9 @@ class ScheduleView {
         this._addCourse(course);
     }
 
-    _dragCourse(id, evt) {
-        evt.preventDefault();
-        const { target, } = evt;
-        const x = evt.clientX - target.offsetLeft;
-        const y = evt.clientY - target.offsetTop;
+    _dragCourse(id, container, evt) {
+        const x = evt.clientX - container.offsetLeft;
+        const y = evt.clientY - container.offsetTop;
         document.onmousemove = (e) => {
             const { clientX, clientY } = e;
             const semester = this._getSemesterFromCoordinates(clientX, clientY);
@@ -229,9 +227,9 @@ class ScheduleView {
                 this.highlightedSemester = this.semesters[semester];
                 this.highlightedSemester.classList.add('highlighted');
             }
-            target.style.position = 'absolute';
-            target.style.left = `${clientX - x}px`;
-            target.style.top = `${clientY - y}px`;
+            container.style.position = 'absolute';
+            container.style.left = `${clientX - x}px`;
+            container.style.top = `${clientY - y}px`;
         }
         document.onmouseup = (e) => {
             if (this.highlightedSemester) {
@@ -242,7 +240,7 @@ class ScheduleView {
             if (semester) {
                 this.eventBus.dispatch('editcourse', id, { semester, });
             }
-            target.style.position = 'static';
+            container.style.position = 'static';
             document.onmouseup = null;
             document.onmousemove = null;
         }
