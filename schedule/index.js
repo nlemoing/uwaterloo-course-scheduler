@@ -1,11 +1,24 @@
 class ScheduleModel {
+
+    constructor() {
+        this._counts = {
+            course: 1, semester: 1,
+        };
+        this._schedule = {
+            name: '',
+            semesters: [],
+            courses: [],
+        };
+    }
     
     get schedule() {
         return this._schedule;
     }
 
     create({ name = '', semesters = [], courses = [], } = {}) {
-        this._schedule = { name, semesters, courses, }
+        this._schedule.name = name;
+        semesters.forEach(this.addSemester.bind(this));
+        courses.forEach(this.addCourse.bind(this));
     }
 
     getCourse(id) {
@@ -14,7 +27,9 @@ class ScheduleModel {
         });
     }
 
-    addCourse({ id, subject, number, semester, }) {
+    addCourse({ subject, number, semester, }) {
+        const id = this._counts.course;
+        this._counts.course += 1;
         this._schedule.courses.push({ id, subject, number, semester});
         return this.getCourse(id);
     }
@@ -42,7 +57,9 @@ class ScheduleModel {
         });
     }
 
-    addSemester({ id, name, }) {
+    addSemester({ name, }) {
+        const id = this._counts.semester;
+        this._counts.semester += 1;
         this._schedule.semesters.push({ id, name, });
         return this.getSemester(id);
     }
@@ -111,7 +128,7 @@ class ScheduleView {
             const data = new FormData(form);
             const subject = data.get('subject');
             const number = data.get('number');
-            this.eventBus.dispatch('addcourse', { id: 69, subject, number, semester, });
+            this.eventBus.dispatch('addcourse', { subject, number, semester, });
             reset();
         });
         cancel.addEventListener('click', reset);
@@ -160,7 +177,7 @@ class ScheduleView {
             const name = input.value;
             this._deleteSemester('draft');
             if (name) {
-                this.eventBus.dispatch('addsemester', { id: 69, name, });
+                this.eventBus.dispatch('addsemester', { name, });
             }
         });
         input.addEventListener('keyup', ({ keyCode, }) => {
