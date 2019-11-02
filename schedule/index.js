@@ -121,6 +121,7 @@ class ScheduleView {
 
         const reset = () => {
             form.classList.add('hidden');
+            form.reset();
         }
 
         form.addEventListener('submit', (e) => {
