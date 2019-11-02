@@ -9,6 +9,32 @@ class ScheduleModel {
             semesters: [],
             courses: [],
         };
+        this._subjects = [
+            { id: 1, name: "ECON", },
+            { id: 2, name: "MATH", },
+        ]
+        this._courses = [
+            { id: 1, subject: 1, number: "101", longName: "Introduction to Microeconomics", },
+            { id: 2, subject: 1, number: "102", longName: "Introduction to Macroeconomics", },
+            { id: 3, subject: 1, number: "135", longName: "Algebra for Honours Mathematics"},
+            { id: 4, subject: 1, number: "137", longName: "Calculus 1 for Honours Mathematics"},
+        ]
+    }
+
+    get subjects() {
+        return this._subjects;
+    }
+
+    coursesForSubject(subjectId) {
+        const subject = this._subjects.find((subject) => {
+            subject.id = subjectId;
+        });
+        return this._courses.filter((course) => {
+            return course.subject === subjectId;
+        }).map((course) => {
+            course.subject = subject;
+            return course;
+        })
     }
     
     get schedule() {
@@ -86,6 +112,7 @@ class ScheduleView {
     _reset() {
         this.semesters = {};
         this.courses = {};
+        this._coursesBySubject = {};
         this.container.innerHTML = '';
         this.initialized = false;
     }
@@ -97,17 +124,18 @@ class ScheduleView {
 
         const courseDropDown = document.createElement('select');
         courseDropDown.name = 'subject';
+        const subjects = this.getSubjects();
         let option;
-        for (const subject of ['ECON', 'MATH']) {
+        for (const subject of subjects) {
             option = document.createElement('option');
-            option.value = option.text = subject;
+            option.value = option.text = subject.name;
             courseDropDown.appendChild(option);
         }
         form.appendChild(courseDropDown);
 
         const courseNumberInput = document.createElement('input');
         courseNumberInput.name = 'number';
-        courseNumberInput.style.width = '40px';
+        courseNumberInput.classList.add('course-number-input');
         form.appendChild(courseNumberInput);
         
         const submit = document.createElement('input');
@@ -325,6 +353,13 @@ class ScheduleController {
         this.view = view;
         this.model = model;
         this._eventBus = eventBus;
+
+        view.getSubjects = () => {
+            return model.subjects;
+        }
+        view.getCoursesForSubject = (subjectId) => {
+            return model.coursesForSubject(subjectId);
+        } 
 
         this._bindEvents();
     }
