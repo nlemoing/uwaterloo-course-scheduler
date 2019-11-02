@@ -36,6 +36,7 @@
     background-color: grey;
     width: 200px;
     max-width: 100%;
+    user-select: none;
 }
 
 .add-course  {

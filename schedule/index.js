@@ -207,6 +207,8 @@ class ScheduleView {
         const deleteButton = document.createElement('button');
         deleteButton.innerText = 'delete';
         deleteButton.addEventListener('click', () => { this.eventBus.dispatch('deletecourse', id); });
+        // Prevents clicking delete from triggering the drag event
+        deleteButton.addEventListener('mousedown', (e) => { e.stopPropagation() });
         courseContainer.appendChild(deleteButton);
 
         // Make course container draggable
@@ -396,21 +398,5 @@ const view = new ScheduleView({ container, eventBus, });
 const controller = new ScheduleController({ view, model, eventBus });
 
 controller.create({
-    name: "My schedule",
-    semesters: [
-        { id: 1, name: "1A", },
-        { id: 2, name: "1B", },
-        { id: 3, name: "2A", },
-        { id: 4, name: "2B", },
-        { id: 5, name: "3A", },
-        { id: 6, name: "3B", },
-        { id: 7, name: "4A", },
-        { id: 8, name: "4B", },    
-    ],
-    courses: [
-        { id: 1, subject: 'MATH', number: '135', semester: 1, },
-        { id: 2, subject: 'FUTURE', number: 'COURSE' }
-    ]
+    name: "My schedule"
 });
-
-controller.addCourse({ id: 3, subject: 'ECON', number: '101' });
