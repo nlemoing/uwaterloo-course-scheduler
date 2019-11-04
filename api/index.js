@@ -98,6 +98,29 @@ const init = async () => {
                 },
             },
         },
+        {
+            method: 'POST',
+            path: '/schedules/{scheduleId}/courses',
+            handler: schedule.addCourse,
+            options: {
+                pre: [
+                    {
+                        method: schedule.getSchedule,
+                        assign: 'schedule',
+                    },
+                ],
+                validate: {
+                    params: Joi.object({
+                        scheduleId: Joi.number()
+                    }),
+                    payload: Joi.object({
+                        subject: Joi.string(),
+                        number: Joi.string(),
+                        semesterId: Joi.number(),
+                    })
+                },
+            },
+        },
     ]);
 
     await server.start();

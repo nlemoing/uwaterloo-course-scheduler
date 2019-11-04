@@ -27,7 +27,7 @@ module.exports = function (model) {
             const body = request.payload;
             body.scheduleId = scheduleId;
             // Create course and get id back
-            const courseId = await model.addSemester(body);
+            const courseId = await model.addCourse(body);
             return h.response().created(`/schedules/${scheduleId}/courses/${courseId}`);
         },
     }
