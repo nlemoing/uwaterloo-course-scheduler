@@ -1,10 +1,12 @@
+const Boom = require('@hapi/boom');
+
 module.exports = function (model) {
     return {
         getSchedule: async (request, h) => {
             const { scheduleId } = request.params;
             const schedule = await model.getSchedule(scheduleId);
             if (!schedule) {
-                return h.response('Not found').code(404)
+                throw Boom.notFound();
             }
             return h.response(schedule);
         },
@@ -14,7 +16,7 @@ module.exports = function (model) {
         },
         addSemester: async (request, h) => {
             // Add schedule information to payload
-            const scheduleId = request.pre.schedule.id;
+            const scheduleId = request.params.scheduleId;
             const body = request.payload;
             body.scheduleId = scheduleId;
             // Create course and get id back
@@ -23,7 +25,7 @@ module.exports = function (model) {
         },
         addCourse: async (request, h) => {
             // Add schedule information to payload
-            const scheduleId = request.pre.schedule.id;
+            const scheduleId = request.params.scheduleId;
             const body = request.payload;
             body.scheduleId = scheduleId;
             // Create course and get id back
