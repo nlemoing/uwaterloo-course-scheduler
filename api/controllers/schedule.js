@@ -13,14 +13,22 @@ module.exports = function (model) {
             return h.response().created(`/schedules/${scheduleId}`);
         },
         addSemester: async (request, h) => {
-            const schedule = request.pre.schedule;
+            // Add schedule information to payload
+            const scheduleId = request.pre.schedule.id;
+            const body = request.payload;
+            body.scheduleId = scheduleId;
+            // Create course and get id back
             const semesterId = await model.addSemester(request.payload);
-            return h.response().created(`/schedules/${schedule.id}/semesters/${semesterId}`);
+            return h.response().created(`/schedules/${scheduleId}/semesters/${semesterId}`);
         },
         addCourse: async (request, h) => {
-            const schedule = request.pre.schedule;
-            const courseId = await model.addSemester(request.payload);
-            return h.response().created(`/schedules/${schedule.id}/courses/${courseId}`);
+            // Add schedule information to payload
+            const scheduleId = request.pre.schedule.id;
+            const body = request.payload;
+            body.scheduleId = scheduleId;
+            // Create course and get id back
+            const courseId = await model.addSemester(body);
+            return h.response().created(`/schedules/${scheduleId}/courses/${courseId}`);
         },
     }
 }
