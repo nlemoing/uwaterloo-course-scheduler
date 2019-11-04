@@ -62,6 +62,12 @@ module.exports = function (model) {
             const courseId = request.params.courseId;
             await model.deleteCourse(courseId);
             return h.response();
+        },
+        editCourse: async (request, h) => {
+            const courseId = request.params.courseId;
+            const semesterId = request.payload.semesterId;
+            await model.editCourse(courseId, { semesterId });
+            return h.response();
         }
     }
 }

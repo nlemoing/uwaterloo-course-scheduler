@@ -197,6 +197,28 @@ const init = async () => {
             },
         },
         {
+            method: 'PATCH',
+            path: '/schedules/{scheduleId}/courses/{courseId}',
+            handler: schedule.editCourse,
+            options: {
+                pre: [
+                    {
+                        method: schedule.getCourse,
+                        assign: 'course',
+                    },
+                ],
+                validate: {
+                    params: Joi.object({
+                        scheduleId: Joi.number(),
+                        courseId: Joi.number()
+                    }),
+                    payload: Joi.object({
+                        semesterId: Joi.number(),
+                    })
+                },
+            },
+        },
+        {
             method: 'DELETE',
             path: '/schedules/{scheduleId}/courses/{courseId}',
             handler: schedule.deleteCourse,

@@ -71,6 +71,15 @@ class ScheduleModel {
     deleteCourse(id) {
         this._courses = this._courses.filter(c => c.id !== id);
     }
+
+    editCourse(id, { semesterId, }) {
+        this._courses = this._courses.map((course) => {
+            if (course.id === id) {
+                course.semesterId = semesterId;
+            }
+            return course;
+        });
+    }
 }
 
 module.exports = ScheduleModel;
