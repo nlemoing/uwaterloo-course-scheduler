@@ -23,27 +23,27 @@ class ScheduleController {
 
     addCourse(course) {
         course = this.model.addCourse(course);
-        this.view.update("addCourse", course);
+        this.view.addCourse(course);
     }
 
     deleteCourse(id) {
         id = this.model.deleteCourse(id);
-        this.view.update("deleteCourse", id);
+        this.view.deleteCourse(id);
     }
 
     editCourse(id, params) {
         const course = this.model.editCourse(id, params);
-        this.view.update("editCourse", course);
+        this.view.editCourse(course);
     }
 
     addSemester(semester) {
         semester = this.model.addSemester(semester);
-        this.view.update("addSemester", semester);
+        this.view.addSemester(semester);
     }
 
     deleteSemester(id) {
         id = this.model.deleteSemester(id);
-        this.view.update("deleteSemester", id);
+        this.view.deleteSemester(id);
     }
 }
 

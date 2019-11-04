@@ -1,16 +1,18 @@
 import { EventBus } from './eventBus.js';
 import { ScheduleModel } from './models/schedule.js';
-import { ScheduleView } from './scheduleView.js';
+import { View } from './view.js';
 import { ScheduleController } from './scheduleController.js';
-import { CourseModel } from './models/course.js';
 
-const container = document.getElementById('schedule');
-const model = new ScheduleModel();
 const eventBus = new EventBus();
-const courseModel = new CourseModel();
-const view = new ScheduleView({ container, eventBus, courseModel, });
+const container = document.getElementById('root');
+const view = new View({ container, eventBus });
+const model = new ScheduleModel();
 const controller = new ScheduleController({ view, model, eventBus });
 
 controller.create({
     name: "My schedule"
 });
+
+for (const key in eventBus._listeners) {
+    eventBus.on(key, (...args) => { console.log(key, ...args) });
+}

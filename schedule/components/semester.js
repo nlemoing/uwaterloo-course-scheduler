@@ -1,10 +1,9 @@
 import { AddCourseForm } from './addCourseForm.js';
 
 class Semester {
-    constructor(semester, eventBus, courseModel) {
+    constructor(semester, eventBus) {
         this.semester = semester;
         this.eventBus = eventBus;
-        this.courseModel = courseModel;
 
         // Main container
         const { id, name, } = this.semester;
@@ -27,7 +26,7 @@ class Semester {
         
         // Add course form
         if (id !== 'draft') {
-            const form = new AddCourseForm(semester, this.eventBus, this.courseModel);
+            const form = new AddCourseForm(semester, this.eventBus);
             const addButton = document.createElement('button');
             addButton.innerText = 'add';
             addButton.addEventListener('click', () => { form.show(); });
