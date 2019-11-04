@@ -99,6 +99,25 @@ const init = async () => {
             },
         },
         {
+            method: 'GET',
+            path: '/schedules/{scheduleId}/semesters/{semesterId}',
+            handler: schedule.getSemester,
+            options: {
+                pre: [
+                    {
+                        method: schedule.getSchedule,
+                        assign: 'schedule',
+                    },
+                ],
+                validate: {
+                    params: Joi.object({
+                        scheduleId: Joi.number(),
+                        semesterId: Joi.number()
+                    })
+                },
+            },
+        },
+        {
             method: 'POST',
             path: '/schedules/{scheduleId}/courses',
             handler: schedule.addCourse,
@@ -117,6 +136,25 @@ const init = async () => {
                         subject: Joi.string(),
                         number: Joi.string(),
                         semesterId: Joi.number(),
+                    })
+                },
+            },
+        },
+        {
+            method: 'GET',
+            path: '/schedules/{scheduleId}/courses/{courseId}',
+            handler: schedule.getCourse,
+            options: {
+                pre: [
+                    {
+                        method: schedule.getSchedule,
+                        assign: 'schedule',
+                    },
+                ],
+                validate: {
+                    params: Joi.object({
+                        scheduleId: Joi.number(),
+                        courseId: Joi.number()
                     })
                 },
             },

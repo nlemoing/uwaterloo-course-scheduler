@@ -10,6 +10,22 @@ module.exports = function (model) {
             }
             return h.response(schedule);
         },
+        getSemester: async (request, h) => {
+            const { scheduleId, semesterId } = request.params;
+            const semester = await model.getSemester(semesterId);
+            if (!semester || semester.scheduleId !== scheduleId) {
+                throw Boom.notFound();
+            }
+            return h.response(semester);
+        },
+        getCourse: async (request, h) => {
+            const { scheduleId, courseId } = request.params;
+            const course = await model.getCourse(courseId);
+            if (!course || course.scheduleId !== scheduleId) {
+                throw Boom.notFound();
+            }
+            return h.response(course);
+        },
         addSchedule: async (request, h) => {
             const scheduleId = await model.addSchedule(request.payload);
             return h.response().created(`/schedules/${scheduleId}`);
@@ -20,7 +36,7 @@ module.exports = function (model) {
             const body = request.payload;
             body.scheduleId = scheduleId;
             // Create course and get id back
-            const semesterId = await model.addSemester(request.payload);
+            const semesterId = await model.addSemester(body);
             return h.response().created(`/schedules/${scheduleId}/semesters/${semesterId}`);
         },
         addCourse: async (request, h) => {

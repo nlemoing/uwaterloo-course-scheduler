@@ -23,6 +23,19 @@ class ScheduleModel {
         return schedule;
     }
 
+    getSemester(id) {
+        const semester = this._semesters.find(s => s.id === id);
+        if (!semester) {
+            return;
+        }
+        semester.courses = this._courses.filter(c => c.semesterId === id);
+        return semester;
+    }
+
+    getCourse(id) {
+        return this._courses.find(c => c.id === id);
+    }
+
     addSchedule({ name, }) {
         const id = this._counts.schedules;
         this._schedules.push({ id, name });
@@ -38,7 +51,7 @@ class ScheduleModel {
     }
 
     addCourse({ subject, number, scheduleId, semesterId, }) {
-        const id = this._counts.coures;
+        const id = this._counts.courses;
         this._courses.push({ id, subject, number, scheduleId, semesterId });
         this._counts.courses += 1;
         return id;
