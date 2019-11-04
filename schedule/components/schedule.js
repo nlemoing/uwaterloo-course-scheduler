@@ -83,7 +83,6 @@ class Schedule {
     }
 
     editCourse(course) {
-        console.log(course);
         this.deleteCourse(course.id);
         this.addCourse(course);
     }
