@@ -1,5 +1,5 @@
 import { EventBus } from './eventBus.js';
-import { ScheduleModel } from './scheduleModel.js';
+import { ScheduleModel } from './models/schedule.js';
 import { ScheduleView } from './scheduleView.js';
 import { ScheduleController } from './scheduleController.js';
 import { CourseModel } from './models/course.js';
