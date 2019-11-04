@@ -9,36 +9,6 @@ class ScheduleModel {
             semesters: [],
             courses: [],
         };
-        this._subjects = [
-            { id: 1, name: "ECON", },
-            { id: 2, name: "MATH", },
-        ]
-        this._courses = [
-            { id: 1, subject: 1, number: "101", longName: "Introduction to Microeconomics", },
-            { id: 2, subject: 1, number: "102", longName: "Introduction to Macroeconomics", },
-            { id: 3, subject: 1, number: "135", longName: "Algebra for Honours Mathematics"},
-            { id: 4, subject: 1, number: "137", longName: "Calculus 1 for Honours Mathematics"},
-        ]
-    }
-
-    get subjects() {
-        return this._subjects;
-    }
-
-    coursesForSubject(subjectId) {
-        const subject = this._subjects.find((subject) => {
-            subject.id = subjectId;
-        });
-        return this._courses.filter((course) => {
-            return course.subject === subjectId;
-        }).map((course) => {
-            course.subject = subject;
-            return course;
-        })
-    }
-    
-    get schedule() {
-        return this._schedule;
     }
 
     create({ name = '', semesters = [], courses = [], } = {}) {

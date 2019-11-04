@@ -4,13 +4,6 @@ class ScheduleController {
         this.model = model;
         this._eventBus = eventBus;
 
-        view.getSubjects = () => {
-            return model.subjects;
-        }
-        view.getCoursesForSubject = (subjectId) => {
-            return model.coursesForSubject(subjectId);
-        } 
-
         this._bindEvents();
     }
 

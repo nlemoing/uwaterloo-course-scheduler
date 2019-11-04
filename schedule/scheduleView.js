@@ -1,10 +1,13 @@
+import { AddCourseForm } from "./components/addCourseForm.js";
+
 const ENTER_KEY = 13;
 const ESCAPE_KEY = 27;
 
 class ScheduleView {
-    constructor({ container, eventBus, }) {
+    constructor({ container, eventBus, courseModel, }) {
         this.container = container;
         this.eventBus = eventBus;
+        this.courseModel = courseModel;
 
         this._reset();
     }
@@ -15,54 +18,6 @@ class ScheduleView {
         this._coursesBySubject = {};
         this.container.innerHTML = '';
         this.initialized = false;
-    }
-
-    _makeAddCourseForm(semester) {
-        const form = document.createElement('form');
-        form.classList.add('add-course');
-        form.classList.add('hidden');
-
-        const courseDropDown = document.createElement('select');
-        courseDropDown.name = 'subject';
-        const subjects = this.getSubjects();
-        let option;
-        for (const subject of subjects) {
-            option = document.createElement('option');
-            option.value = option.text = subject.name;
-            courseDropDown.appendChild(option);
-        }
-        form.appendChild(courseDropDown);
-
-        const courseNumberInput = document.createElement('input');
-        courseNumberInput.name = 'number';
-        courseNumberInput.classList.add('course-number-input');
-        form.appendChild(courseNumberInput);
-        
-        const submit = document.createElement('input');
-        submit.type = 'submit';
-        form.appendChild(submit);
-
-        const cancel = document.createElement('button');
-        cancel.type = 'reset';
-        cancel.innerText = 'Cancel';
-        form.appendChild(cancel);
-
-        const reset = () => {
-            form.classList.add('hidden');
-            form.reset();
-        }
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const data = new FormData(form);
-            const subject = data.get('subject');
-            const number = data.get('number');
-            this.eventBus.dispatch('addcourse', { subject, number, semester, });
-            reset();
-        });
-        cancel.addEventListener('click', reset);
-
-        return form;
     }
 
     _addSemester(semester) {
@@ -83,12 +38,12 @@ class ScheduleView {
         }
         
         if (id !== 'draft') {
-            const form = this._makeAddCourseForm(id);
+            const form = new AddCourseForm(semester, this.eventBus, this.courseModel);
             const addButton = document.createElement('button');
             addButton.innerText = 'add';
-            addButton.addEventListener('click', () => { form.classList.remove('hidden') });
+            addButton.addEventListener('click', () => { form.show(); });
             semesterContainer.appendChild(addButton);
-            semesterContainer.appendChild(form);
+            semesterContainer.appendChild(form.container);
         }
 
         this.semesters[id] = semesterContainer;
