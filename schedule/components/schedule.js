@@ -65,12 +65,13 @@ class Schedule {
     }
 
     addCourse(courseInfo) {
-        const { id, } = courseInfo;
+        const courseId = courseInfo.id;
+        const semesterId = courseInfo.semester;
 
         const course = new Course(courseInfo, this.eventBus);
-        this.courses[id] = course;
+        this.courses[courseId] = course;
 
-        const semester = this.semesters[id] || this.semesters.misc;
+        const semester = this.semesters[semesterId] || this.semesters.misc;
         semester.container.appendChild(course.container);
     }
 
@@ -82,6 +83,7 @@ class Schedule {
     }
 
     editCourse(course) {
+        console.log(course);
         this.deleteCourse(course.id);
         this.addCourse(course);
     }
