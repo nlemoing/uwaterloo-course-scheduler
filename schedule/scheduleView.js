@@ -1,4 +1,5 @@
-import { AddCourseForm } from "./components/addCourseForm.js";
+import { AddCourseForm } from './components/addCourseForm.js';
+import { Course } from './components/course.js';
 
 const ENTER_KEY = 13;
 const ESCAPE_KEY = 27;
@@ -79,36 +80,23 @@ class ScheduleView {
         }
     }
 
-    _addCourse(course) {
-        const { id, subject, number, semester, } = course;
+    _addCourse(courseInfo) {
+        const { id, semester, } = courseInfo;
+        const course = new Course(courseInfo, this.eventBus);
         
-        const courseContainer = document.createElement('div');
-        courseContainer.id = `course-${id}`;
-        courseContainer.innerText = `${subject} ${number}`;
-        courseContainer.classList.add('course');
-
-        // Add delete button and attach listener
-        const deleteButton = document.createElement('button');
-        deleteButton.innerText = 'delete';
-        deleteButton.addEventListener('click', () => { this.eventBus.dispatch('deletecourse', id); });
-        // Prevents clicking delete from triggering the drag event
-        deleteButton.addEventListener('mousedown', (e) => { e.stopPropagation() });
-        courseContainer.appendChild(deleteButton);
-
-        // Make course container draggable
-        courseContainer.addEventListener('mousedown', (evt) => this._dragCourse(id, courseContainer, evt));
-        this.courses[id] = courseContainer;
+        this.courses[id] = course;
 
         const semesterContainer = 
             document.getElementById(`semester-${semester}`) ||
             document.getElementById('semester-misc');
-        semesterContainer.appendChild(courseContainer);
+        semesterContainer.appendChild(course.container);
     }
 
     _deleteCourse(id) {
-        const courseToDelete = document.getElementById(`course-${id}`);
+        const courseToDelete = this.courses[id];
         if (courseToDelete) {
-            courseToDelete.remove();
+            courseToDelete.container.remove();
+            delete this.courses[id];
         }
     }
 
