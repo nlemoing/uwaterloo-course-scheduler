@@ -11,6 +11,10 @@ class ScheduleModel {
         };
     }
 
+    get schedule() {
+        return this._schedule;
+    }
+
     create({ name = '', semesters = [], courses = [], } = {}) {
         this._schedule.name = name;
         semesters.forEach(this.addSemester.bind(this));
