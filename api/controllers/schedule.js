@@ -6,21 +6,21 @@ module.exports = function (model) {
             if (!schedule) {
                 return h.response('Not found').code(404)
             }
-            return h.response(course);
+            return h.response(schedule);
         },
         addSchedule: async (request, h) => {
-            const scheduleId = await model.addSchedule(request.body);
-            return h.response().location(`/schedules/${scheduleId}`);
+            const scheduleId = await model.addSchedule(request.payload);
+            return h.response().created(`/schedules/${scheduleId}`);
         },
         addSemester: async (request, h) => {
             const schedule = request.pre.schedule;
-            const semesterId = await model.addSemester(request.body);
-            return h.response().location(`/schedules/${schedule.id}/semesters/${semesterId}`);
+            const semesterId = await model.addSemester(request.payload);
+            return h.response().created(`/schedules/${schedule.id}/semesters/${semesterId}`);
         },
         addCourse: async (request, h) => {
             const schedule = request.pre.schedule;
-            const courseId = await model.addSemester(request.body);
-            return h.response().location(`/schedules/${schedule.id}/courses/${courseId}`);
+            const courseId = await model.addSemester(request.payload);
+            return h.response().created(`/schedules/${schedule.id}/courses/${courseId}`);
         },
     }
 }

@@ -59,3 +59,5 @@ class ScheduleModel {
         this._courses = this._courses.filter(c => c.id !== id);
     }
 }
+
+module.exports = ScheduleModel;

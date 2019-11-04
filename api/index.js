@@ -6,7 +6,11 @@ const logger = require('./logger.js');
 const CourseController = require('./controllers/course.js');
 const CourseModel = require('./models/course.js');
 
-const course = CourseController(new CourseModel);
+const ScheduleController = require('./controllers/schedule.js');
+const ScheduleModel = require('./models/schedule.js');
+
+const course = CourseController(new CourseModel());
+const schedule = ScheduleController(new ScheduleModel());
 
 const init = async () => {
     const server = new Server({ 
@@ -48,7 +52,32 @@ const init = async () => {
                     })
                 },
             },
-        }
+        },
+        {
+            method: 'POST',
+            path: '/schedules',
+            handler: schedule.addSchedule,
+            options: {
+                validate: {
+                    payload: Joi.object({
+                        name: Joi.string()
+                    })
+                }
+            }
+        },
+        {
+            method: 'GET',
+            path: '/schedules/{scheduleId}',
+            handler: schedule.getSchedule,
+            options: {
+                validate: {
+                    params: Joi.object({
+                        scheduleId: Joi.number()
+                    })
+                },
+            },
+        },
+        
     ]);
 
     await server.start();
