@@ -4,6 +4,10 @@ class AddCourseForm {
         this.eventBus = eventBus;
         this.courseModel = courseModel;
 
+        // Subject is changed when the update form's value is changed.
+        this.subject = null;
+        this.numbersBySubject = {};
+
         // Form container
         this.form = document.createElement('form');
         this.form.classList.add('add-course');
@@ -13,6 +17,7 @@ class AddCourseForm {
         // Course subject input
         const courseDropDown = document.createElement('select');
         courseDropDown.name = 'subject';
+        // Add each subject as an option of the dropdown
         const subjects = this.courseModel.getSubjects();
         let option;
         for (const subject of subjects) {
@@ -20,13 +25,38 @@ class AddCourseForm {
             option.value = option.text = subject.name;
             courseDropDown.appendChild(option);
         }
+        // Set the current subject to whatever value is selected
+        this.subject = courseDropDown.value;
+        courseDropDown.addEventListener('input', (evt) => {
+            this.subject = evt.target.value;
+        });
         this.form.appendChild(courseDropDown);
 
         // Course number input
         const courseNumberInput = document.createElement('input');
         courseNumberInput.name = 'number';
         courseNumberInput.classList.add('course-number-input');
+        courseNumberInput.addEventListener('input', (evt) => {
+            if (!this.subject) return;
+            const subjectId = subjects.find(subject => subject.name === this.subject).id;
+            const number = evt.target.value;
+            if (!(subjectId in this.numbersBySubject)) {
+                this.numbersBySubject[subjectId] = 
+                    this.courseModel.getNumbersForSubject(subjectId);
+            }
+            const numbers = this.numbersBySubject[subjectId];
+            const course = numbers.find((n) => {
+                return n.number === number;
+            });
+            const longName = course ? course.longName : '';
+            this.courseLongName.innerText = longName;
+        });
         this.form.appendChild(courseNumberInput);
+
+        // Course long name (if present)
+        this.courseLongName = document.createElement('span');
+        this.courseLongName.classList.add('course-long-name');
+        this.form.appendChild(this.courseLongName);
         
         // Submit button
         const submit = document.createElement('input');
