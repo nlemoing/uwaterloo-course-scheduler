@@ -62,4 +62,40 @@ class Semester {
     }
 }
 
-export { Semester };
+const ENTER_KEY = 13;
+const ESCAPE_KEY = 27;
+
+class DraftSemester {
+    constructor(eventBus) {
+        this.eventBus = eventBus;
+
+        this.container = document.createElement('div');
+        this.container.classList.add('semester', 'draft');
+
+        this.input = document.createElement('input');
+        this.input.type = 'text';
+        this.input.addEventListener('focusout', this.submission.bind(this));
+        this.input.addEventListener('keyup', this.escape.bind(this));
+        this.container.appendChild(this.input);
+    }
+
+    submission() {
+        const name = this.input.value;
+        if (name) {
+            this.eventBus.dispatch('addsemester', { name, });
+        }
+        this.container.remove();
+    }
+
+    escape({ keyCode, }) {
+        if (keyCode === ENTER_KEY || keyCode === ESCAPE_KEY) {
+            this.input.blur();
+        }
+    }
+
+    focus() {
+        this.input.focus();
+    }
+}
+
+export { DraftSemester, Semester };

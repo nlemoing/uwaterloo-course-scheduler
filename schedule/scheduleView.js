@@ -1,9 +1,5 @@
-import { AddCourseForm } from './components/addCourseForm.js';
 import { Course } from './components/course.js';
-import { Semester } from './components/semester.js';
-
-const ENTER_KEY = 13;
-const ESCAPE_KEY = 27;
+import { DraftSemester, Semester } from './components/semester.js';
 
 class ScheduleView {
     constructor({ container, eventBus, courseModel, }) {
@@ -17,9 +13,7 @@ class ScheduleView {
     _reset() {
         this.semesters = {};
         this.courses = {};
-        this._coursesBySubject = {};
         this.container.innerHTML = '';
-        this.initialized = false;
     }
 
     _addSemester(semesterInfo) {
@@ -31,23 +25,10 @@ class ScheduleView {
     }
 
     _addDraftSemester() {
-        const draftSemester = this._addSemester({ id: 'draft' });
-        const input = document.createElement('input');
-        input.type = 'text';
-        draftSemester.appendChild(input);
-        input.addEventListener('focusout', () => {
-            const name = input.value;
-            this._deleteSemester('draft');
-            if (name) {
-                this.eventBus.dispatch('addsemester', { name, });
-            }
-        });
-        input.addEventListener('keyup', ({ keyCode, }) => {
-            if (keyCode === ENTER_KEY || keyCode === ESCAPE_KEY) {
-                input.blur();
-            }
-        });
-        input.focus();
+        const draftSemester = new DraftSemester(this.eventBus);
+        const semestersContainer = document.getElementById('semesters');
+        semestersContainer.insertBefore(draftSemester.container, this.semesterAddContainer);
+        draftSemester.focus();
     }
 
     _deleteSemester(id) {
