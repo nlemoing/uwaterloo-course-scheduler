@@ -1,5 +1,6 @@
 import { AddCourseForm } from './components/addCourseForm.js';
 import { Course } from './components/course.js';
+import { Semester } from './components/semester.js';
 
 const ENTER_KEY = 13;
 const ESCAPE_KEY = 27;
@@ -21,36 +22,12 @@ class ScheduleView {
         this.initialized = false;
     }
 
-    _addSemester(semester) {
-        const { id, name } = semester;
-        const semesterContainer = document.createElement('div');
-        semesterContainer.id = `semester-${id}`;
-        semesterContainer.classList.add('semester');
-        
-        const semesterHeader = document.createElement('h2');
-        semesterHeader.textContent = name;
-        semesterContainer.appendChild(semesterHeader);
-
-        if (id !== 'misc' && id !== 'draft') {
-            const deleteButton = document.createElement('button');
-            deleteButton.innerText = 'delete';
-            deleteButton.addEventListener('click', () => { this.eventBus.dispatch('deletesemester', id); });
-            semesterContainer.appendChild(deleteButton);
-        }
-        
-        if (id !== 'draft') {
-            const form = new AddCourseForm(semester, this.eventBus, this.courseModel);
-            const addButton = document.createElement('button');
-            addButton.innerText = 'add';
-            addButton.addEventListener('click', () => { form.show(); });
-            semesterContainer.appendChild(addButton);
-            semesterContainer.appendChild(form.container);
-        }
-
-        this.semesters[id] = semesterContainer;
+    _addSemester(semesterInfo) {
+        const semester = new Semester(semesterInfo, this.eventBus, this.courseModel);
+        this.semesters[semesterInfo.id] = semester;
         const semestersContainer = document.getElementById('semesters');
-        semestersContainer.insertBefore(semesterContainer, this.semesterAddContainer);
-        return semesterContainer;
+        semestersContainer.insertBefore(semester.container, this.semesterAddContainer);
+        return semester.container;
     }
 
     _addDraftSemester() {
@@ -74,9 +51,10 @@ class ScheduleView {
     }
 
     _deleteSemester(id) {
-        const semesterToDelete = document.getElementById(`semester-${id}`);
+        const semesterToDelete = this.semesters[id];
         if (semesterToDelete) {
-            semesterToDelete.remove();
+            semesterToDelete.container.remove();
+            delete this.semesters[id];
         }
     }
 
@@ -103,50 +81,6 @@ class ScheduleView {
     _editCourse(course) {
         this._deleteCourse(course.id);
         this._addCourse(course);
-    }
-
-    _dragCourse(id, container, evt) {
-        const x = evt.clientX - container.offsetLeft;
-        const y = evt.clientY - container.offsetTop;
-        document.onmousemove = (e) => {
-            const { clientX, clientY } = e;
-            const semester = this._getSemesterFromCoordinates(clientX, clientY);
-            if (semester && this.semesters[semester] !== this.highlightedSemester) {
-                if (this.highlightedSemester) {
-                    this.highlightedSemester.classList.remove('highlighted');
-                }
-                this.highlightedSemester = this.semesters[semester];
-                this.highlightedSemester.classList.add('highlighted');
-            }
-            container.style.position = 'absolute';
-            container.style.left = `${clientX - x}px`;
-            container.style.top = `${clientY - y}px`;
-        }
-        document.onmouseup = (e) => {
-            if (this.highlightedSemester) {
-                this.highlightedSemester.classList.remove('highlighted');
-            }
-            const { clientX, clientY } = e;
-            const semester = this._getSemesterFromCoordinates(clientX, clientY);
-            if (semester) {
-                this.eventBus.dispatch('editcourse', id, { semester, });
-            }
-            container.style.position = 'static';
-            document.onmouseup = null;
-            document.onmousemove = null;
-        }
-    }
-
-    _getSemesterFromCoordinates(x, y) {
-        for (const semester in this.semesters) {
-            const { 
-                left, top, right, bottom
-            } = this.semesters[semester].getBoundingClientRect();
-            if (x >= left && x <= right && y >= top && y <= bottom) {
-                return semester;
-            }
-        }
-        return null;
     }
 
     // Render new schedule in the container
