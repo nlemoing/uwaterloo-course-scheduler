@@ -1,0 +1,28 @@
+{
+  "name": "api",
+  "version": "0.1.0",
+  "description": "API for course scheduler planner app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nlemoing/uwaterloo-course-scheduler.git"
+  },
+  "keywords": [
+    "university",
+    "course",
+    "planner"
+  ],
+  "author": "Nick Lemoing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nlemoing/uwaterloo-course-scheduler/issues"
+  },
+  "homepage": "https://github.com/nlemoing/uwaterloo-course-scheduler#readme",
+  "dependencies": {
+    "@hapi/hapi": "^18.4.0",
+    "@hapi/joi": "^16.1.7"
+  }
+}
