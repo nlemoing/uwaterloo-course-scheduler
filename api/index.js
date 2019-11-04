@@ -78,6 +78,24 @@ const init = async () => {
             },
         },
         {
+            method: 'DELETE',
+            path: '/schedules/{scheduleId}',
+            handler: schedule.deleteSchedule,
+            options: {
+                pre: [
+                    {
+                        method: schedule.getSchedule,
+                        assign: 'schedule'
+                    }
+                ],
+                validate: {
+                    params: Joi.object({
+                        scheduleId: Joi.number()
+                    })
+                },
+            },
+        },
+        {
             method: 'POST',
             path: '/schedules/{scheduleId}/semesters',
             handler: schedule.addSemester,
@@ -107,6 +125,25 @@ const init = async () => {
                     {
                         method: schedule.getSchedule,
                         assign: 'schedule',
+                    },
+                ],
+                validate: {
+                    params: Joi.object({
+                        scheduleId: Joi.number(),
+                        semesterId: Joi.number()
+                    })
+                },
+            },
+        },
+        {
+            method: 'DELETE',
+            path: '/schedules/{scheduleId}/semesters/{semesterId}',
+            handler: schedule.deleteSemester,
+            options: {
+                pre: [
+                    {
+                        method: schedule.getSemester,
+                        assign: 'semester',
                     },
                 ],
                 validate: {
@@ -150,6 +187,25 @@ const init = async () => {
                         method: schedule.getSchedule,
                         assign: 'schedule',
                     },
+                ],
+                validate: {
+                    params: Joi.object({
+                        scheduleId: Joi.number(),
+                        courseId: Joi.number()
+                    })
+                },
+            },
+        },
+        {
+            method: 'DELETE',
+            path: '/schedules/{scheduleId}/courses/{courseId}',
+            handler: schedule.deleteCourse,
+            options: {
+                pre: [
+                    {
+                        method: schedule.getCourse,
+                        assign: 'course'
+                    }
                 ],
                 validate: {
                     params: Joi.object({

@@ -48,5 +48,20 @@ module.exports = function (model) {
             const courseId = await model.addCourse(body);
             return h.response().created(`/schedules/${scheduleId}/courses/${courseId}`);
         },
+        deleteSchedule: async (request, h) => {
+            const scheduleId = request.params.scheduleId;
+            await model.deleteSchedule(scheduleId);
+            return h.response();
+        },
+        deleteSemester: async (request, h) => {
+            const semesterId = request.params.semesterId;
+            await model.deleteSemester(semesterId);
+            return h.response();
+        },
+        deleteCourse: async (request, h) => {
+            const courseId = request.params.courseId;
+            await model.deleteCourse(courseId);
+            return h.response();
+        }
     }
 }
