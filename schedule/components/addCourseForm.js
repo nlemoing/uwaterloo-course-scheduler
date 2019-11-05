@@ -93,11 +93,11 @@ class AddCourseForm {
     submit(e) {
         e.preventDefault();
         const data = new FormData(this.form);
-        const semester = this.semester.id !== 'misc' ?
+        const semesterId = this.semester.id !== 'misc' ?
             this.semester.id : undefined;
         const subject = data.get('subject');
         const number = data.get('number');
-        this.eventBus.dispatch('addcourse', { subject, number, semester, });
+        this.eventBus.dispatch('addcourse', { subject, number, semesterId, });
         this.reset();
     }
 

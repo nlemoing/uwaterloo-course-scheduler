@@ -18,32 +18,57 @@ class ScheduleController {
 
     async create(schedule) {
         schedule = await this.model.createSchedule(schedule);
-        this.view.render(schedule);
+        if (!schedule) {
+            this.view.warning({ message: 'There was a problem creating the schedule. Please try again later.' });
+        } else {
+            this.schedule = schedule;
+            this.view.render(schedule);
+        }
     }
 
-    addCourse(course) {
-        course = this.model.addCourse(course);
-        this.view.addCourse(course);
+    async addCourse(course) {
+        course = await this.model.addCourse(this.schedule.id, course);
+        if (!course) {
+            this.view.warning({ message: 'There was a problem adding that course. Please try again later.' });
+        } else {
+            this.view.addCourse(course);
+        }
     }
 
-    deleteCourse(id) {
-        id = this.model.deleteCourse(id);
-        this.view.deleteCourse(id);
+    async deleteCourse(id) {
+        id = await this.model.deleteCourse(this.schedule.id, id);
+        if (!id) {
+            this.view.warning({ message: 'There was a problem adding that course. Please try again later.' });
+        } else {
+            this.view.deleteCourse(id);
+        }
     }
 
-    editCourse(id, params) {
-        const course = this.model.editCourse(id, params);
-        this.view.editCourse(course);
+    async editCourse(id, params) {
+        const course = await this.model.editCourse(this.schedule.id, id, params);
+        if (!course) {
+            this.view.warning({ message: 'There was a problem editing that course. Please try again later.' })
+        } else {
+            this.view.editCourse(course);
+        }
     }
 
-    addSemester(semester) {
-        semester = this.model.addSemester(semester);
-        this.view.addSemester(semester);
+    async addSemester(semester) {
+        semester = await this.model.addSemester(this.schedule.id, semester);
+        if (!semester) {
+            this.view.warning({ message: 'There was a problem adding that semester. Please try again later.' });
+        } else {
+            this.view.addSemester(semester);
+        }
     }
 
-    deleteSemester(id) {
-        id = this.model.deleteSemester(id);
-        this.view.deleteSemester(id);
+    async deleteSemester(id) {
+        id = await this.model.deleteSemester(this.schedule.id, id);
+        if (!id) {
+            this.view.warning({ message: 'There was a problem deleting that semester. Please try again later.' });
+        } else {
+            this.view.deleteSemester(id);
+        }
     }
 }
 

@@ -14,5 +14,5 @@ controller.create({
 });
 
 for (const key in eventBus._listeners) {
-    eventBus.on(key, (...args) => { console.log(key, ...args) });
+    eventBus.on(key, (...args) => { console.log('Event: ', key, ...args) });
 }

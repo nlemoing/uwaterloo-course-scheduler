@@ -54,8 +54,8 @@ class Semester {
     courseDrop(id, coords) {
         this.container.classList.remove('highlighted');
         if (this.containsCoordinates(coords)) {
-            const semester = this.semester.id;
-            this.eventBus.dispatch('editcourse', id, { semester, });
+            const semesterId = this.semester.id;
+            this.eventBus.dispatch('editcourse', id, { semesterId, });
         }
     }
 }

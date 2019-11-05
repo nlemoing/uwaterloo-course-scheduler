@@ -1,75 +1,77 @@
+import API from '../util/api.js';
+
 class ScheduleModel {
 
-    constructor() {
-        this.baseUrl = 'http://localhost:3000';
-    }
-
     async createSchedule({ name = '', } = {}) {
-        const response = await fetch(`${this.baseUrl}/schedules`, {
+        const response = await API('/schedules', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({name})
+            body: JSON.stringify({ name })
         });
-        console.log(response);
         if (!response.ok) return;
-        for (const [key, value] in response.headers.entries()) {
-            console.log(`${key}: ${value}`);
-        }
         const location = response.headers.get('location');
-        const schedule = await fetch(`${this.baseUrl}${location}`);
+        const schedule = await API(location);
         if (!schedule.ok) return;
         return await schedule.json();
     }
 
-    getCourse(id) {
-        return this._schedule.courses.find((course) => {
-            return course.id === id;
-        });
+    async getCourse(scheduleId, id) {
+        const response = await API(`/schedules/${scheduleId}/courses/${id}`);
+        if (!response.ok) return;
+        return await response.json();
     }
 
-    addCourse({ subject, number, semester, }) {
-        const id = this._counts.course;
-        this._counts.course += 1;
-        this._schedule.courses.push({ id, subject, number, semester});
-        return this.getCourse(id);
+    async addCourse(scheduleId, { subject, number, semesterId, }) {
+        const response = await API(`/schedules/${scheduleId}/courses`, {
+            method: 'POST',
+            body: JSON.stringify({ subject, number, semesterId })
+        });
+        if (!response.ok) return;
+        const location = response.headers.get('location');
+        const course = await API(location);
+        if (!course.ok) return;
+        return await course.json();
     }
 
-    deleteCourse(id) {
-        this._schedule.courses = this._schedule.courses.filter((course) => {
-            return course.id !== id;
+    async deleteCourse(scheduleId, id) {
+        const response = await API(`/schedules/${scheduleId}/courses/${id}`, {
+            method: 'DELETE'
         });
+        if (!response.ok) return;
         return id;
     }
 
-    editCourse(id, { semester, }) {
-        this._schedule.courses = this._schedule.courses.map((course) => {
-            if (course.id === id) {
-                course.semester = semester;
-            }
-            return course;
+    async editCourse(scheduleId, id, { semesterId, }) {
+        const response = await API(`/schedules/${scheduleId}/courses/${id}`, {
+            method: 'PATCH',
+            body: JSON.stringify({ semesterId })
         });
-        return this.getCourse(id);
+        if (!response.ok) return;
+        return await this.getCourse(scheduleId, id);
     }
 
-    getSemester(id) {
-        return this._schedule.semesters.find((semester) => {
-            return semester.id === id;
-        });
+    async getSemester(scheduleId, id) {
+        const response = await API(`/schedules/${scheduleId}/semesters/${id}`);
+        if (!response.ok) return;
+        return await response.json();
     }
 
-    addSemester({ name, }) {
-        const id = this._counts.semester;
-        this._counts.semester += 1;
-        this._schedule.semesters.push({ id, name, });
-        return this.getSemester(id);
+    async addSemester(scheduleId, { name, }) {
+        const response = await API(`/schedules/${scheduleId}/semesters`, {
+            method: 'POST',
+            body: JSON.stringify({ name })
+        });
+        if (!response.ok) return;
+        const location = response.headers.get('location');
+        const semester = await API(location);
+        if (!semester.ok) return;
+        return await semester.json();
     }
 
-    deleteSemester(id) {
-        this._schedule.semesters = this._schedule.semesters.filter((semester) => {
-            return semester.id !== id;
+    async deleteSemester(scheduleId, id) {
+        const response = await API(`/schedules/${scheduleId}/semesters/${id}`, {
+            method: 'DELETE'
         });
+        if (!response.ok) return;
         return id;
     }
 }

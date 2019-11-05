@@ -1,3 +1,5 @@
+import API from '../util/api.js';
+
 class CourseModel {
 
     constructor() {
@@ -8,7 +10,7 @@ class CourseModel {
     async getSubjects() {
         if (!this.subjects) {
             // If nothing is in the cache, fetch from the API
-            const subjects = await fetch('http://localhost:3000/subjects');
+            const subjects = await API('/subjects');
             // If the request failed, return nothing (with potential to try again)
             if (!subjects.ok) {
                 return [];
@@ -20,7 +22,7 @@ class CourseModel {
 
     async getNumbersForSubject(subjectId) {
         if (!(subjectId in this.numbersForSubject)) {
-            const courses = await fetch(`http://localhost:3000/subjects/${subjectId}/courses`);
+            const courses = await API(`/subjects/${subjectId}/courses`);
             if (!courses.ok) {
                 return [];
             }

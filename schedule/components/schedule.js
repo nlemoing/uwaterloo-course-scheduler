@@ -66,7 +66,7 @@ class Schedule {
 
     addCourse(courseInfo) {
         const courseId = courseInfo.id;
-        const semesterId = courseInfo.semester;
+        const semesterId = courseInfo.semesterId;
 
         const course = new Course(courseInfo, this.eventBus);
         this.courses[courseId] = course;

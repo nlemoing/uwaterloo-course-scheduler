@@ -38,6 +38,10 @@ class View {
         this.schedule = new Schedule(schedule, this.eventBus);
         this.container.appendChild(this.schedule.container);
     }
+
+    warning({ message }) {
+        alert(message);
+    }
 }
 
 export { View };
