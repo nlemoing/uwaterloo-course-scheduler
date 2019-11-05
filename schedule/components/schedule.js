@@ -7,17 +7,26 @@ class Schedule {
         const { id, name } = this.schedule;
         this.container = document.createElement('div');
         this.container.id = `schedule-${id}`;
-        this.container.classList.add('schedule');
+        this.container.classList.add('schedule', 'clickable');
 
         // Header
         const scheduleHeader = document.createElement('h2');
         scheduleHeader.textContent = name;
         this.container.appendChild(scheduleHeader);
 
+        // Delete button
         const deleteButton = document.createElement('button');
         deleteButton.innerText = 'delete';
         deleteButton.addEventListener('click', () => { this.eventBus.dispatch('deleteschedule', id); });
         this.container.appendChild(deleteButton);
+
+        // Create link
+        const link = document.createElement('a');
+        link.href = `/?scheduleId=${id}`;
+        const span = document.createElement('span');
+        span.classList.add('clickable');
+        link.appendChild(span);
+        this.container.appendChild(link);
 
         this.container.addEventListener('click', () => { this.eventBus.dispatch('viewschedule', id); });
     }
