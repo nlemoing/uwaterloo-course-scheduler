@@ -46,7 +46,7 @@ class ScheduleModel {
             body: JSON.stringify({ semesterId })
         });
         if (!response.ok) return;
-        return await this.getCourse(scheduleId, id);
+        return await response.json();
     }
 
     async getSemester(scheduleId, id) {

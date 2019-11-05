@@ -79,6 +79,7 @@ class ScheduleModel {
             }
             return course;
         });
+        return this.getCourse(id);
     }
 }
 

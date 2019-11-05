@@ -66,8 +66,8 @@ module.exports = function (model) {
         editCourse: async (request, h) => {
             const courseId = request.params.courseId;
             const semesterId = request.payload.semesterId;
-            await model.editCourse(courseId, { semesterId });
-            return h.response();
+            const course = await model.editCourse(courseId, { semesterId });
+            return h.response(course);
         }
     }
 }

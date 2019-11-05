@@ -1,7 +1,7 @@
 import { AddCourseForm } from './addCourseForm.js';
 
 class Semester {
-    constructor(semester, eventBus) {
+    constructor(semester, eventBus) { 
         this.semester = semester;
         this.eventBus = eventBus;
 
@@ -54,7 +54,8 @@ class Semester {
     courseDrop(id, coords) {
         this.container.classList.remove('highlighted');
         if (this.containsCoordinates(coords)) {
-            const semesterId = this.semester.id;
+            const semesterId = this.semester.id !== 'misc' ?
+                this.semester.id : undefined;
             this.eventBus.dispatch('editcourse', id, { semesterId, });
         }
     }
