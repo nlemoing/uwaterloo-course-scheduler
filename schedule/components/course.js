@@ -26,22 +26,22 @@ class Course {
         const { container } = this;
         const x = evt.clientX - container.offsetLeft;
         const y = evt.clientY - container.offsetTop;
-        container.onmousemove = (e) => {
+        document.onmousemove = (e) => {
             const { clientX, clientY } = e;
             this.eventBus.dispatch('coursedrag', this.course.id, { clientX, clientY });
             container.style.position = 'absolute';
             container.style.left = `${clientX - x}px`;
             container.style.top = `${clientY - y}px`;
         }
-        container.onmouseup = (e) => {
+        document.onmouseup = (e) => {
             if (this.highlightedSemester) {
                 this.highlightedSemester.classList.remove('highlighted');
             }
             const { clientX, clientY } = e;
             this.eventBus.dispatch('coursedrop', this.course.id, { clientX, clientY });
             container.style.position = 'static';
-            container.onmouseup = null;
-            container.onmousemove = null;
+            document.onmouseup = null;
+            document.onmousemove = null;
         }
     }
 }
