@@ -2,13 +2,11 @@ import { Course } from './course.js';
 import { DraftSemester, Semester } from './semester.js';
 
 class Schedule {
-    constructor(schedule, eventBus) {
-        this.schedule = schedule;
+    constructor(eventBus) {
         this.eventBus = eventBus;
         this.semesters = {};
         this.courses = {};
 
-        const { name, semesters, courses, } = schedule;
         // Main container outlines
         this.containers = {
             main: document.createElement('div'),
@@ -19,7 +17,6 @@ class Schedule {
         this.containers.main.id = 'schedule';
 
         // Header
-        this.containers.header.textContent = name;
         this.containers.main.appendChild(this.containers.header);
         
         // Container for all semesters
@@ -34,15 +31,34 @@ class Schedule {
         this.containers.addSemester.classList.add('semester', 'add');
         this.containers.addSemester.addEventListener('click', this.addDraftSemester.bind(this));
         this.containers.semesters.appendChild(this.containers.addSemester);
+    }
 
+    _reset() {
+        this.containers.header.textContent = '';
+
+        for (const courseId in this.courses) {
+            this.deleteCourse(courseId);
+        }
+        for (const semesterId in this.semesters) {
+            if (semesterId === 'misc') continue;
+            this.deleteSemester(semesterId)
+        }
+    }
+
+    render(schedule, container) {
+        this._reset();
+
+        const { name, semesters, courses, } = schedule;
+        // Set header name
+        this.containers.header.textContent = name;
         // Add each semester
         semesters.forEach(this.addSemester.bind(this));
         // Add each course
         courses.forEach(this.addCourse.bind(this));
-    }
 
-    get container() {
-        return this.containers.main;
+        if (container) {
+            container.appendChild(this.containers.main);
+        }
     }
 
     addSemester(semesterInfo) {
