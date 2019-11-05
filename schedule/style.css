@@ -1,4 +1,5 @@
-#semesters {
+#semesters,
+#schedules {
     display: grid;
     grid-template-columns: repeat(auto-fill, 300px);
     grid-gap: 5px;
@@ -8,7 +9,8 @@
     grid-column: 1 / end;
 }
 
-.semester {
+.semester,
+.schedule {
     width: calc(100% - 40px);
     padding: 20px;
     background-color: rgb(230, 230, 230);
@@ -18,13 +20,13 @@
     background-color: rgb(200, 200, 200);
 }
 
-.semester.add {
+.add {
     background-color: rgb(240, 240, 240);
     background-image: url("/images/plus.svg");
     background-repeat: no-repeat;
     background-position: center center;
 }
-.semester.add:hover {
+.add:hover {
     background-color: rgb(230, 230, 230);
 }
 

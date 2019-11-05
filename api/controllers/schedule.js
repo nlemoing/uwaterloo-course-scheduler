@@ -2,6 +2,10 @@ const Boom = require('@hapi/boom');
 
 module.exports = function (model) {
     return {
+        getSchedules: async (request, h) => {
+            const schedules = await model.getSchedules();
+            return h.response(schedules);
+        },
         getSchedule: async (request, h) => {
             const { scheduleId } = request.params;
             const schedule = await model.getSchedule(scheduleId);

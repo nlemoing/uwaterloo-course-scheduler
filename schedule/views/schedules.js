@@ -29,7 +29,7 @@ class SchedulesView {
     }
 
     _reset() {
-        for (const scheduleId in schedules) {
+        for (const scheduleId in this.schedules) {
             this.deleteSchedule(scheduleId);
         }
     }
@@ -50,9 +50,16 @@ class SchedulesView {
         this.containers.schedules.insertBefore(schedule.container, this.containers.addSchedule);
     }
 
+    deleteSchedule(id) {
+        if (id in this.schedules) {
+            this.schedules[id].container.remove();
+            delete this.schedules[id];
+        }
+    }
+
     addDraftSchedule() {
         const draftSchedule = new DraftSchedule(this.eventBus);
-        this.containers.semesters.insertBefore(draftSchedule.container, this.containers.addSchedule);
+        this.containers.schedules.insertBefore(draftSchedule.container, this.containers.addSchedule);
         draftSchedule.focus();
     }
 }

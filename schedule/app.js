@@ -26,6 +26,7 @@ class App {
 
     bindEvents() {
         this.eventBus.on('addschedule', this.createSchedule.bind(this));
+        this.eventBus.on('deleteschedule', this.deleteSchedule.bind(this));
         this.eventBus.on('addcourse', this.addCourse.bind(this));
         this.eventBus.on('editcourse', this.editCourse.bind(this));
         this.eventBus.on('deletecourse', this.deleteCourse.bind(this));
@@ -55,6 +56,17 @@ class App {
         schedule = await this.scheduleModel.createSchedule(schedule);
         if (!schedule) {
             this.warning({ message: 'There was a problem creating the schedule. Please try again later.' });
+        } else {
+            this.schedulesView.addSchedule(schedule);
+        }
+    }
+
+    async deleteSchedule(id) {
+        id = await this.scheduleModel.deleteSchedule(id);
+        if (!id) {
+            this.warning({ message: 'There was a problem deleting the schedule. Please try again later.' });
+        } else {
+            this.schedulesView.deleteSchedule(id);
         }
     }
 
