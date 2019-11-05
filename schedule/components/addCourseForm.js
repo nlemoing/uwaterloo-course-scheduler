@@ -1,10 +1,12 @@
 import { CourseModel } from '../models/course.js';
 
+const courseModel = new CourseModel();
+
 class AddCourseForm {
     constructor(semester, eventBus) {
         this.semester = semester;
         this.eventBus = eventBus;
-        this.courseModel = new CourseModel();
+        this.courseModel = courseModel;
 
         // Subject is changed when the update form's value is changed.
         this._subject = null;
