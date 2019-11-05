@@ -1,4 +1,5 @@
-import { Schedule } from './components/schedule.js';
+import { SchedulesView } from './views/schedules.js';
+import { ScheduleView } from './views/schedule.js';
 import { ScheduleModel } from './models/schedule.js';
 
 class App {
@@ -6,7 +7,8 @@ class App {
         const { eventBus, container } = config;
         this.eventBus = eventBus;
         this.container = container;
-        this.scheduleView = new Schedule(eventBus);
+        this.schedulesView = new SchedulesView(eventBus);
+        this.scheduleView = new ScheduleView(eventBus);
         this.scheduleModel = new ScheduleModel();
     }
 
@@ -23,7 +25,7 @@ class App {
     }
 
     bindEvents() {
-        this.eventBus.on('createschedule', this.createSchedule.bind(this));
+        this.eventBus.on('addschedule', this.createSchedule.bind(this));
         this.eventBus.on('addcourse', this.addCourse.bind(this));
         this.eventBus.on('editcourse', this.editCourse.bind(this));
         this.eventBus.on('deletecourse', this.deleteCourse.bind(this));
@@ -41,7 +43,12 @@ class App {
     }
 
     async loadSchedules() {
-        alert('loadSchedules not implemented!');
+        const schedules = await this.scheduleModel.getSchedules();
+        if (!schedules) {
+            return this.notFound();
+        }
+        this.schedules = schedules;
+        this.schedulesView.render(schedules, this.container);
     }
 
     async createSchedule(schedule) {

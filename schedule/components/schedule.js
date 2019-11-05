@@ -1,107 +1,62 @@
-import { Course } from './course.js';
-import { DraftSemester, Semester } from './semester.js';
-
 class Schedule {
-    constructor(eventBus) {
+    constructor(schedule, eventBus) {
+        this.schedule = schedule;
         this.eventBus = eventBus;
-        this.semesters = {};
-        this.courses = {};
 
-        // Main container outlines
-        this.containers = {
-            main: document.createElement('div'),
-            header: document.createElement('h1'),
-            semesters: document.createElement('div'),
-            addSemester: document.createElement('div')
-        };
-        this.containers.main.id = 'schedule';
+        // Main container
+        const { id, name } = this.schedule;
+        this.container = document.createElement('div');
+        this.container.id = `schedule-${id}`;
+        this.container.classList.add('schedule');
 
         // Header
-        this.containers.main.appendChild(this.containers.header);
-        
-        // Container for all semesters
-        this.containers.semesters.id = 'semesters';
-        this.containers.main.appendChild(this.containers.semesters);
+        const scheduleHeader = document.createElement('h2');
+        scheduleHeader.textContent = name;
+        this.container.appendChild(scheduleHeader);
 
-        // Add miscellaneous courses container
-        this.semesters.misc = new Semester({ id: 'misc', name: 'Misc.', }, this.eventBus);
-        this.containers.semesters.appendChild(this.semesters.misc.container);
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = 'delete';
+        deleteButton.addEventListener('click', () => { this.eventBus.dispatch('deleteschedule', id); });
+        this.container.appendChild(deleteButton);
 
-        // Button for adding a semester
-        this.containers.addSemester.classList.add('semester', 'add');
-        this.containers.addSemester.addEventListener('click', this.addDraftSemester.bind(this));
-        this.containers.semesters.appendChild(this.containers.addSemester);
-    }
-
-    _reset() {
-        this.containers.header.textContent = '';
-
-        for (const courseId in this.courses) {
-            this.deleteCourse(courseId);
-        }
-        for (const semesterId in this.semesters) {
-            if (semesterId === 'misc') continue;
-            this.deleteSemester(semesterId)
-        }
-    }
-
-    render(schedule, container) {
-        this._reset();
-
-        const { name, semesters, courses, } = schedule;
-        // Set header name
-        this.containers.header.textContent = name;
-        // Add each semester
-        semesters.forEach(this.addSemester.bind(this));
-        // Add each course
-        courses.forEach(this.addCourse.bind(this));
-
-        if (container) {
-            container.appendChild(this.containers.main);
-        }
-    }
-
-    addSemester(semesterInfo) {
-        const semester = new Semester(semesterInfo, this.eventBus);
-        this.semesters[semesterInfo.id] = semester;
-        this.containers.semesters.insertBefore(semester.container, this.containers.addSemester);
-    }
-
-    addDraftSemester() {
-        const draftSemester = new DraftSemester(this.eventBus);
-        this.containers.semesters.insertBefore(draftSemester.container, this.containers.addSemester);
-        draftSemester.focus();
-    }
-
-    deleteSemester(id) {
-        if (id in this.semesters) {
-            this.semesters[id].container.remove();
-            delete this.semesters[id];
-        }
-    }
-
-    addCourse(courseInfo) {
-        const courseId = courseInfo.id;
-        const semesterId = courseInfo.semesterId;
-
-        const course = new Course(courseInfo, this.eventBus);
-        this.courses[courseId] = course;
-
-        const semester = this.semesters[semesterId] || this.semesters.misc;
-        semester.container.appendChild(course.container);
-    }
-
-    deleteCourse(id) {
-        if (id in this.courses) {
-            this.courses[id].container.remove();
-            delete this.courses[id];
-        }
-    }
-
-    editCourse(course) {
-        this.deleteCourse(course.id);
-        this.addCourse(course);
+        this.container.addEventListener('click', () => { this.eventBus.dispatch('viewschedule', id); });
     }
 }
 
-export { Schedule };
+const ENTER_KEY = 13;
+const ESCAPE_KEY = 27;
+
+class DraftSchedule {
+    constructor(eventBus) {
+        this.eventBus = eventBus;
+
+        this.container = document.createElement('div');
+        this.container.classList.add('schedule', 'draft');
+
+        this.input = document.createElement('input');
+        this.input.type = 'text';
+        this.input.addEventListener('focusout', this.submission.bind(this));
+        this.input.addEventListener('keyup', this.escape.bind(this));
+        this.container.appendChild(this.input);
+    }
+
+    submission() {
+        const name = this.input.value;
+        if (name) {
+            this.eventBus.dispatch('addschedule', { name, });
+        }
+        this.container.remove();
+    }
+
+    escape({ keyCode, }) {
+        if (keyCode === ENTER_KEY || keyCode === ESCAPE_KEY) {
+            this.input.blur();
+        }
+    }
+
+    focus() {
+        this.input.focus();
+    }
+}
+
+export { DraftSchedule, Schedule }

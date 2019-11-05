@@ -2,6 +2,12 @@ import API from '../util/api.js';
 
 class ScheduleModel {
 
+    async getSchedules() {
+        const response = await API('/schedules');
+        if (!response.ok) return;
+        return await response.json();
+    }
+
     async getSchedule(scheduleId) {
         const response = await API(`/schedules/${scheduleId}`);
         if (!response.ok) return;
