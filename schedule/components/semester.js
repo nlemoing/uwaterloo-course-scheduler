@@ -17,7 +17,7 @@ class Semester {
         this.container.appendChild(semesterHeader);
 
         // Delete button with deletion event
-        if (id !== 'misc' && id !== 'draft') {
+        if (id !== 'misc') {
             const deleteButton = document.createElement('button');
             deleteButton.innerText = 'delete';
             deleteButton.addEventListener('click', () => { this.eventBus.dispatch('deletesemester', id); });
@@ -25,14 +25,13 @@ class Semester {
         }
         
         // Add course form
-        if (id !== 'draft') {
-            const form = new AddCourseForm(semester, this.eventBus);
-            const addButton = document.createElement('button');
-            addButton.innerText = 'add';
-            addButton.addEventListener('click', () => { form.show(); });
-            this.container.appendChild(addButton);
-            this.container.appendChild(form.container);
-        }
+        const form = new AddCourseForm(semester, this.eventBus);
+        const addButton = document.createElement('button');
+        addButton.innerText = 'add';
+        addButton.addEventListener('click', () => { form.show(); });
+        this.container.appendChild(addButton);
+        this.container.appendChild(form.container);
+
 
         this.eventBus.on('coursedrag', this.courseDrag.bind(this));
         this.eventBus.on('coursedrop', this.courseDrop.bind(this));
