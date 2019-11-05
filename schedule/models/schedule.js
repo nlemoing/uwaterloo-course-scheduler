@@ -1,24 +1,26 @@
 class ScheduleModel {
 
     constructor() {
-        this._counts = {
-            course: 1, semester: 1,
-        };
-        this._schedule = {
-            name: '',
-            semesters: [],
-            courses: [],
-        };
+        this.baseUrl = 'http://localhost:3000';
     }
 
-    get schedule() {
-        return this._schedule;
-    }
-
-    create({ name = '', semesters = [], courses = [], } = {}) {
-        this._schedule.name = name;
-        semesters.forEach(this.addSemester.bind(this));
-        courses.forEach(this.addCourse.bind(this));
+    async createSchedule({ name = '', } = {}) {
+        const response = await fetch(`${this.baseUrl}/schedules`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({name})
+        });
+        console.log(response);
+        if (!response.ok) return;
+        for (const [key, value] in response.headers.entries()) {
+            console.log(`${key}: ${value}`);
+        }
+        const location = response.headers.get('location');
+        const schedule = await fetch(`${this.baseUrl}${location}`);
+        if (!schedule.ok) return;
+        return await schedule.json();
     }
 
     getCourse(id) {

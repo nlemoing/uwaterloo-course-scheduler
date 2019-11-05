@@ -16,9 +16,9 @@ class ScheduleController {
         this._eventBus.on('deletesemester', this.deleteSemester.bind(this));
     }
 
-    create(schedule) {
-        this.model.create(schedule);
-        this.view.render(this.model.schedule);
+    async create(schedule) {
+        schedule = await this.model.createSchedule(schedule);
+        this.view.render(schedule);
     }
 
     addCourse(course) {
