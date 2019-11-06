@@ -43,12 +43,12 @@ def remove_ends(s, prefix='', suffix=''):
 # assert remove_ends('abc', prefix='d', suffix='d') == 'abc'
 
 
-def parse_course(course_tree):
+def parse_course(course_tree, idx):
     # course information is in a table and each component is in a tr tag
     items = course_tree.find_all('tr')
     if len(items) < 3:
         return
-    course = {}
+    course = { 'id': idx }
     # The first three items are always the same
     first, second, third, *rest = items
     ## The first item should have two td components
@@ -109,7 +109,7 @@ def parse_course(course_tree):
             course['other'] = [s]
     return course
 
-def scrape_subject(calendar, subject):
+def scrape_subject(calendar, subject, start_id = 1):
     url = "http://www.ucalendar.uwaterloo.ca/{}/COURSE/course-{}.html"
     try:
         page = urlopen(url.format(calendar, subject))
@@ -119,7 +119,20 @@ def scrape_subject(calendar, subject):
     soup = BeautifulSoup(page, 'html.parser')
     # each course is contained in a center tag
     course_trees = soup.find_all('center')
-    courses = [parse_course(course_tree) for course_tree in course_trees]
+    courses = [parse_course(course_tree, start_id + idx) \
+        for idx, course_tree in enumerate(course_trees)]
     return courses
 
-result = scrape_subject("1920", "MATH")
+def parse_subjects():
+    with open('./subjects.html') as f:
+        soup = BeautifulSoup(f, 'html.parser')
+    rows = soup.find('tbody').find_all('tr')
+    subjects = []
+    idx = 1
+    for subject in rows:
+        name, abbreviation, *rest = subject.stripped_strings
+        if abbreviation.lower() == 'back to top':
+            continue
+        subjects.append({ 'id': idx, 'abbreviation': abbreviation, 'name': name })
+        idx += 1
+    return subjects
