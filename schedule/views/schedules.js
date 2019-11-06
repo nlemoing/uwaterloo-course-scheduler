@@ -1,4 +1,5 @@
 import { DraftSchedule, Schedule } from '../components/schedule.js';
+import { AddButton } from '../components/button.js';
 
 class SchedulesView {
     constructor(eventBus) {
@@ -10,7 +11,11 @@ class SchedulesView {
             main: document.createElement('div'),
             header: document.createElement('h1'),
             schedules: document.createElement('div'),
-            addSchedule: document.createElement('div')
+            addSchedule: new AddButton(
+                `add-schedule`,
+                this.addDraftSchedule.bind(this),
+                ['schedule', 'large']
+            ).container
         };
         this.containers.main.id = 'schedules-view';
 
@@ -23,8 +28,6 @@ class SchedulesView {
         this.containers.main.appendChild(this.containers.schedules);
 
         // Button for adding a schedule
-        this.containers.addSchedule.classList.add('schedule', 'add');
-        this.containers.addSchedule.addEventListener('click', this.addDraftSchedule.bind(this));
         this.containers.schedules.appendChild(this.containers.addSchedule);
     }
 

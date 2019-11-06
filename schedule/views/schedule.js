@@ -1,5 +1,6 @@
 import { Course } from '../components/course.js';
 import { DraftSemester, Semester } from '../components/semester.js';
+import { AddButton } from '../components/button.js';
 
 class ScheduleView {
     constructor(eventBus) {
@@ -12,7 +13,11 @@ class ScheduleView {
             main: document.createElement('div'),
             header: document.createElement('h1'),
             semesters: document.createElement('div'),
-            addSemester: document.createElement('div')
+            addSemester: new AddButton(
+                `add-semester`,
+                this.addDraftSemester.bind(this),
+                ['semester', 'large']
+            ).container
         };
         this.containers.main.id = 'schedule-view';
 
@@ -28,8 +33,6 @@ class ScheduleView {
         this.containers.semesters.appendChild(this.semesters.misc.container);
 
         // Button for adding a semester
-        this.containers.addSemester.classList.add('semester', 'add');
-        this.containers.addSemester.addEventListener('click', this.addDraftSemester.bind(this));
         this.containers.semesters.appendChild(this.containers.addSemester);
     }
 
