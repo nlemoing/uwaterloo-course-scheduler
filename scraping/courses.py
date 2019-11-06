@@ -1,47 +1,6 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
-import re
-
-offered_regex = re.compile('Offered: ([FWS](,[FWS])*)')
-
-def check_ends(s, prefix='', suffix=''):
-    """
-    Helper function combining str.startswith and str.endswith
-    Returns True if s.startswith(prefix) and s.endswith(suffix) are True
-    Otherwise returns False
-    """
-    return s.startswith(prefix) and s.endswith(suffix)
-
-### Tests
-# assert check_ends('abc', prefix='a', suffix='c')
-# assert check_ends('abc', prefix='a')
-# assert check_ends('abc', suffix='c')
-# assert check_ends('abc')
-# assert not check_ends('abc', prefix='a', suffix='d')
-# assert not check_ends('abc', prefix='d', suffix='c')
-# assert not check_ends('abc', prefix='d', suffix='d')
-
-def remove_ends(s, prefix='', suffix=''):
-    """
-    Helper function that mixes startswith, endswith, and strip.
-    Takes a string and optional prefixes and suffixes.
-    Returns s with prefix and suffix removed, if they exist
-    """
-    if not s.startswith(prefix):
-        return remove_ends(s, suffix=suffix)
-    if not s.endswith(suffix):
-        return remove_ends(s, prefix=prefix)
-    return s[len(prefix) : len(s) - len(suffix)]
-
-### Tests
-# assert remove_ends('abc', prefix='a', suffix='c') == 'b'
-# assert remove_ends('abc', prefix='a') == 'bc'
-# assert remove_ends('abc', suffix='c') == 'ab'
-# assert remove_ends('abc') == 'abc'
-# assert remove_ends('abc', prefix='a', suffix='d') == 'bc'
-# assert remove_ends('abc', prefix='d', suffix='c') == 'ab'
-# assert remove_ends('abc', prefix='d', suffix='d') == 'abc'
-
+from util import offered_regex, check_ends, remove_ends
 
 def parse_course(course_tree, idx):
     # course information is in a table and each component is in a tr tag
@@ -109,7 +68,7 @@ def parse_course(course_tree, idx):
             course['other'] = [s]
     return course
 
-def scrape_subject(calendar, subject, start_id = 1):
+def courses_for_subject(subject, calendar = '1920', start_id = 1):
     url = "http://www.ucalendar.uwaterloo.ca/{}/COURSE/course-{}.html"
     try:
         page = urlopen(url.format(calendar, subject))
@@ -122,17 +81,3 @@ def scrape_subject(calendar, subject, start_id = 1):
     courses = [parse_course(course_tree, start_id + idx) \
         for idx, course_tree in enumerate(course_trees)]
     return courses
-
-def parse_subjects():
-    with open('./subjects.html') as f:
-        soup = BeautifulSoup(f, 'html.parser')
-    rows = soup.find('tbody').find_all('tr')
-    subjects = []
-    idx = 1
-    for subject in rows:
-        name, abbreviation, *rest = subject.stripped_strings
-        if abbreviation.lower() == 'back to top':
-            continue
-        subjects.append({ 'id': idx, 'abbreviation': abbreviation, 'name': name })
-        idx += 1
-    return subjects
