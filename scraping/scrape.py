@@ -4,7 +4,7 @@ import threading
 from subjects import parse_subjects
 from courses import courses_for_subject
 
-THREADS = 10
+THREADS = 40
 all_courses = []
 lock = threading.Lock()
 
@@ -22,6 +22,8 @@ def scrape_all():
     with cf.ThreadPoolExecutor(max_workers=THREADS) as executor:
         for subject in subjects:
             executor.submit(scrape_one, subject)
+    for idx in range(len(all_courses)):
+        all_courses[idx]['id'] = idx + 1
     with open('./data/courses.json', 'w') as f:
         json.dump(all_courses, f, indent=2)
 
