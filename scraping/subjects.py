@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 
 def parse_subjects():
-    with open('./subjects.html') as f:
+    with open('./data/subjects.html') as f:
         soup = BeautifulSoup(f, 'html.parser')
     rows = soup.find('tbody').find_all('tr')
     subjects = []

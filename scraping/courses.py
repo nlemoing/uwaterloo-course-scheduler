@@ -2,12 +2,12 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 from util import offered_regex, check_ends, remove_ends
 
-def parse_course(course_tree, idx):
+def parse_course(course_tree, subject_id):
     # course information is in a table and each component is in a tr tag
     items = course_tree.find_all('tr')
     if len(items) < 3:
         return
-    course = { 'id': idx }
+    course = { 'subjectId': subject_id }
     # The first three items are always the same
     first, second, third, *rest = items
     ## The first item should have two td components
@@ -37,9 +37,10 @@ def parse_course(course_tree, idx):
     ## The next items are variable, so we'll handle them in a loop
     for item in rest:
         # There may be some empty items, so skip over those
-        s = item.string.strip()
-        if not s:
+        s = item.string
+        if not s or not s.strip():
             continue
+        s = s.strip()
         # Cases
         ## Note: extra info. sometimes contains the [Offered: {terms}] pattern.
         if check_ends(s, prefix='[Note: ', suffix=']'):
@@ -68,16 +69,15 @@ def parse_course(course_tree, idx):
             course['other'] = [s]
     return course
 
-def courses_for_subject(subject, calendar = '1920', start_id = 1):
+def courses_for_subject(subject, calendar = '1920'):
     url = "http://www.ucalendar.uwaterloo.ca/{}/COURSE/course-{}.html"
     try:
-        page = urlopen(url.format(calendar, subject))
+        page = urlopen(url.format(calendar, subject['abbreviation']))
     except:
         # HTTP error opening page, return None
         return None
     soup = BeautifulSoup(page, 'html.parser')
     # each course is contained in a center tag
     course_trees = soup.find_all('center')
-    courses = [parse_course(course_tree, start_id + idx) \
-        for idx, course_tree in enumerate(course_trees)]
+    courses = [parse_course(course_tree, subject['id']) for course_tree in course_trees]
     return courses
