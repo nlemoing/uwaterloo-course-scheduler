@@ -1,0 +1,597 @@
+[
+  {
+    "name": "Accounting & Financial Management",
+    "id": 1,
+    "abbreviation": "AFM"
+  },
+  {
+    "name": "Actuarial Science",
+    "id": 2,
+    "abbreviation": "ACTSC"
+  },
+  {
+    "name": "American Sign Language",
+    "id": 3,
+    "abbreviation": "ASL"
+  },
+  {
+    "name": "Anthropology",
+    "id": 4,
+    "abbreviation": "ANTH"
+  },
+  {
+    "name": "Applied Health Sciences",
+    "id": 5,
+    "abbreviation": "AHS"
+  },
+  {
+    "name": "Applied Language Studies",
+    "id": 6,
+    "abbreviation": "APPLS"
+  },
+  {
+    "name": "Applied Mathematics",
+    "id": 7,
+    "abbreviation": "AMATH"
+  },
+  {
+    "name": "Architectural Engineering",
+    "id": 8,
+    "abbreviation": "AE"
+  },
+  {
+    "name": "Architecture",
+    "id": 9,
+    "abbreviation": "ARCH"
+  },
+  {
+    "name": "Arts",
+    "id": 10,
+    "abbreviation": "ARTS"
+  },
+  {
+    "name": "Arts and Business",
+    "id": 11,
+    "abbreviation": "ARBUS"
+  },
+  {
+    "name": "Aviation",
+    "id": 12,
+    "abbreviation": "AVIA"
+  },
+  {
+    "name": "Biology",
+    "id": 13,
+    "abbreviation": "BIOL"
+  },
+  {
+    "name": "Biomedical Engineering",
+    "id": 14,
+    "abbreviation": "BME"
+  },
+  {
+    "name": "Bridge to Academic Success in English",
+    "id": 15,
+    "abbreviation": "BASE"
+  },
+  {
+    "name": "Business (Wilfrid Laurier University)",
+    "id": 16,
+    "abbreviation": "BUS"
+  },
+  {
+    "name": "Business, Entrepreneurship and Technology",
+    "id": 17,
+    "abbreviation": "BET"
+  },
+  {
+    "name": "Canadian Studies",
+    "id": 18,
+    "abbreviation": "CDNST"
+  },
+  {
+    "name": "Chemical Engineering",
+    "id": 19,
+    "abbreviation": "CHE"
+  },
+  {
+    "name": "Chemistry",
+    "id": 20,
+    "abbreviation": "CHEM"
+  },
+  {
+    "name": "Chinese",
+    "id": 21,
+    "abbreviation": "CHINA"
+  },
+  {
+    "name": "Church Music and Worship",
+    "id": 22,
+    "abbreviation": "CMW"
+  },
+  {
+    "name": "Civil Engineering",
+    "id": 23,
+    "abbreviation": "CIVE"
+  },
+  {
+    "name": "Classical Studies",
+    "id": 24,
+    "abbreviation": "CLAS"
+  },
+  {
+    "name": "Cognitive Science",
+    "id": 25,
+    "abbreviation": "COGSCI"
+  },
+  {
+    "name": "Combinatorics and Optimization",
+    "id": 26,
+    "abbreviation": "CO"
+  },
+  {
+    "name": "Commerce",
+    "id": 27,
+    "abbreviation": "COMM"
+  },
+  {
+    "name": "Computer Science",
+    "id": 28,
+    "abbreviation": "CS"
+  },
+  {
+    "name": "Co-operative Work Term",
+    "id": 29,
+    "abbreviation": "COOP"
+  },
+  {
+    "name": "Croatian",
+    "id": 30,
+    "abbreviation": "CROAT"
+  },
+  {
+    "name": "Cultural Identities",
+    "id": 31,
+    "abbreviation": "CI"
+  },
+  {
+    "name": "Digital Arts Communication",
+    "id": 32,
+    "abbreviation": "DAC"
+  },
+  {
+    "name": "Dutch",
+    "id": 33,
+    "abbreviation": "DUTCH"
+  },
+  {
+    "name": "Earth Sciences",
+    "id": 34,
+    "abbreviation": "EARTH"
+  },
+  {
+    "name": "East Asian",
+    "id": 35,
+    "abbreviation": "EASIA"
+  },
+  {
+    "name": "Economics",
+    "id": 36,
+    "abbreviation": "ECON"
+  },
+  {
+    "name": "Electrical and Computer Engineering",
+    "id": 37,
+    "abbreviation": "ECE"
+  },
+  {
+    "name": "English",
+    "id": 38,
+    "abbreviation": "ENGL"
+  },
+  {
+    "name": "English for Multilingual Speakers",
+    "id": 39,
+    "abbreviation": "EMLS"
+  },
+  {
+    "name": "Environment and Business",
+    "id": 40,
+    "abbreviation": "ENBUS"
+  },
+  {
+    "name": "Environment, Resources and Sustainability",
+    "id": 41,
+    "abbreviation": "ERS"
+  },
+  {
+    "name": "Environmental Engineering",
+    "id": 42,
+    "abbreviation": "ENVE"
+  },
+  {
+    "name": "Environmental Studies",
+    "id": 43,
+    "abbreviation": "ENVS"
+  },
+  {
+    "name": "Fine Arts",
+    "id": 44,
+    "abbreviation": "FINE"
+  },
+  {
+    "name": "French",
+    "id": 45,
+    "abbreviation": "FR"
+  },
+  {
+    "name": "Gender and Social Justice",
+    "id": 46,
+    "abbreviation": "GSJ"
+  },
+  {
+    "name": "General Engineering",
+    "id": 47,
+    "abbreviation": "GENE"
+  },
+  {
+    "name": "Geography and Environmental Management",
+    "id": 48,
+    "abbreviation": "GEOG"
+  },
+  {
+    "name": "Geological Engineering",
+    "id": 49,
+    "abbreviation": "GEOE"
+  },
+  {
+    "name": "German",
+    "id": 50,
+    "abbreviation": "GER"
+  },
+  {
+    "name": "Gerontology",
+    "id": 51,
+    "abbreviation": "GERON"
+  },
+  {
+    "name": "Global Business and Digital Arts",
+    "id": 52,
+    "abbreviation": "GBDA"
+  },
+  {
+    "name": "Greek",
+    "id": 53,
+    "abbreviation": "GRK"
+  },
+  {
+    "name": "Health",
+    "id": 54,
+    "abbreviation": "HLTH"
+  },
+  {
+    "name": "History",
+    "id": 55,
+    "abbreviation": "HIST"
+  },
+  {
+    "name": "Human Resources Management",
+    "id": 56,
+    "abbreviation": "HRM"
+  },
+  {
+    "name": "Human Rights",
+    "id": 57,
+    "abbreviation": "HRTS"
+  },
+  {
+    "name": "Human Sciences",
+    "id": 58,
+    "abbreviation": "HUMSC"
+  },
+  {
+    "name": "Indigenous Studies",
+    "id": 59,
+    "abbreviation": "INDG"
+  },
+  {
+    "name": "International Development",
+    "id": 60,
+    "abbreviation": "INDEV"
+  },
+  {
+    "name": "International Studies",
+    "id": 61,
+    "abbreviation": "INTST"
+  },
+  {
+    "name": "Italian",
+    "id": 62,
+    "abbreviation": "ITAL"
+  },
+  {
+    "name": "Italian Studies",
+    "id": 63,
+    "abbreviation": "ITALST"
+  },
+  {
+    "name": "Japanese",
+    "id": 64,
+    "abbreviation": "JAPAN"
+  },
+  {
+    "name": "Jewish Studies",
+    "id": 65,
+    "abbreviation": "JS"
+  },
+  {
+    "name": "Kinesiology",
+    "id": 66,
+    "abbreviation": "KIN"
+  },
+  {
+    "name": "Knowledge Integration",
+    "id": 67,
+    "abbreviation": "INTEG"
+  },
+  {
+    "name": "Korean",
+    "id": 68,
+    "abbreviation": "KOREA"
+  },
+  {
+    "name": "Latin",
+    "id": 69,
+    "abbreviation": "LAT"
+  },
+  {
+    "name": "Legal Studies",
+    "id": 70,
+    "abbreviation": "LS"
+  },
+  {
+    "name": "Management",
+    "id": 71,
+    "abbreviation": "MGMT"
+  },
+  {
+    "name": "Management Sciences",
+    "id": 72,
+    "abbreviation": "MSCI"
+  },
+  {
+    "name": "Materials\u00a0and Nano-Sciences",
+    "id": 73,
+    "abbreviation": "MNS"
+  },
+  {
+    "name": "Mathematical Business",
+    "id": 74,
+    "abbreviation": "MATBUS"
+  },
+  {
+    "name": "Mathematics",
+    "id": 75,
+    "abbreviation": "MATH"
+  },
+  {
+    "name": "Mathematics Electives",
+    "id": 76,
+    "abbreviation": "MTHEL"
+  },
+  {
+    "name": "Mechanical Engineering",
+    "id": 77,
+    "abbreviation": "ME"
+  },
+  {
+    "name": "Mechatronics Engineering",
+    "id": 78,
+    "abbreviation": "MTE"
+  },
+  {
+    "name": "Medieval Studies",
+    "id": 79,
+    "abbreviation": "MEDVL"
+  },
+  {
+    "name": "Mennonite Studies",
+    "id": 80,
+    "abbreviation": "MENN"
+  },
+  {
+    "name": "Mohawk",
+    "id": 81,
+    "abbreviation": "MOHAWK"
+  },
+  {
+    "name": "Music",
+    "id": 82,
+    "abbreviation": "MUSIC"
+  },
+  {
+    "name": "Nanotechnology Engineering",
+    "id": 83,
+    "abbreviation": "NE"
+  },
+  {
+    "name": "Optometry",
+    "id": 84,
+    "abbreviation": "OPTOM"
+  },
+  {
+    "name": "Peace and Conflict Studies",
+    "id": 85,
+    "abbreviation": "PACS"
+  },
+  {
+    "name": "Pharmacy",
+    "id": 86,
+    "abbreviation": "PHARM"
+  },
+  {
+    "name": "Philosophy",
+    "id": 87,
+    "abbreviation": "PHIL"
+  },
+  {
+    "name": "Physics",
+    "id": 88,
+    "abbreviation": "PHYS"
+  },
+  {
+    "name": "Planning",
+    "id": 89,
+    "abbreviation": "PLAN"
+  },
+  {
+    "name": "Political Science",
+    "id": 90,
+    "abbreviation": "PSCI"
+  },
+  {
+    "name": "Portuguese",
+    "id": 91,
+    "abbreviation": "PORT"
+  },
+  {
+    "name": "Professional Development",
+    "id": 92,
+    "abbreviation": "PD"
+  },
+  {
+    "name": "Professional Development for Architecture Students",
+    "id": 93,
+    "abbreviation": "PDARCH"
+  },
+  {
+    "name": "Professional Development for Pharmacy Students",
+    "id": 94,
+    "abbreviation": "PDPHRM"
+  },
+  {
+    "name": "Psychology",
+    "id": 95,
+    "abbreviation": "PSYCH"
+  },
+  {
+    "name": "Pure Mathematics",
+    "id": 96,
+    "abbreviation": "PMATH"
+  },
+  {
+    "name": "Recreation and Leisure Studies",
+    "id": 97,
+    "abbreviation": "REC"
+  },
+  {
+    "name": "Religious Studies",
+    "id": 98,
+    "abbreviation": "RS"
+  },
+  {
+    "name": "Russian",
+    "id": 99,
+    "abbreviation": "RUSS"
+  },
+  {
+    "name": "Russian and East European Studies",
+    "id": 100,
+    "abbreviation": "REES"
+  },
+  {
+    "name": "Science",
+    "id": 101,
+    "abbreviation": "SCI"
+  },
+  {
+    "name": "Science and Business",
+    "id": 102,
+    "abbreviation": "SCBUS"
+  },
+  {
+    "name": "Sexuality, Marriage, and Family Studies",
+    "id": 103,
+    "abbreviation": "SMF"
+  },
+  {
+    "name": "Social Development Studies",
+    "id": 104,
+    "abbreviation": "SDS"
+  },
+  {
+    "name": "Social Venture Entrepreneur",
+    "id": 105,
+    "abbreviation": "SVENT"
+  },
+  {
+    "name": "Social Work (Social Development Studies)",
+    "id": 106,
+    "abbreviation": "SOCWK"
+  },
+  {
+    "name": "Social Work (Bachelor of Social Work)",
+    "id": 107,
+    "abbreviation": "SWREN"
+  },
+  {
+    "name": "Society, Technology and Values",
+    "id": 108,
+    "abbreviation": "STV"
+  },
+  {
+    "name": "Sociology",
+    "id": 109,
+    "abbreviation": "SOC"
+  },
+  {
+    "name": "Software Engineering",
+    "id": 110,
+    "abbreviation": "SE"
+  },
+  {
+    "name": "Spanish",
+    "id": 111,
+    "abbreviation": "SPAN"
+  },
+  {
+    "name": "Speech Communication",
+    "id": 112,
+    "abbreviation": "SPCOM"
+  },
+  {
+    "name": "Statistics",
+    "id": 113,
+    "abbreviation": "STAT"
+  },
+  {
+    "name": "Studies in Islam",
+    "id": 114,
+    "abbreviation": "SI"
+  },
+  {
+    "name": "Systems Design Engineering",
+    "id": 115,
+    "abbreviation": "SYDE"
+  },
+  {
+    "name": "Theatre and Performance",
+    "id": 116,
+    "abbreviation": "THPERF"
+  },
+  {
+    "name": "University",
+    "id": 117,
+    "abbreviation": "UNIV"
+  },
+  {
+    "name": "Visual Culture",
+    "id": 118,
+    "abbreviation": "VCULT"
+  },
+  {
+    "name": "Work-term Report",
+    "id": 119,
+    "abbreviation": "WKRPT"
+  }
+]
