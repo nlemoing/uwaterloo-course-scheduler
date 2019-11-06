@@ -1,3 +1,5 @@
+import { DeleteButton } from './button.js';
+
 class Course {
     constructor(course, eventBus, ) {
         this.course = course;
@@ -11,12 +13,11 @@ class Course {
         this.container.classList.add('course');
 
         // Add delete button and attach delete listener
-        const deleteButton = document.createElement('button');
-        deleteButton.innerText = 'delete';
-        deleteButton.addEventListener('click', () => { this.eventBus.dispatch('deletecourse', id); });
-        // Prevents clicking delete from triggering the drag event
-        deleteButton.addEventListener('mousedown', (e) => { e.stopPropagation() });
-        this.container.appendChild(deleteButton);
+        const deleteButton = new DeleteButton(
+            `delete-course-${id}`,
+            () => { this.eventBus.dispatch('deletecourse', id) }
+        )
+        this.container.appendChild(deleteButton.container);
 
         // Make course container draggable
         this.container.addEventListener('mousedown', this.drag.bind(this));
