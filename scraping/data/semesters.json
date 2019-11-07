@@ -1,0 +1,42 @@
+[
+  {
+    "id": 2,
+    "name": "1A",
+    "scheduleId": 1
+  },
+  {
+    "id": 3,
+    "name": "1B",
+    "scheduleId": 1
+  },
+  {
+    "id": 4,
+    "name": "2A",
+    "scheduleId": 1
+  },
+  {
+    "id": 9,
+    "name": "2B",
+    "scheduleId": 1
+  },
+  {
+    "id": 10,
+    "name": "3A",
+    "scheduleId": 1
+  },
+  {
+    "id": 11,
+    "name": "3B",
+    "scheduleId": 1
+  },
+  {
+    "id": 12,
+    "name": "4A",
+    "scheduleId": 1
+  },
+  {
+    "id": 13,
+    "name": "4B",
+    "scheduleId": 1
+  }
+]

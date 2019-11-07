@@ -1,0 +1,233 @@
+[
+  {
+    "id": 13,
+    "courseId": 2045,
+    "semesterId": 2,
+    "scheduleId": 1
+  },
+  {
+    "id": 14,
+    "courseId": 2047,
+    "semesterId": 2,
+    "scheduleId": 1
+  },
+  {
+    "id": 15,
+    "courseId": 3922,
+    "semesterId": 2,
+    "scheduleId": 1
+  },
+  {
+    "id": 16,
+    "courseId": 1563,
+    "semesterId": 2,
+    "scheduleId": 1
+  },
+  {
+    "id": 17,
+    "courseId": 2931,
+    "semesterId": 2,
+    "scheduleId": 1
+  },
+  {
+    "id": 18,
+    "courseId": 1256,
+    "semesterId": 3,
+    "scheduleId": 1
+  },
+  {
+    "id": 19,
+    "courseId": 2046,
+    "semesterId": 3,
+    "scheduleId": 1
+  },
+  {
+    "id": 20,
+    "courseId": 2048,
+    "semesterId": 3,
+    "scheduleId": 1
+  },
+  {
+    "id": 21,
+    "courseId": 3923,
+    "semesterId": 3,
+    "scheduleId": 1
+  },
+  {
+    "id": 22,
+    "courseId": 3932,
+    "semesterId": 10,
+    "scheduleId": 1
+  },
+  {
+    "id": 23,
+    "courseId": 3934,
+    "semesterId": 9,
+    "scheduleId": 1
+  },
+  {
+    "id": 24,
+    "courseId": 3936,
+    "semesterId": 9,
+    "scheduleId": 1
+  },
+  {
+    "id": 25,
+    "courseId": 3938,
+    "semesterId": 4,
+    "scheduleId": 1
+  },
+  {
+    "id": 26,
+    "courseId": 3941,
+    "semesterId": 9,
+    "scheduleId": 1
+  },
+  {
+    "id": 27,
+    "courseId": 3945,
+    "semesterId": 11,
+    "scheduleId": 1
+  },
+  {
+    "id": 28,
+    "courseId": 3949,
+    "semesterId": 11,
+    "scheduleId": 1
+  },
+  {
+    "id": 29,
+    "courseId": 3950,
+    "semesterId": 11,
+    "scheduleId": 1
+  },
+  {
+    "id": 30,
+    "courseId": 3952,
+    "semesterId": 10,
+    "scheduleId": 1
+  },
+  {
+    "id": 32,
+    "courseId": 2066,
+    "semesterId": 4,
+    "scheduleId": 1
+  },
+  {
+    "id": 33,
+    "courseId": 2067,
+    "semesterId": 10,
+    "scheduleId": 1
+  },
+  {
+    "id": 34,
+    "courseId": 3260,
+    "semesterId": 3,
+    "scheduleId": 1
+  },
+  {
+    "id": 35,
+    "courseId": 3261,
+    "semesterId": 4,
+    "scheduleId": 1
+  },
+  {
+    "id": 37,
+    "courseId": 3270,
+    "semesterId": 10,
+    "scheduleId": 1
+  },
+  {
+    "id": 38,
+    "courseId": 3274,
+    "semesterId": 10,
+    "scheduleId": 1
+  },
+  {
+    "id": 39,
+    "courseId": 159,
+    "semesterId": 4,
+    "scheduleId": 1
+  },
+  {
+    "id": 40,
+    "courseId": 3267,
+    "semesterId": 9,
+    "scheduleId": 1
+  },
+  {
+    "id": 41,
+    "courseId": 2065,
+    "semesterId": 9,
+    "scheduleId": 1
+  },
+  {
+    "id": 42,
+    "courseId": 163,
+    "semesterId": 10,
+    "scheduleId": 1
+  },
+  {
+    "id": 43,
+    "courseId": 452,
+    "semesterId": 11,
+    "scheduleId": 1
+  },
+  {
+    "id": 44,
+    "courseId": 2989,
+    "semesterId": 11,
+    "scheduleId": 1
+  },
+  {
+    "id": 45,
+    "courseId": 153,
+    "scheduleId": 1
+  },
+  {
+    "id": 46,
+    "courseId": 154,
+    "scheduleId": 1
+  },
+  {
+    "id": 47,
+    "courseId": 3985,
+    "scheduleId": 1
+  },
+  {
+    "id": 48,
+    "courseId": 3946,
+    "scheduleId": 1
+  },
+  {
+    "id": 49,
+    "courseId": 3973,
+    "scheduleId": 1
+  },
+  {
+    "id": 50,
+    "courseId": 3983,
+    "scheduleId": 1
+  },
+  {
+    "id": 51,
+    "courseId": 176,
+    "scheduleId": 1
+  },
+  {
+    "id": 52,
+    "courseId": 1581,
+    "scheduleId": 1
+  },
+  {
+    "id": 53,
+    "courseId": 3237,
+    "scheduleId": 1
+  },
+  {
+    "id": 54,
+    "courseId": 1784,
+    "semesterId": 4,
+    "scheduleId": 1
+  }
+]

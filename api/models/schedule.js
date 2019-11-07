@@ -1,13 +1,21 @@
+const schedules = require('../../scraping/data/schedules.json');
+const semesters = require('../../scraping/data/semesters.json');
+const courses = require('../../scraping/data/schedule_courses.json');
+
+const maxSchedule = Math.max(...schedules.map(s => s.id)) + 1;
+const maxSemester = Math.max(...semesters.map(s => s.id)) + 1;
+const maxCourse = Math.max(...courses.map(c => c.id)) + 1;
+
 class ScheduleModel {
 
     constructor(courseModel) {
         this.courseModel = courseModel;
         this._counts = {
-            schedules: 1, semesters: 1, courses: 1
+            schedules: maxSchedule, semesters: maxSemester, courses: maxCourse
         };
-        this._schedules = [];
-        this._semesters = [];
-        this._courses = [];
+        this._schedules = schedules;
+        this._semesters = semesters;
+        this._courses = courses;
     }
 
     getSchedules() {
@@ -19,8 +27,8 @@ class ScheduleModel {
         if (!schedule) {
             return;
         }
-        schedule.courses = this._courses.filter(c => c.scheduleId === id);
-        schedule.semesters = this._semesters.filter(s => s.scheduleId === id);
+        schedule.courses = this._courses.filter(c => c.scheduleId === id).map(c => this.getCourse(c.id));
+        schedule.semesters = this._semesters.filter(s => s.scheduleId === id).map(s => this.getSemester(s.id));
         return schedule;
     }
 
