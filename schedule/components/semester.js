@@ -13,28 +13,40 @@ class Semester {
         this.container.classList.add('semester');
         
         // Header
-        const semesterHeader = document.createElement('h2');
-        semesterHeader.textContent = name;
-        this.container.appendChild(semesterHeader);
+        const header = document.createElement('div');
+        header.classList.add('semester-header');
+        const title = document.createElement('h2');
+        title.textContent = name;
+        header.appendChild(title);
+        this.container.appendChild(header);
+
+        // Small divider element
+        const divider = document.createElement('div');
+        divider.classList.add('header-divider');
+        this.container.appendChild(divider);
+
+        // Add course form
+        const form = new AddCourseForm(semester, this.eventBus);
+        const addButton = new AddButton(
+            'Add a course',
+            () => { form.show(); }
+        );
+        header.appendChild(addButton.container);
+        this.container.appendChild(form.container);
 
         // Delete button with deletion event
         if (id !== 'misc') {
             const deleteButton = new DeleteButton(
-                `delete-semester-${id}`,
+                'Delete semester',
                 () => { this.eventBus.dispatch('deletesemester', id) }
             );
-            this.container.appendChild(deleteButton.container);
+            header.appendChild(deleteButton.container);
         }
-        
-        // Add course form
-        const form = new AddCourseForm(semester, this.eventBus);
-        const addButton = new AddButton(
-            `semester-${id}-show-course-form`,
-            () => { form.show(); }
-        );
-        this.container.appendChild(addButton.container);
-        this.container.appendChild(form.container);
 
+        // Container for courses
+        this.courseContainer = document.createElement('div');
+        this.courseContainer.classList.add('course-container');
+        this.container.appendChild(this.courseContainer);
 
         this.eventBus.on('coursedrag', this.courseDrag.bind(this));
         this.eventBus.on('coursedrop', this.courseDrop.bind(this));
@@ -61,6 +73,10 @@ class Semester {
                 this.semester.id : undefined;
             this.eventBus.dispatch('editcourse', id, { semesterId, });
         }
+    }
+
+    addCourse(course) {
+        this.courseContainer.appendChild(course.container);
     }
 }
 
