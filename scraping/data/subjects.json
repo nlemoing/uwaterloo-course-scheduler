@@ -1,597 +1,716 @@
 [
   {
-    "name": "Accounting & Financial Management",
     "id": 1,
-    "abbreviation": "AFM"
+    "abbreviation": "AFM",
+    "name": "Accounting & Financial Management",
+    "faculty": "ART"
   },
   {
-    "name": "Actuarial Science",
     "id": 2,
-    "abbreviation": "ACTSC"
+    "abbreviation": "ACTSC",
+    "name": "Actuarial Science",
+    "faculty": "MAT"
   },
   {
-    "name": "American Sign Language",
     "id": 3,
-    "abbreviation": "ASL"
+    "abbreviation": "ASL",
+    "name": "American Sign Language",
+    "faculty": "ART"
   },
   {
-    "name": "Anthropology",
     "id": 4,
-    "abbreviation": "ANTH"
+    "abbreviation": "ANTH",
+    "name": "Anthropology",
+    "faculty": "ART"
   },
   {
-    "name": "Applied Health Sciences",
     "id": 5,
-    "abbreviation": "AHS"
+    "abbreviation": "AHS",
+    "name": "Applied Health Sciences",
+    "faculty": "AHS"
   },
   {
-    "name": "Applied Language Studies",
     "id": 6,
-    "abbreviation": "APPLS"
+    "abbreviation": "APPLS",
+    "name": "Applied Language Studies",
+    "faculty": "ART"
   },
   {
-    "name": "Applied Mathematics",
     "id": 7,
-    "abbreviation": "AMATH"
+    "abbreviation": "AMATH",
+    "name": "Applied Mathematics",
+    "faculty": "MAT"
   },
   {
-    "name": "Architectural Engineering",
     "id": 8,
-    "abbreviation": "AE"
+    "abbreviation": "AE",
+    "name": "Architectural Engineering",
+    "faculty": "ENG"
   },
   {
-    "name": "Architecture",
     "id": 9,
-    "abbreviation": "ARCH"
+    "abbreviation": "ARCH",
+    "name": "Architecture",
+    "faculty": "ENG"
   },
   {
-    "name": "Arts",
     "id": 10,
-    "abbreviation": "ARTS"
+    "abbreviation": "ARTS",
+    "name": "Arts",
+    "faculty": "ART"
   },
   {
-    "name": "Arts and Business",
     "id": 11,
-    "abbreviation": "ARBUS"
+    "abbreviation": "ARBUS",
+    "name": "Arts and Business",
+    "faculty": "ART"
   },
   {
-    "name": "Aviation",
     "id": 12,
-    "abbreviation": "AVIA"
+    "abbreviation": "AVIA",
+    "name": "Aviation",
+    "faculty": "VPA"
   },
   {
-    "name": "Biology",
     "id": 13,
-    "abbreviation": "BIOL"
+    "abbreviation": "BIOL",
+    "name": "Biology",
+    "faculty": "SCI"
   },
   {
-    "name": "Biomedical Engineering",
     "id": 14,
-    "abbreviation": "BME"
+    "abbreviation": "BME",
+    "name": "Biomedical Engineering",
+    "faculty": "ENG"
   },
   {
-    "name": "Bridge to Academic Success in English",
     "id": 15,
-    "abbreviation": "BASE"
+    "abbreviation": "BASE",
+    "name": "Bridge to Academic Success in English",
+    "faculty": "REN"
   },
   {
-    "name": "Business (Wilfrid Laurier University)",
     "id": 16,
-    "abbreviation": "BUS"
+    "abbreviation": "BUS",
+    "name": "Business (Wilfrid Laurier University)",
+    "faculty": "WLU"
   },
   {
-    "name": "Business, Entrepreneurship and Technology",
     "id": 17,
-    "abbreviation": "BET"
+    "abbreviation": "BET",
+    "name": "Business, Entrepreneurship and Technology",
+    "faculty": "ENG"
   },
   {
-    "name": "Canadian Studies",
     "id": 18,
-    "abbreviation": "CDNST"
+    "abbreviation": "CDNST",
+    "name": "Canadian Studies",
+    "faculty": "ART"
   },
   {
-    "name": "Chemical Engineering",
     "id": 19,
-    "abbreviation": "CHE"
+    "abbreviation": "CHE",
+    "name": "Chemical Engineering",
+    "faculty": "ENG"
   },
   {
-    "name": "Chemistry",
     "id": 20,
-    "abbreviation": "CHEM"
+    "abbreviation": "CHEM",
+    "name": "Chemistry",
+    "faculty": "SCI"
   },
   {
-    "name": "Chinese",
     "id": 21,
-    "abbreviation": "CHINA"
+    "abbreviation": "CHINA",
+    "name": "Chinese",
+    "faculty": "ART"
   },
   {
-    "name": "Church Music and Worship",
     "id": 22,
-    "abbreviation": "CMW"
+    "abbreviation": "CMW",
+    "name": "Church Music and Worship",
+    "faculty": "ART"
   },
   {
-    "name": "Civil Engineering",
     "id": 23,
-    "abbreviation": "CIVE"
+    "abbreviation": "CIVE",
+    "name": "Civil Engineering",
+    "faculty": "ENG"
   },
   {
-    "name": "Classical Studies",
     "id": 24,
-    "abbreviation": "CLAS"
+    "abbreviation": "CLAS",
+    "name": "Classical Studies",
+    "faculty": "ART"
   },
   {
-    "name": "Cognitive Science",
     "id": 25,
-    "abbreviation": "COGSCI"
+    "abbreviation": "COGSCI",
+    "name": "Cognitive Science",
+    "faculty": "ART"
   },
   {
-    "name": "Combinatorics and Optimization",
     "id": 26,
-    "abbreviation": "CO"
+    "abbreviation": "CO",
+    "name": "Combinatorics and Optimization",
+    "faculty": "MAT"
   },
   {
-    "name": "Commerce",
     "id": 27,
-    "abbreviation": "COMM"
+    "abbreviation": "COMM",
+    "name": "Commerce",
+    "faculty": "MAT"
   },
   {
-    "name": "Computer Science",
     "id": 28,
-    "abbreviation": "CS"
+    "abbreviation": "CS",
+    "name": "Computer Science",
+    "faculty": "MAT"
   },
   {
-    "name": "Co-operative Work Term",
     "id": 29,
-    "abbreviation": "COOP"
+    "abbreviation": "COOP",
+    "name": "Co-operative Work Term",
+    "faculty": "VPA"
   },
   {
-    "name": "Croatian",
     "id": 30,
-    "abbreviation": "CROAT"
+    "abbreviation": "CROAT",
+    "name": "Croatian",
+    "faculty": "ART"
   },
   {
-    "name": "Cultural Identities",
     "id": 31,
-    "abbreviation": "CI"
+    "abbreviation": "CI",
+    "name": "Cultural Identities",
+    "faculty": "ART"
   },
   {
-    "name": "Digital Arts Communication",
     "id": 32,
-    "abbreviation": "DAC"
+    "abbreviation": "DAC",
+    "name": "Digital Arts Communication",
+    "faculty": "ART"
   },
   {
-    "name": "Dutch",
     "id": 33,
-    "abbreviation": "DUTCH"
+    "abbreviation": "DUTCH",
+    "name": "Dutch",
+    "faculty": "ART"
   },
   {
-    "name": "Earth Sciences",
     "id": 34,
-    "abbreviation": "EARTH"
+    "abbreviation": "EARTH",
+    "name": "Earth Sciences",
+    "faculty": "SCI"
   },
   {
-    "name": "East Asian",
     "id": 35,
-    "abbreviation": "EASIA"
+    "abbreviation": "EASIA",
+    "name": "East Asian",
+    "faculty": "ART"
   },
   {
-    "name": "Economics",
     "id": 36,
-    "abbreviation": "ECON"
+    "abbreviation": "ECON",
+    "name": "Economics",
+    "faculty": "ART"
   },
   {
-    "name": "Electrical and Computer Engineering",
     "id": 37,
-    "abbreviation": "ECE"
+    "abbreviation": "ECE",
+    "name": "Electrical and Computer Engineering",
+    "faculty": "ENG"
   },
   {
-    "name": "English",
     "id": 38,
-    "abbreviation": "ENGL"
+    "abbreviation": "ENGL",
+    "name": "English",
+    "faculty": "ART"
   },
   {
-    "name": "English for Multilingual Speakers",
     "id": 39,
-    "abbreviation": "EMLS"
+    "abbreviation": "EMLS",
+    "name": "English for Multilingual Speakers",
+    "faculty": "REN"
   },
   {
-    "name": "Environment and Business",
     "id": 40,
-    "abbreviation": "ENBUS"
+    "abbreviation": "ENBUS",
+    "name": "Environment and Business",
+    "faculty": "ENV"
   },
   {
-    "name": "Environment, Resources and Sustainability",
     "id": 41,
-    "abbreviation": "ERS"
+    "abbreviation": "ERS",
+    "name": "Environment, Resources and Sustainability",
+    "faculty": "ENV"
   },
   {
-    "name": "Environmental Engineering",
     "id": 42,
-    "abbreviation": "ENVE"
+    "abbreviation": "ENVE",
+    "name": "Environmental Engineering",
+    "faculty": "ENG"
   },
   {
-    "name": "Environmental Studies",
     "id": 43,
-    "abbreviation": "ENVS"
+    "abbreviation": "ENVS",
+    "name": "Environmental Studies",
+    "faculty": "ENV"
   },
   {
-    "name": "Fine Arts",
     "id": 44,
-    "abbreviation": "FINE"
+    "abbreviation": "FINE",
+    "name": "Fine Arts",
+    "faculty": "ART"
   },
   {
-    "name": "French",
     "id": 45,
-    "abbreviation": "FR"
+    "abbreviation": "FR",
+    "name": "French",
+    "faculty": "ART"
   },
   {
-    "name": "Gender and Social Justice",
     "id": 46,
-    "abbreviation": "GSJ"
+    "abbreviation": "GSJ",
+    "name": "Gender and Social Justice",
+    "faculty": "ART"
   },
   {
-    "name": "General Engineering",
     "id": 47,
-    "abbreviation": "GENE"
+    "abbreviation": "GENE",
+    "name": "General Engineering",
+    "faculty": "ENG"
   },
   {
-    "name": "Geography and Environmental Management",
     "id": 48,
-    "abbreviation": "GEOG"
+    "abbreviation": "GEOG",
+    "name": "Geography and Environmental Management",
+    "faculty": "ENV"
   },
   {
-    "name": "Geological Engineering",
     "id": 49,
-    "abbreviation": "GEOE"
+    "abbreviation": "GEOE",
+    "name": "Geological Engineering",
+    "faculty": "ENG"
   },
   {
-    "name": "German",
     "id": 50,
-    "abbreviation": "GER"
+    "abbreviation": "GER",
+    "name": "German",
+    "faculty": "ART"
   },
   {
-    "name": "Gerontology",
     "id": 51,
-    "abbreviation": "GERON"
+    "abbreviation": "GERON",
+    "name": "Gerontology",
+    "faculty": "AHS"
   },
   {
-    "name": "Global Business and Digital Arts",
     "id": 52,
-    "abbreviation": "GBDA"
+    "abbreviation": "GBDA",
+    "name": "Global Business and Digital Arts",
+    "faculty": "ART"
   },
   {
-    "name": "Greek",
     "id": 53,
-    "abbreviation": "GRK"
+    "abbreviation": "GRK",
+    "name": "Greek",
+    "faculty": "ART"
   },
   {
-    "name": "Health",
     "id": 54,
-    "abbreviation": "HLTH"
+    "abbreviation": "HLTH",
+    "name": "Health",
+    "faculty": "AHS"
   },
   {
-    "name": "History",
     "id": 55,
-    "abbreviation": "HIST"
+    "abbreviation": "HIST",
+    "name": "History",
+    "faculty": "ART"
   },
   {
-    "name": "Human Resources Management",
     "id": 56,
-    "abbreviation": "HRM"
+    "abbreviation": "HRM",
+    "name": "Human Resources Management",
+    "faculty": "ART"
   },
   {
-    "name": "Human Rights",
     "id": 57,
-    "abbreviation": "HRTS"
+    "abbreviation": "HRTS",
+    "name": "Human Rights",
+    "faculty": "ART"
   },
   {
-    "name": "Human Sciences",
     "id": 58,
-    "abbreviation": "HUMSC"
+    "abbreviation": "HUMSC",
+    "name": "Human Sciences",
+    "faculty": "ART"
   },
   {
-    "name": "Indigenous Studies",
     "id": 59,
-    "abbreviation": "INDG"
+    "abbreviation": "INDG",
+    "name": "Indigenous Studies",
+    "faculty": "ART"
   },
   {
-    "name": "International Development",
     "id": 60,
-    "abbreviation": "INDEV"
+    "abbreviation": "INDEV",
+    "name": "International Development",
+    "faculty": "ENV"
   },
   {
-    "name": "International Studies",
     "id": 61,
-    "abbreviation": "INTST"
+    "abbreviation": "INTST",
+    "name": "International Studies",
+    "faculty": "ART"
   },
   {
-    "name": "Italian",
     "id": 62,
-    "abbreviation": "ITAL"
+    "abbreviation": "ITAL",
+    "name": "Italian",
+    "faculty": "ART"
   },
   {
-    "name": "Italian Studies",
     "id": 63,
-    "abbreviation": "ITALST"
+    "abbreviation": "ITALST",
+    "name": "Italian Studies",
+    "faculty": "ART"
   },
   {
-    "name": "Japanese",
     "id": 64,
-    "abbreviation": "JAPAN"
+    "abbreviation": "JAPAN",
+    "name": "Japanese",
+    "faculty": "ART"
   },
   {
-    "name": "Jewish Studies",
     "id": 65,
-    "abbreviation": "JS"
+    "abbreviation": "JS",
+    "name": "Jewish Studies",
+    "faculty": "ART"
   },
   {
-    "name": "Kinesiology",
     "id": 66,
-    "abbreviation": "KIN"
+    "abbreviation": "KIN",
+    "name": "Kinesiology",
+    "faculty": "AHS"
   },
   {
-    "name": "Knowledge Integration",
     "id": 67,
-    "abbreviation": "INTEG"
+    "abbreviation": "INTEG",
+    "name": "Knowledge Integration",
+    "faculty": "ENV"
   },
   {
-    "name": "Korean",
     "id": 68,
-    "abbreviation": "KOREA"
+    "abbreviation": "KOREA",
+    "name": "Korean",
+    "faculty": "ART"
   },
   {
-    "name": "Latin",
     "id": 69,
-    "abbreviation": "LAT"
+    "abbreviation": "LAT",
+    "name": "Latin",
+    "faculty": "ART"
   },
   {
-    "name": "Legal Studies",
     "id": 70,
-    "abbreviation": "LS"
+    "abbreviation": "LS",
+    "name": "Legal Studies",
+    "faculty": "ART"
   },
   {
-    "name": "Management",
     "id": 71,
-    "abbreviation": "MGMT"
+    "abbreviation": "MGMT",
+    "name": "Management",
+    "faculty": "ART"
   },
   {
-    "name": "Management Sciences",
     "id": 72,
-    "abbreviation": "MSCI"
+    "abbreviation": "MSCI",
+    "name": "Management Sciences",
+    "faculty": "ENG"
   },
   {
-    "name": "Materials\u00a0and Nano-Sciences",
     "id": 73,
-    "abbreviation": "MNS"
+    "abbreviation": "MNS",
+    "name": "Materials\u00a0and Nano-Sciences",
+    "faculty": "SCI"
   },
   {
-    "name": "Mathematical Business",
     "id": 74,
-    "abbreviation": "MATBUS"
+    "abbreviation": "MATBUS",
+    "name": "Mathematical Business",
+    "faculty": "MAT"
   },
   {
-    "name": "Mathematics",
     "id": 75,
-    "abbreviation": "MATH"
+    "abbreviation": "MATH",
+    "name": "Mathematics",
+    "faculty": "MAT"
   },
   {
-    "name": "Mathematics Electives",
     "id": 76,
-    "abbreviation": "MTHEL"
+    "abbreviation": "MTHEL",
+    "name": "Mathematics Electives",
+    "faculty": "MAT"
   },
   {
-    "name": "Mechanical Engineering",
     "id": 77,
-    "abbreviation": "ME"
+    "abbreviation": "ME",
+    "name": "Mechanical Engineering",
+    "faculty": "ENG"
   },
   {
-    "name": "Mechatronics Engineering",
     "id": 78,
-    "abbreviation": "MTE"
+    "abbreviation": "MTE",
+    "name": "Mechatronics Engineering",
+    "faculty": "ENG"
   },
   {
-    "name": "Medieval Studies",
     "id": 79,
-    "abbreviation": "MEDVL"
+    "abbreviation": "MEDVL",
+    "name": "Medieval Studies",
+    "faculty": "ART"
   },
   {
-    "name": "Mennonite Studies",
     "id": 80,
-    "abbreviation": "MENN"
+    "abbreviation": "MENN",
+    "name": "Mennonite Studies",
+    "faculty": "ART"
   },
   {
-    "name": "Mohawk",
     "id": 81,
-    "abbreviation": "MOHAWK"
+    "abbreviation": "MOHAWK",
+    "name": "Mohawk",
+    "faculty": "ART"
   },
   {
-    "name": "Music",
     "id": 82,
-    "abbreviation": "MUSIC"
+    "abbreviation": "MUSIC",
+    "name": "Music",
+    "faculty": "ART"
   },
   {
-    "name": "Nanotechnology Engineering",
     "id": 83,
-    "abbreviation": "NE"
+    "abbreviation": "NE",
+    "name": "Nanotechnology Engineering",
+    "faculty": "ENG"
   },
   {
-    "name": "Optometry",
     "id": 84,
-    "abbreviation": "OPTOM"
+    "abbreviation": "OPTOM",
+    "name": "Optometry",
+    "faculty": "SCI"
   },
   {
-    "name": "Peace and Conflict Studies",
     "id": 85,
-    "abbreviation": "PACS"
+    "abbreviation": "PACS",
+    "name": "Peace and Conflict Studies",
+    "faculty": "ART"
   },
   {
-    "name": "Pharmacy",
     "id": 86,
-    "abbreviation": "PHARM"
+    "abbreviation": "PHARM",
+    "name": "Pharmacy",
+    "faculty": "SCI"
   },
   {
-    "name": "Philosophy",
     "id": 87,
-    "abbreviation": "PHIL"
+    "abbreviation": "PHIL",
+    "name": "Philosophy",
+    "faculty": "ART"
   },
   {
-    "name": "Physics",
     "id": 88,
-    "abbreviation": "PHYS"
+    "abbreviation": "PHYS",
+    "name": "Physics",
+    "faculty": "SCI"
   },
   {
-    "name": "Planning",
     "id": 89,
-    "abbreviation": "PLAN"
+    "abbreviation": "PLAN",
+    "name": "Planning",
+    "faculty": "ENV"
   },
   {
-    "name": "Political Science",
     "id": 90,
-    "abbreviation": "PSCI"
+    "abbreviation": "PSCI",
+    "name": "Political Science",
+    "faculty": "ART"
   },
   {
-    "name": "Portuguese",
     "id": 91,
-    "abbreviation": "PORT"
+    "abbreviation": "PORT",
+    "name": "Portuguese",
+    "faculty": "ART"
   },
   {
-    "name": "Professional Development",
     "id": 92,
-    "abbreviation": "PD"
+    "abbreviation": "PD",
+    "name": "Professional Development",
+    "faculty": "VPA"
   },
   {
-    "name": "Professional Development for Architecture Students",
     "id": 93,
-    "abbreviation": "PDARCH"
+    "abbreviation": "PDARCH",
+    "name": "Professional Development for Architecture Students",
+    "faculty": "ENG"
   },
   {
-    "name": "Professional Development for Pharmacy Students",
     "id": 94,
-    "abbreviation": "PDPHRM"
+    "abbreviation": "PDPHRM",
+    "name": "Professional Development for Pharmacy Students",
+    "faculty": "SCI"
   },
   {
-    "name": "Psychology",
     "id": 95,
-    "abbreviation": "PSYCH"
+    "abbreviation": "PSYCH",
+    "name": "Psychology",
+    "faculty": "ART"
   },
   {
-    "name": "Pure Mathematics",
     "id": 96,
-    "abbreviation": "PMATH"
+    "abbreviation": "PMATH",
+    "name": "Pure Mathematics",
+    "faculty": "MAT"
   },
   {
-    "name": "Recreation and Leisure Studies",
     "id": 97,
-    "abbreviation": "REC"
+    "abbreviation": "REC",
+    "name": "Recreation and Leisure Studies",
+    "faculty": "AHS"
   },
   {
-    "name": "Religious Studies",
     "id": 98,
-    "abbreviation": "RS"
+    "abbreviation": "RS",
+    "name": "Religious Studies",
+    "faculty": "ART"
   },
   {
-    "name": "Russian",
     "id": 99,
-    "abbreviation": "RUSS"
+    "abbreviation": "RUSS",
+    "name": "Russian",
+    "faculty": "ART"
   },
   {
-    "name": "Russian and East European Studies",
     "id": 100,
-    "abbreviation": "REES"
+    "abbreviation": "REES",
+    "name": "Russian and East European Studies",
+    "faculty": "ART"
   },
   {
-    "name": "Science",
     "id": 101,
-    "abbreviation": "SCI"
+    "abbreviation": "SCI",
+    "name": "Science",
+    "faculty": "SCI"
   },
   {
-    "name": "Science and Business",
     "id": 102,
-    "abbreviation": "SCBUS"
+    "abbreviation": "SCBUS",
+    "name": "Science and Business",
+    "faculty": "SCI"
   },
   {
-    "name": "Sexuality, Marriage, and Family Studies",
     "id": 103,
-    "abbreviation": "SMF"
+    "abbreviation": "SMF",
+    "name": "Sexuality, Marriage, and Family Studies",
+    "faculty": "ART"
   },
   {
-    "name": "Social Development Studies",
     "id": 104,
-    "abbreviation": "SDS"
+    "abbreviation": "SDS",
+    "name": "Social Development Studies",
+    "faculty": "ART"
   },
   {
-    "name": "Social Venture Entrepreneur",
     "id": 105,
-    "abbreviation": "SVENT"
+    "abbreviation": "SVENT",
+    "name": "Social Venture Entrepreneur",
+    "faculty": "ENV"
   },
   {
-    "name": "Social Work (Social Development Studies)",
     "id": 106,
-    "abbreviation": "SOCWK"
+    "abbreviation": "SOCWK",
+    "name": "Social Work (Social Development Studies)",
+    "faculty": "ART"
   },
   {
-    "name": "Social Work (Bachelor of Social Work)",
     "id": 107,
-    "abbreviation": "SWREN"
+    "abbreviation": "SWREN",
+    "name": "Social Work (Bachelor of Social Work)",
+    "faculty": "REN"
   },
   {
-    "name": "Society, Technology and Values",
     "id": 108,
-    "abbreviation": "STV"
+    "abbreviation": "STV",
+    "name": "Society, Technology and Values",
+    "faculty": "VPA"
   },
   {
-    "name": "Sociology",
     "id": 109,
-    "abbreviation": "SOC"
+    "abbreviation": "SOC",
+    "name": "Sociology",
+    "faculty": "ART"
   },
   {
-    "name": "Software Engineering",
     "id": 110,
-    "abbreviation": "SE"
+    "abbreviation": "SE",
+    "name": "Software Engineering",
+    "faculty": "VPA"
   },
   {
-    "name": "Spanish",
     "id": 111,
-    "abbreviation": "SPAN"
+    "abbreviation": "SPAN",
+    "name": "Spanish",
+    "faculty": "ART"
   },
   {
-    "name": "Speech Communication",
     "id": 112,
-    "abbreviation": "SPCOM"
+    "abbreviation": "SPCOM",
+    "name": "Speech Communication",
+    "faculty": "ART"
   },
   {
-    "name": "Statistics",
     "id": 113,
-    "abbreviation": "STAT"
+    "abbreviation": "STAT",
+    "name": "Statistics",
+    "faculty": "MAT"
   },
   {
-    "name": "Studies in Islam",
     "id": 114,
-    "abbreviation": "SI"
+    "abbreviation": "SI",
+    "name": "Studies in Islam",
+    "faculty": "ART"
   },
   {
-    "name": "Systems Design Engineering",
     "id": 115,
-    "abbreviation": "SYDE"
+    "abbreviation": "SYDE",
+    "name": "Systems Design Engineering",
+    "faculty": "ENG"
   },
   {
-    "name": "Theatre and Performance",
     "id": 116,
-    "abbreviation": "THPERF"
+    "abbreviation": "THPERF",
+    "name": "Theatre and Performance",
+    "faculty": "ART"
   },
   {
-    "name": "University",
     "id": 117,
-    "abbreviation": "UNIV"
+    "abbreviation": "UNIV",
+    "name": "University",
+    "faculty": "VPA"
   },
   {
-    "name": "Visual Culture",
     "id": 118,
-    "abbreviation": "VCULT"
+    "abbreviation": "VCULT",
+    "name": "Visual Culture",
+    "faculty": "ART"
   },
   {
-    "name": "Work-term Report",
     "id": 119,
-    "abbreviation": "WKRPT"
+    "abbreviation": "WKRPT",
+    "name": "Work-term Report",
+    "faculty": "VPA"
   }
 ]
