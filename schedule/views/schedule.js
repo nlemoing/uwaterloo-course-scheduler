@@ -14,7 +14,7 @@ class ScheduleView {
             header: document.createElement('h1'),
             semesters: document.createElement('div'),
             addSemester: new AddButton(
-                `add-semester`,
+                'Add semester',
                 this.addDraftSemester.bind(this),
                 ['semester', 'large']
             ).container

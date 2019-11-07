@@ -63,11 +63,12 @@ select {
 .schedule {
     min-height: 200px;
     width: 100%;
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(245, 245, 245);
 }
 
-.semester.highlighted {
-    background-color: rgb(220, 220, 220);
+.semester.highlighted,
+.semester.add:hover {
+    background-color: rgb(230, 230, 230);
     
 }
 
@@ -93,6 +94,10 @@ select {
     background-color: rgb(200, 200, 200);
 }
 
+.course-container {
+    padding: 5px 0;
+}
+
 .course {
     background-color: rgb(255, 255, 250);
     width: 160px;
@@ -100,7 +105,7 @@ select {
     user-select: none;
     padding: 4px;
     margin: 2px auto;
-    border: solid rgb(0, 63, 181) 1px;
+    border: solid rgb(200, 200, 200) 1px;
     border-left-width: 3px;
 }
 
@@ -119,10 +124,12 @@ select {
     margin: auto;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .add-course .separator {
-    margin-left: auto;
+    width: 5px;
 }
 
 .add-course button {
@@ -145,4 +152,8 @@ div.clickable span.clickable {
     top: 0;
     left: 0;
     z-index: 1;
+}
+
+div.clickable button {
+    z-index: 2;
 }
