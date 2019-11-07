@@ -1,4 +1,5 @@
 import { CourseModel } from '../models/course.js';
+import { CancelButton, SubmitButton } from './button.js';
 
 const courseModel = new CourseModel();
 
@@ -10,6 +11,7 @@ class AddCourseForm {
 
         // Subject is changed when the update form's value is changed.
         this._subject = null;
+        this._course = null;
         this.numbersBySubject = {};
 
         // Form container
@@ -19,48 +21,64 @@ class AddCourseForm {
         this.hide();
 
         // Course subject input
-        this.courseDropDown = document.createElement('select');
-        this.courseDropDown.name = 'subject';
+        this.courseSubjectInput = document.createElement('select');
+        this.courseSubjectInput.name = 'subject';
         // Add each subject as an option of the dropdown when loaded
         this._loadSubjects();
-        this.courseDropDown.addEventListener('input', (evt) => {
+        this.courseSubjectInput.addEventListener('input', (evt) => {
             this.subject = evt.target.value;
         });
-        this.form.appendChild(this.courseDropDown);
+        this.form.appendChild(this.courseSubjectInput);
 
         // Course number input
-        const courseNumberInput = document.createElement('input');
-        courseNumberInput.name = 'number';
-        courseNumberInput.classList.add('course-number-input');
-        courseNumberInput.addEventListener('input', (evt) => { this.updateLongName(evt.target.value); });
-        this.form.appendChild(courseNumberInput);
+        this.courseNumberInput = document.createElement('select');
+        this.courseNumberInput.name = 'number';
+        this.courseNumberInput.addEventListener('input', (evt) => { 
+            this.number = evt.target.value; 
+        });
+        this.form.appendChild(this.courseNumberInput);
 
-        // Course long name (if present)
-        this.courseLongName = document.createElement('span');
-        this.courseLongName.classList.add('course-long-name');
-        this.form.appendChild(this.courseLongName);
+        // Separator div
+        const separator = document.createElement('div');
+        separator.classList.add('separator');
+        this.form.appendChild(separator);
         
         // Submit button
-        const submit = document.createElement('input');
-        submit.type = 'submit';
-        this.form.appendChild(submit);
+        const submit = new SubmitButton('Add course');
+        this.form.appendChild(submit.container);
 
         // Cancel button
-        const cancel = document.createElement('button');
-        cancel.type = 'reset';
-        cancel.innerText = 'Cancel';
-        this.form.appendChild(cancel);
+        const cancel = new CancelButton('Cancel', this.reset.bind(this));
+        this.form.appendChild(cancel.container);
 
         this.form.addEventListener('submit', this.submit.bind(this));
-        cancel.addEventListener('click', this.reset.bind(this));
     }
 
     set subject(value) {
         this._subject = this.subjects.find(subject => subject.abbreviation === value);
+        this._loadCourses();
     }
 
     get subject() {
         return this._subject;
+    }
+
+    set course(value) {
+        if (!this.subject) {
+            this._course = null;
+            return;
+        }
+        const subjectId = this.subject.id;
+        const courses = this.numbersBySubject[subjectId];
+        if (!courses) {
+            this._course = null;
+            return;
+        }
+        this._course = courses.find(course => course.number === value);
+    }
+
+    get course() {
+        return this._course;
     }
 
     async _loadSubjects() {
@@ -69,25 +87,29 @@ class AddCourseForm {
         for (const subject of this.subjects) {
             option = document.createElement('option');
             option.value = option.text = subject.abbreviation;
-            this.courseDropDown.appendChild(option);
+            this.courseSubjectInput.appendChild(option);
         }
         // Set the current subject to whatever value is selected
-        this.subject = this.courseDropDown.value;
+        this.subject = this.courseSubjectInput.value;
     }
 
-    async updateLongName(number) {
+    async _loadCourses() {
+        // Remove any existing options
+        this.courseNumberInput.innerHTML = '';
         if (!this.subject) return;
-        const subjectId = this.subject.id
+        const subjectId = this.subject.id;
         if (!(subjectId in this.numbersBySubject)) {
             this.numbersBySubject[subjectId] = 
                 await this.courseModel.getNumbersForSubject(subjectId);
         }
-        const numbers = this.numbersBySubject[subjectId];
-        const course = numbers.find((n) => {
-            return n.number === number;
-        });
-        const longName = course ? course.name : '';
-        this.courseLongName.innerText = longName;
+        const courses = this.numbersBySubject[subjectId];
+        let option;
+        for (const course of courses) {
+            option = document.createElement('option');
+            option.value = option.text = course.number;
+            this.courseNumberInput.appendChild(option);
+        }
+        this.course = this.courseNumberInput.value;
     }
 
     submit(e) {
@@ -98,7 +120,6 @@ class AddCourseForm {
         const subject = data.get('subject');
         const number = data.get('number');
         this.eventBus.dispatch('addcourse', { subject, number, semesterId, });
-        this.reset();
     }
 
     get container() {
@@ -108,8 +129,8 @@ class AddCourseForm {
     reset() {
         this.hide();
         this.form.reset();
-        this.subject = this.courseDropDown.value;
-        this.courseLongName.innerText = '';
+        this.subject = this.courseSubjectInput.value;
+        this.course = this.courseNumberInput.value;
     }
 
     show() {

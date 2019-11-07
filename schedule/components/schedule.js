@@ -1,3 +1,5 @@
+import { DeleteButton } from './button.js';
+
 class Schedule {
     constructor(schedule, eventBus) {
         this.schedule = schedule;
@@ -15,10 +17,11 @@ class Schedule {
         this.container.appendChild(scheduleHeader);
 
         // Delete button
-        const deleteButton = document.createElement('button');
-        deleteButton.innerText = 'delete';
-        deleteButton.addEventListener('click', () => { this.eventBus.dispatch('deleteschedule', id); });
-        this.container.appendChild(deleteButton);
+        const deleteButton = new DeleteButton(
+            'Delete schedule',
+            () => { this.eventBus.dispatch('deleteschedule', id); }
+        );
+        this.container.appendChild(deleteButton.container);
 
         // Create link
         const link = document.createElement('a');

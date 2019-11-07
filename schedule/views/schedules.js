@@ -12,7 +12,7 @@ class SchedulesView {
             header: document.createElement('h1'),
             schedules: document.createElement('div'),
             addSchedule: new AddButton(
-                `add-schedule`,
+                'Add schedule',
                 this.addDraftSchedule.bind(this),
                 ['schedule', 'large']
             ).container
