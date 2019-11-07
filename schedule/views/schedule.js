@@ -91,7 +91,7 @@ class ScheduleView {
         this.courses[courseId] = course;
 
         const semester = this.semesters[semesterId] || this.semesters.misc;
-        semester.container.appendChild(course.container);
+        semester.addCourse(course);
     }
 
     deleteCourse(id) {

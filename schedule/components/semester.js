@@ -43,6 +43,11 @@ class Semester {
             header.appendChild(deleteButton.container);
         }
 
+        // Container for courses
+        this.courseContainer = document.createElement('div');
+        this.courseContainer.classList.add('course-container');
+        this.container.appendChild(this.courseContainer);
+
         this.eventBus.on('coursedrag', this.courseDrag.bind(this));
         this.eventBus.on('coursedrop', this.courseDrop.bind(this));
     }
@@ -68,6 +73,10 @@ class Semester {
                 this.semester.id : undefined;
             this.eventBus.dispatch('editcourse', id, { semesterId, });
         }
+    }
+
+    addCourse(course) {
+        this.courseContainer.appendChild(course.container);
     }
 }
 

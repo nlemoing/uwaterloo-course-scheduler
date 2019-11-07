@@ -31,9 +31,14 @@ body {
     height: 100%;
 }
 
+/* Input */
+select {
+    font-family: inherit;
+}
+
 /* Page specific styles */
 #schedule-view {
-    width: 600px;
+    width: 800px;
     margin: auto;
 }
 
@@ -46,6 +51,12 @@ body {
 
 #semester-misc {
     grid-column: 1 / end;
+}
+
+#semester-misc .course-container {
+    display: grid;
+    grid-template-columns: repeat(4, 190px);
+    grid-gap: 10px;
 }
 
 .semester,
