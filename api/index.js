@@ -57,6 +57,11 @@ const init = async () => {
             },
         },
         {
+            method: 'GET',
+            path: '/schedules',
+            handler: schedule.getSchedules,
+        },
+        {
             method: 'POST',
             path: '/schedules',
             handler: schedule.addSchedule,

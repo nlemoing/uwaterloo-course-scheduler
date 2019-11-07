@@ -1,6 +1,28 @@
-#semesters {
+/* Button styles */
+.base-button {
+    border: none;
+    background-color: unset;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.base-button.large .button-image-container {
+    width: 30%;
+    height: 30%;
+}
+
+.button-image {
+    width: 100%;
+    height: 100%;
+}
+
+/* Page specific styles */
+#semesters,
+#schedules {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 300px);
+    grid-template-columns: repeat(auto-fill, 400px);
     grid-gap: 5px;
 }
 
@@ -8,7 +30,8 @@
     grid-column: 1 / end;
 }
 
-.semester {
+.semester,
+.schedule {
     width: calc(100% - 40px);
     padding: 20px;
     background-color: rgb(230, 230, 230);
@@ -16,16 +39,6 @@
 
 .semester.highlighted {
     background-color: rgb(200, 200, 200);
-}
-
-.semester.add {
-    background-color: rgb(240, 240, 240);
-    background-image: url("/images/plus.svg");
-    background-repeat: no-repeat;
-    background-position: center center;
-}
-.semester.add:hover {
-    background-color: rgb(230, 230, 230);
 }
 
 .semester h2 {
@@ -54,4 +67,17 @@
 
 .course-number-input {
     width: 40px;
+}
+
+div.clickable {
+    position: relative;
+}
+
+div.clickable span.clickable {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }

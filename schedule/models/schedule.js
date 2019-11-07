@@ -26,6 +26,14 @@ class ScheduleModel {
         return await schedule.json();
     }
 
+    async deleteSchedule(id) {
+        const response = await API(`/schedules/${id}`, {
+            method: 'DELETE'
+        });
+        if (!response.ok) return;
+        return id;
+    }
+
     async getCourse(scheduleId, id) {
         const response = await API(`/schedules/${scheduleId}/courses/${id}`);
         if (!response.ok) return;

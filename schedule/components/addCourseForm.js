@@ -56,7 +56,7 @@ class AddCourseForm {
     }
 
     set subject(value) {
-        this._subject = this.subjects.find(subject => subject.name === value);
+        this._subject = this.subjects.find(subject => subject.abbreviation === value);
     }
 
     get subject() {
@@ -68,7 +68,7 @@ class AddCourseForm {
         let option;
         for (const subject of this.subjects) {
             option = document.createElement('option');
-            option.value = option.text = subject.name;
+            option.value = option.text = subject.abbreviation;
             this.courseDropDown.appendChild(option);
         }
         // Set the current subject to whatever value is selected
@@ -86,7 +86,7 @@ class AddCourseForm {
         const course = numbers.find((n) => {
             return n.number === number;
         });
-        const longName = course ? course.longName : '';
+        const longName = course ? course.name : '';
         this.courseLongName.innerText = longName;
     }
 

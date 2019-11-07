@@ -1,4 +1,5 @@
 import { AddCourseForm } from './addCourseForm.js';
+import { DeleteButton, AddButton } from './button.js';
 
 class Semester {
     constructor(semester, eventBus) { 
@@ -18,18 +19,20 @@ class Semester {
 
         // Delete button with deletion event
         if (id !== 'misc') {
-            const deleteButton = document.createElement('button');
-            deleteButton.innerText = 'delete';
-            deleteButton.addEventListener('click', () => { this.eventBus.dispatch('deletesemester', id); });
-            this.container.appendChild(deleteButton);
+            const deleteButton = new DeleteButton(
+                `delete-semester-${id}`,
+                () => { this.eventBus.dispatch('deletesemester', id) }
+            );
+            this.container.appendChild(deleteButton.container);
         }
         
         // Add course form
         const form = new AddCourseForm(semester, this.eventBus);
-        const addButton = document.createElement('button');
-        addButton.innerText = 'add';
-        addButton.addEventListener('click', () => { form.show(); });
-        this.container.appendChild(addButton);
+        const addButton = new AddButton(
+            `semester-${id}-show-course-form`,
+            () => { form.show(); }
+        );
+        this.container.appendChild(addButton.container);
         this.container.appendChild(form.container);
 
 

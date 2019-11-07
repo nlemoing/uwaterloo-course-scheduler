@@ -1,4 +1,5 @@
 import { DraftSchedule, Schedule } from '../components/schedule.js';
+import { AddButton } from '../components/button.js';
 
 class SchedulesView {
     constructor(eventBus) {
@@ -10,7 +11,11 @@ class SchedulesView {
             main: document.createElement('div'),
             header: document.createElement('h1'),
             schedules: document.createElement('div'),
-            addSchedule: document.createElement('div')
+            addSchedule: new AddButton(
+                `add-schedule`,
+                this.addDraftSchedule.bind(this),
+                ['schedule', 'large']
+            ).container
         };
         this.containers.main.id = 'schedules-view';
 
@@ -23,13 +28,11 @@ class SchedulesView {
         this.containers.main.appendChild(this.containers.schedules);
 
         // Button for adding a schedule
-        this.containers.addSchedule.classList.add('schedule', 'add');
-        this.containers.addSchedule.addEventListener('click', this.addDraftSchedule.bind(this));
         this.containers.schedules.appendChild(this.containers.addSchedule);
     }
 
     _reset() {
-        for (const scheduleId in schedules) {
+        for (const scheduleId in this.schedules) {
             this.deleteSchedule(scheduleId);
         }
     }
@@ -50,9 +53,16 @@ class SchedulesView {
         this.containers.schedules.insertBefore(schedule.container, this.containers.addSchedule);
     }
 
+    deleteSchedule(id) {
+        if (id in this.schedules) {
+            this.schedules[id].container.remove();
+            delete this.schedules[id];
+        }
+    }
+
     addDraftSchedule() {
         const draftSchedule = new DraftSchedule(this.eventBus);
-        this.containers.semesters.insertBefore(draftSchedule.container, this.containers.addSchedule);
+        this.containers.schedules.insertBefore(draftSchedule.container, this.containers.addSchedule);
         draftSchedule.focus();
     }
 }
