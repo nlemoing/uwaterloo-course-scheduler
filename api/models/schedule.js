@@ -1,6 +1,7 @@
 class ScheduleModel {
 
-    constructor() {
+    constructor(courseModel) {
+        this.courseModel = courseModel;
         this._counts = {
             schedules: 1, semesters: 1, courses: 1
         };
@@ -33,7 +34,8 @@ class ScheduleModel {
     }
 
     getCourse(id) {
-        return this._courses.find(c => c.id === id);
+        const course = this._courses.find(c => c.id === id);
+        course.course = this.courseModel.getCourse(course.courseId);
     }
 
     addSchedule({ name, }) {
@@ -50,9 +52,9 @@ class ScheduleModel {
         return id;
     }
 
-    addCourse({ subject, number, scheduleId, semesterId, }) {
+    addCourse({ scheduleId, semesterId, courseId, }) {
         const id = this._counts.courses;
-        this._courses.push({ id, subject, number, scheduleId, semesterId });
+        this._courses.push({ id, scheduleId, semesterId, courseId, });
         this._counts.courses += 1;
         return id;
     }
