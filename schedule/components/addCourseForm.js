@@ -1,4 +1,5 @@
 import { CourseModel } from '../models/course.js';
+import { CancelButton, SubmitButton } from './button.js';
 
 const courseModel = new CourseModel();
 
@@ -39,20 +40,21 @@ class AddCourseForm {
         this.courseLongName = document.createElement('span');
         this.courseLongName.classList.add('course-long-name');
         this.form.appendChild(this.courseLongName);
+
+        // Separator div
+        const separator = document.createElement('div');
+        separator.classList.add('separator');
+        this.form.appendChild(separator);
         
         // Submit button
-        const submit = document.createElement('input');
-        submit.type = 'submit';
-        this.form.appendChild(submit);
+        const submit = new SubmitButton('Add course');
+        this.form.appendChild(submit.container);
 
         // Cancel button
-        const cancel = document.createElement('button');
-        cancel.type = 'reset';
-        cancel.innerText = 'Cancel';
-        this.form.appendChild(cancel);
+        const cancel = new CancelButton('Cancel', this.reset.bind(this));
+        this.form.appendChild(cancel.container);
 
         this.form.addEventListener('submit', this.submit.bind(this));
-        cancel.addEventListener('click', this.reset.bind(this));
     }
 
     set subject(value) {

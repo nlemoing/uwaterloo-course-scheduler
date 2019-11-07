@@ -1,3 +1,9 @@
+/* Global font */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+}
+
 /* Button styles */
 .base-button {
     border: none;
@@ -6,6 +12,13 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.base-button .button-image-container {
+    width: 100%;
+    height: 100%;
 }
 
 .base-button.large .button-image-container {
@@ -19,11 +32,16 @@
 }
 
 /* Page specific styles */
+#schedule-view {
+    width: 600px;
+    margin: auto;
+}
+
 #semesters,
 #schedules {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 400px);
-    grid-gap: 5px;
+    grid-template-columns: repeat(4, 190px);
+    grid-gap: 10px;
 }
 
 #semester-misc {
@@ -32,28 +50,53 @@
 
 .semester,
 .schedule {
-    width: calc(100% - 40px);
-    padding: 20px;
-    background-color: rgb(230, 230, 230);
+    min-height: 200px;
+    width: 100%;
+    background-color: rgb(240, 240, 240);
 }
 
 .semester.highlighted {
+    background-color: rgb(220, 220, 220);
+    
+}
+
+.semester-header {
+    text-align: center;
+    background-color: rgb(255, 255, 250);
+}
+
+.semester-header h2 {
+    font-size: 20pt;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+.semester-header button {
+    float: right;
+}
+
+.header-divider {
+    height: 2px;
+    margin-bottom: 5px;
     background-color: rgb(200, 200, 200);
 }
 
-.semester h2 {
-    margin: 0;
-}
-
 .course {
-    background-color: grey;
-    width: 200px;
-    max-width: 100%;
+    background-color: rgb(255, 255, 250);
+    width: 160px;
+    min-height: 16px;
     user-select: none;
+    padding: 4px;
+    margin: 2px auto;
+    border: solid rgb(0, 63, 181) 1px;
+    border-left-width: 3px;
 }
 
-.add-course  {
-    width: 30px;
+.course button {
+    float: right;
+    width: 16px;
+    height: 16px;
 }
 
 .add-course.hidden {
@@ -61,12 +104,23 @@
 }
 
 .add-course {
+    width: 190px;
+    margin: auto;
     display: flex;
     flex-direction: row;
 }
 
+.add-course .separator {
+    margin-left: auto;
+}
+
+.add-course button {
+    width: 16px;
+    height: 16px;
+}
+
 .course-number-input {
-    width: 40px;
+    width: 50px;
 }
 
 div.clickable {

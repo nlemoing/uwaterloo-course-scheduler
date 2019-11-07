@@ -1,12 +1,12 @@
 
 class Button {
-    constructor(id, onclick, classes = [], image) {
-        this.id = id;
+    constructor(title, onclick, classes = [], image) {
+        this.title = title;
         this.onclick = onclick;
 
         // Main container
         this.container = document.createElement('button');
-        this.container.id = this.id;
+        this.container.title = this.title;
         this.container.classList.add('base-button');
         classes.forEach((class_) => { this.container.classList.add(class_); });
 
@@ -25,21 +25,35 @@ class Button {
 }
 
 class DeleteButton extends Button {
-    constructor(id, onclick, classes = []) {
+    constructor(title, onclick, classes = []) {
         classes.push('delete');
         const img = document.createElement('img');
         img.src = '/images/x.svg';
-        super(id, onclick, classes, img);
+        super(title, onclick, classes, img);
     }
 }
 
 class AddButton extends Button {
-    constructor(id, onclick, classes = []) {
+    constructor(title, onclick, classes = []) {
         classes.push('add');
         const img = document.createElement('img');
         img.src = '/images/plus.svg';
-        super(id, onclick, classes, img);
+        super(title, onclick, classes, img);
     }
 }
 
-export { DeleteButton, AddButton }
+class SubmitButton extends AddButton {
+    constructor(title, onclick) {
+        super(title, onclick);
+        this.container.type = 'submit';
+    }
+}
+
+class CancelButton extends DeleteButton {
+    constructor(title, onclick) {
+        super(title, onclick);
+        this.container.type = 'reset';
+    }
+}
+
+export { DeleteButton, AddButton, SubmitButton, CancelButton }

@@ -14,7 +14,7 @@ class Course {
 
         // Add delete button and attach delete listener
         const deleteButton = new DeleteButton(
-            `delete-course-${id}`,
+            'Delete course',
             () => { this.eventBus.dispatch('deletecourse', id) }
         )
         this.container.appendChild(deleteButton.container);
