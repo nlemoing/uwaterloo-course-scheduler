@@ -40,10 +40,10 @@ class ScheduleModel {
         return await response.json();
     }
 
-    async addCourse(scheduleId, { subject, number, semesterId, }) {
+    async addCourse(scheduleId, { courseId, semesterId, }) {
         const response = await API(`/schedules/${scheduleId}/courses`, {
             method: 'POST',
-            body: JSON.stringify({ subject, number, semesterId })
+            body: JSON.stringify({ courseId, semesterId })
         });
         if (!response.ok) return;
         const location = response.headers.get('location');

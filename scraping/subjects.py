@@ -7,9 +7,11 @@ def parse_subjects():
     subjects = []
     idx = 1
     for subject in rows:
+
         name, abbreviation, *rest = subject.stripped_strings
-        if abbreviation.lower() == 'back to top':
+        if not len(rest):
             continue
-        subjects.append({ 'id': idx, 'abbreviation': abbreviation, 'name': name })
+        faculty = rest[0]
+        subjects.append({ 'id': idx, 'abbreviation': abbreviation, 'name': name, 'faculty': faculty })
         idx += 1
     return subjects

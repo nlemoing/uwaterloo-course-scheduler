@@ -9,8 +9,9 @@ const CourseModel = require('./models/course.js');
 const ScheduleController = require('./controllers/schedule.js');
 const ScheduleModel = require('./models/schedule.js');
 
-const course = CourseController(new CourseModel());
-const schedule = ScheduleController(new ScheduleModel());
+const courseModel = new CourseModel();
+const course = CourseController(courseModel);
+const schedule = ScheduleController(new ScheduleModel(courseModel));
 
 const init = async () => {
     const server = new Server({ 
@@ -178,8 +179,7 @@ const init = async () => {
                         scheduleId: Joi.number()
                     }),
                     payload: Joi.object({
-                        subject: Joi.string(),
-                        number: Joi.string(),
+                        courseId: Joi.number().required(),
                         semesterId: Joi.number(),
                     })
                 },

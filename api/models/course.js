@@ -8,13 +8,22 @@ class CourseModel {
     }
 
     getCourse(courseId) {
-        return this._courses.find((course) => {
+        const course = this._courses.find((course) => {
             return course.id === courseId;
         });
+        if (!course) return;
+        course.subject = this.getSubject(course.subjectId);
+        return course;
     }
 
     getSubjects() {
         return this._subjects;
+    }
+
+    getSubject(subjectId) {
+        return this._subjects.find((subject) => {
+            return subject.id === subjectId;
+        });
     }
 
     getCoursesForSubject(subjectId) {

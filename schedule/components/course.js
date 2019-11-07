@@ -5,12 +5,24 @@ class Course {
         this.course = course;
         this.eventBus = eventBus;
 
-        const { id, subject, number, } = this.course;
+        const { id, info } = this.course;
+        const { subject, number } = info;
+        const { abbreviation, faculty } = subject;
         // Main container
         this.container = document.createElement('div');
         this.container.id = `course-${id}`;
-        this.container.innerText = `${subject} ${number}`;
+        this.container.innerText = `${abbreviation} ${number}`;
         this.container.classList.add('course');
+        let facultyClass;
+        switch (faculty) {
+            case 'AHS': facultyClass = 'ahs'; break;
+            case 'ART': facultyClass = 'art'; break;
+            case 'ENG': facultyClass = 'engineering'; break;
+            case 'ENV': facultyClass = 'environment'; break;
+            case 'MAT': facultyClass = 'math'; break;
+            case 'SCI': facultyClass = 'science'; break;
+        }
+        this.container.classList.add(facultyClass);
 
         // Add delete button and attach delete listener
         const deleteButton = new DeleteButton(
