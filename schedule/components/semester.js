@@ -18,6 +18,9 @@ class Semester {
         const title = document.createElement('h2');
         title.textContent = name;
         header.appendChild(title);
+        const separator = document.createElement('div');
+        separator.classList.add('separator');
+        header.appendChild(separator);
         this.container.appendChild(header);
 
         // Small divider element
@@ -29,7 +32,8 @@ class Semester {
         const form = new AddCourseForm(semester, this.eventBus);
         const addButton = new AddButton(
             'Add a course',
-            () => { form.show(); }
+            () => { form.show(); },
+            ['add-course']
         );
         header.appendChild(addButton.container);
         this.container.appendChild(form.container);
@@ -38,7 +42,8 @@ class Semester {
         if (id !== 'misc') {
             const deleteButton = new DeleteButton(
                 'Delete semester',
-                () => { this.eventBus.dispatch('deletesemester', id) }
+                () => { this.eventBus.dispatch('deletesemester', id) },
+                ['delete-semester']
             );
             header.appendChild(deleteButton.container);
         }

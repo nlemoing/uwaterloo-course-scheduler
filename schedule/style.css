@@ -11,24 +11,48 @@ body {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     padding: 0;
     margin: 0;
+    transition: background-color 0.5s;
 }
 
-.base-button .button-image-container {
-    width: 100%;
-    height: 100%;
+.base-button .button-image {
+    width: 80%;
+    height: 80%;
 }
 
-.base-button.large .button-image-container {
+.base-button .button-image path {
+    fill: grey;
+    transition: fill 0.5s;
+}
+
+.base-button.large .button-image {
     width: 30%;
     height: 30%;
 }
 
-.button-image {
-    width: 100%;
-    height: 100%;
+.add-button.add-course, 
+.delete-button.delete-semester {
+    width: 20px;
+    height: 20px;
+}
+
+.delete-button.delete-course {
+    width: 16px;
+    height: 16px;
+}
+
+.add-button:hover {
+    background-color: green;
+}
+
+.add-button:hover path,
+.delete-button:hover path {
+    fill: rgb(255, 255, 250);
+}
+
+.delete-button:hover {
+    background-color: red;
 }
 
 /* Input */
@@ -75,6 +99,8 @@ select {
 .semester-header {
     text-align: center;
     background-color: rgb(255, 255, 250);
+    display: flex;
+    align-items: center;
 }
 
 .semester-header h2 {
@@ -82,10 +108,6 @@ select {
     display: inline-block;
     margin: 0;
     padding: 0;
-}
-
-.semester-header button {
-    float: right;
 }
 
 .header-divider {
@@ -139,11 +161,11 @@ select {
     height: 16px;
 }
 
-.add-course.hidden {
+form.add-course.hidden {
     display: none;
 }
 
-.add-course {
+form.add-course {
     width: 190px;
     margin: auto;
     display: flex;
@@ -152,11 +174,11 @@ select {
     justify-content: center;
 }
 
-.add-course .separator {
+form.add-course .separator {
     width: 5px;
 }
 
-.add-course button {
+form.add-course button {
     width: 16px;
     height: 16px;
 }
@@ -180,4 +202,8 @@ div.clickable span.clickable {
 
 div.clickable button {
     z-index: 2;
+}
+
+.separator {
+    margin-left: auto;
 }
