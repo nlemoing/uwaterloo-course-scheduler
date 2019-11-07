@@ -12,7 +12,7 @@ class CourseModel {
             return course.id === courseId;
         });
         if (!course) return;
-        course.subject = this.getSubjects(subjectId);
+        course.subject = this.getSubjects(course.subjectId);
         return course;
     }
 

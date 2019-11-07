@@ -179,7 +179,7 @@ const init = async () => {
                         scheduleId: Joi.number()
                     }),
                     payload: Joi.object({
-                        courseId: Joi.number(),
+                        courseId: Joi.number().required(),
                         semesterId: Joi.number(),
                     })
                 },

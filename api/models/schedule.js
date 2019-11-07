@@ -35,7 +35,8 @@ class ScheduleModel {
 
     getCourse(id) {
         const course = this._courses.find(c => c.id === id);
-        course.course = this.courseModel.getCourse(course.courseId);
+        course.info = this.courseModel.getCourse(course.courseId);
+        return course;
     }
 
     addSchedule({ name, }) {
