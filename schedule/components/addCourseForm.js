@@ -34,7 +34,7 @@ class AddCourseForm {
         this.courseNumberInput = document.createElement('select');
         this.courseNumberInput.name = 'number';
         this.courseNumberInput.addEventListener('input', (evt) => { 
-            this.number = evt.target.value; 
+            this.course = evt.target.value; 
         });
         this.form.appendChild(this.courseNumberInput);
 
@@ -114,12 +114,10 @@ class AddCourseForm {
 
     submit(e) {
         e.preventDefault();
-        const data = new FormData(this.form);
         const semesterId = this.semester.id !== 'misc' ?
             this.semester.id : undefined;
-        const subject = data.get('subject');
-        const number = data.get('number');
-        this.eventBus.dispatch('addcourse', { subject, number, semesterId, });
+        const courseId = this.course.id;
+        this.eventBus.dispatch('addcourse', { courseId, semesterId, });
     }
 
     get container() {
