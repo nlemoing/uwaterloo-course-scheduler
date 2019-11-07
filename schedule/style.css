@@ -109,6 +109,30 @@ select {
     border-left-width: 3px;
 }
 
+.course.ahs {
+    border-left-color: rgb(0, 152, 165);
+}
+
+.course.art {
+    border-left-color: rgb(217, 63, 0);
+}
+
+.course.engineering {
+    border-left-color: rgb(87, 5, 139);
+}
+
+.course.environment {
+    border-left-color: rgb(96, 112, 0);
+}
+
+.course.math {
+    border-left-color: rgb(223, 36, 152);
+}
+
+.course.science {
+    border-left-color: rgb(0, 115, 206);
+}
+
 .course button {
     float: right;
     width: 16px;
