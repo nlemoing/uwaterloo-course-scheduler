@@ -29,7 +29,7 @@ class ScheduleView {
         this.containers.main.appendChild(this.containers.semesters);
 
         // Add miscellaneous courses container
-        this.semesters.misc = new Semester({ id: 'misc', name: 'Misc.', }, this.eventBus);
+        this.semesters.misc = new Semester({ id: 'misc', name: 'Other courses', }, this.eventBus);
         this.containers.semesters.appendChild(this.semesters.misc.container);
 
         // Button for adding a semester
