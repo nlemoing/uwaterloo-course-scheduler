@@ -4,6 +4,10 @@ body {
     font-size: 12pt;
 }
 
+h1 {
+    text-align: center;
+}
+
 /* Button styles */
 .base-button {
     border: none;
@@ -69,12 +73,12 @@ select {
 #semesters,
 #schedules {
     display: grid;
-    grid-template-columns: repeat(4, 190px);
+    grid-template-columns: repeat(4, calc(25% - 10px));
     grid-gap: 10px;
 }
 
 #semester-misc {
-    grid-column: 1 / end;
+    grid-column: 1 / 5;
 }
 
 #semester-misc .course-container {
@@ -166,7 +170,7 @@ form.add-course.hidden {
 }
 
 form.add-course {
-    width: 190px;
+    width: 175px;
     margin: auto;
     display: flex;
     flex-direction: row;
