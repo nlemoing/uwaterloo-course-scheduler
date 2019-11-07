@@ -1,6 +1,7 @@
+import { plus, cross } from './icon.js'
 
 class Button {
-    constructor(title, onclick, classes = [], image) {
+    constructor(title, onclick = () => {}, classes = [], image = null) {
         this.title = title;
         this.onclick = onclick;
 
@@ -12,10 +13,7 @@ class Button {
 
         if (image) {
             image.classList.add('button-image');
-            const imageContainer = document.createElement('span');
-            imageContainer.classList.add('button-image-container');
-            imageContainer.appendChild(image);
-            this.container.appendChild(imageContainer);
+            this.container.appendChild(image);
         }
 
         // Listeners
@@ -26,18 +24,16 @@ class Button {
 
 class DeleteButton extends Button {
     constructor(title, onclick, classes = []) {
-        classes.push('delete');
-        const img = document.createElement('img');
-        img.src = '/images/x.svg';
+        classes.push('delete-button');
+        const img = cross()
         super(title, onclick, classes, img);
     }
 }
 
 class AddButton extends Button {
     constructor(title, onclick, classes = []) {
-        classes.push('add');
-        const img = document.createElement('img');
-        img.src = '/images/plus.svg';
+        classes.push('add-button');
+        const img = plus();
         super(title, onclick, classes, img);
     }
 }
