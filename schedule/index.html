@@ -3,10 +3,19 @@
 <head>
     <title>Course Scheduler</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="google-signin-scope" content="openid">
+    <meta name="google-signin-client_id" content="674143135942-mtn65sr4a2dfd7oq05mcnfr42tapog3k.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link href="./style.css" rel="stylesheet">
 </head>
 <body>
     <div id="root"></div>
+    <div class="g-signin2" data-onsuccess="googleSignIn" data-theme="dark"></div>
+    <script>
+      function googleSignIn(googleUser) {
+        app.login(googleUser)
+      }
+    </script>
 </body>
 <script type="module" src="./index.js"></script>
 </html>
