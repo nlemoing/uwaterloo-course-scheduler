@@ -43,7 +43,7 @@ class Course {
         document.onmousemove = (e) => {
             const { clientX, clientY } = e;
             this.eventBus.dispatch('coursedrag', this.course.id, { clientX, clientY });
-            container.style.position = 'absolute';
+            container.classList.add('dragging');
             container.style.left = `${clientX - x}px`;
             container.style.top = `${clientY - y}px`;
         }
@@ -52,8 +52,8 @@ class Course {
                 this.highlightedSemester.classList.remove('highlighted');
             }
             const { clientX, clientY } = e;
-            this.eventBus.dispatch('coursedrop', this.course.id, { clientX, clientY });
-            container.style.position = 'static';
+            this.eventBus.dispatch('coursedrop', this.course, { clientX, clientY });
+            container.classList.remove('dragging');
             document.onmouseup = null;
             document.onmousemove = null;
         }

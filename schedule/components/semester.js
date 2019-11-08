@@ -71,12 +71,12 @@ class Semester {
         }
     }
 
-    courseDrop(id, coords) {
+    courseDrop(course, coords) {
         this.container.classList.remove('highlighted');
-        if (this.containsCoordinates(coords)) {
-            const semesterId = this.semester.id !== 'misc' ?
-                this.semester.id : undefined;
-            this.eventBus.dispatch('editcourse', id, { semesterId, });
+        const { id } = this.semester;
+        if (this.containsCoordinates(coords) && course.semesterId !== id) {
+            const semesterId = id !== 'misc' ? id : undefined;
+            this.eventBus.dispatch('editcourse', course.id, { semesterId, });
         }
     }
 

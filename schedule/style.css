@@ -84,7 +84,7 @@ select {
 #semester-misc .course-container {
     display: grid;
     grid-template-columns: repeat(4, 190px);
-    grid-gap: 10px;
+    grid-column-gap: 10px;
 }
 
 .semester,
@@ -133,6 +133,11 @@ select {
     margin: 2px auto;
     border: solid rgb(200, 200, 200) 1px;
     border-left-width: 3px;
+}
+
+.course.dragging {
+    opacity: 0.75;
+    position: absolute;
 }
 
 .course.ahs {
