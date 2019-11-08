@@ -1,6 +1,6 @@
 import { Course } from '../components/course.js';
-import { DraftSemester, Semester } from '../components/semester.js';
-import { AddButton } from '../components/button.js';
+import { Semester } from '../components/semester.js';
+import { AddableList } from '../components/addableList.js';
 
 class ScheduleView {
     constructor(eventBus) {
@@ -8,42 +8,34 @@ class ScheduleView {
         this.semesters = {};
         this.courses = {};
 
-        // Main container outlines
-        this.containers = {
-            main: document.createElement('div'),
-            header: document.createElement('h1'),
-            semesters: document.createElement('div'),
-            addSemester: new AddButton(
-                'Add semester',
-                this.addDraftSemester.bind(this),
-                ['semester', 'large']
-            ).container
-        };
-        this.containers.main.id = 'schedule-view';
+        // Main container
+        this.container = document.createElement('div');
+        this.container.id = 'schedule-view';
 
         // Header
-        this.containers.main.appendChild(this.containers.header);
-        
+        this.header = document.createElement('h1');
+        this.container.appendChild(this.header);
+
         // Container for all semesters
-        this.containers.semesters.id = 'semesters';
-        this.containers.main.appendChild(this.containers.semesters);
+        this.semestersList = new AddableList(
+            'semesters',
+            (name) => { this.eventBus.dispatch('addsemester', { name }); },
+            'Add a semester'
+        );
+        this.container.appendChild(this.semestersList.container);
 
         // Add miscellaneous courses container
-        this.semesters.misc = new Semester({ name: 'Other courses', }, this.eventBus);
-        this.containers.semesters.appendChild(this.semesters.misc.container);
-
-        // Button for adding a semester
-        this.containers.semesters.appendChild(this.containers.addSemester);
+        this.miscSemester = new Semester({ name: 'Other courses', }, this.eventBus);
+        this.semestersList.add(this.miscSemester.container);
     }
 
     _reset() {
-        this.containers.header.textContent = '';
+        this.header.textContent = '';
 
         for (const courseId in this.courses) {
             this.deleteCourse(courseId);
         }
         for (const semesterId in this.semesters) {
-            if (semesterId === 'misc') continue;
             this.deleteSemester(semesterId)
         }
     }
@@ -53,27 +45,21 @@ class ScheduleView {
 
         const { name, semesters, courses, } = schedule;
         // Set header name
-        this.containers.header.textContent = name;
+        this.header.textContent = name;
         // Add each semester
         semesters.forEach(this.addSemester.bind(this));
         // Add each course
         courses.forEach(this.addCourse.bind(this));
 
         if (container) {
-            container.appendChild(this.containers.main);
+            container.appendChild(this.container);
         }
     }
 
     addSemester(semesterInfo) {
         const semester = new Semester(semesterInfo, this.eventBus);
         this.semesters[semesterInfo.id] = semester;
-        this.containers.semesters.insertBefore(semester.container, this.containers.addSemester);
-    }
-
-    addDraftSemester() {
-        const draftSemester = new DraftSemester(this.eventBus);
-        this.containers.semesters.insertBefore(draftSemester.container, this.containers.addSemester);
-        draftSemester.focus();
+        this.semestersList.add(semester.container);
     }
 
     deleteSemester(id) {
@@ -90,7 +76,7 @@ class ScheduleView {
         const course = new Course(courseInfo, this.eventBus);
         this.courses[courseId] = course;
 
-        const semester = this.semesters[semesterId] || this.semesters.misc;
+        const semester = this.semesters[semesterId] || this.miscSemester;
         semester.addCourse(course);
     }
 

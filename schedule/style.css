@@ -21,18 +21,13 @@ h1 {
 }
 
 .base-button .button-image {
-    width: 80%;
-    height: 80%;
+    width: 60%;
+    height: 60%;
 }
 
 .base-button .button-image path {
     fill: grey;
     transition: fill 0.5s;
-}
-
-.base-button.large .button-image {
-    width: 30%;
-    height: 30%;
 }
 
 .add-button.add-course, 
@@ -47,7 +42,7 @@ h1 {
 }
 
 .add-button:hover {
-    background-color: green;
+    background-color: green !important;
 }
 
 .add-button:hover path,
@@ -56,7 +51,7 @@ h1 {
 }
 
 .delete-button:hover {
-    background-color: red;
+    background-color: red !important;
 }
 
 /* Input */
@@ -68,6 +63,16 @@ select {
 #schedule-view {
     width: 800px;
     margin: auto;
+}
+
+#schedule-view .addable-list > * {
+    min-height: 200px;
+    width: 100%;
+    background-color: rgb(245, 245, 245);
+}
+
+#schedule-view .addable-list > .highlighted {
+    background-color: rgb(230, 230, 230);
 }
 
 #semesters,
@@ -85,19 +90,6 @@ select {
     display: grid;
     grid-template-columns: repeat(4, 190px);
     grid-column-gap: 10px;
-}
-
-.semester,
-.schedule {
-    min-height: 200px;
-    width: 100%;
-    background-color: rgb(245, 245, 245);
-}
-
-.semester.highlighted,
-.semester.add:hover {
-    background-color: rgb(230, 230, 230);
-    
 }
 
 .semester-header {
