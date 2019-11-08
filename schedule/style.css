@@ -31,7 +31,8 @@ h1 {
 }
 
 .add-button.add-course, 
-.delete-button.delete-semester {
+.delete-button.delete-semester,
+.delete-button.delete-schedule {
     width: 20px;
     height: 20px;
 }
@@ -60,23 +61,40 @@ select {
 }
 
 /* Page specific styles */
-#schedule-view {
+#schedule-view,
+#schedules-view {
     width: 800px;
     margin: auto;
 }
 
-#schedule-view .addable-list > * {
+#semesters > * {
     min-height: 200px;
     width: 100%;
     background-color: rgb(245, 245, 245);
 }
 
-#schedule-view .addable-list > .highlighted {
+#semesters > .highlighted {
     background-color: rgb(230, 230, 230);
 }
 
-#semesters,
 #schedules {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#schedules > div {
+    background-color: rgb(245, 245, 245);
+    width: 200px;
+    height: 40px;
+}
+
+#schedules > button {
+    width: 40px;
+    height: 40px;
+}
+
+#semesters {
     display: grid;
     grid-template-columns: repeat(4, calc(25% - 10px));
     grid-gap: 10px;
@@ -92,14 +110,19 @@ select {
     grid-column-gap: 10px;
 }
 
+.schedule-header,
 .semester-header {
     text-align: center;
-    background-color: rgb(255, 255, 250);
     display: flex;
     align-items: center;
 }
 
-.semester-header h2 {
+.semester-header {
+    background-color: rgb(255, 255, 250);
+}
+
+.semester-header h2,
+.schedule-header h2 {
     font-size: 20pt;
     display: inline-block;
     margin: 0;

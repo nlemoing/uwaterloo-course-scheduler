@@ -1,34 +1,26 @@
-import { DraftSchedule, Schedule } from '../components/schedule.js';
-import { AddButton } from '../components/button.js';
+import { Schedule } from '../components/schedule.js';
+import { AddableList } from '../components/addableList.js';
 
 class SchedulesView {
     constructor(eventBus) {
         this.eventBus = eventBus;
         this.schedules = {};
 
-        // Main container outlines
-        this.containers = {
-            main: document.createElement('div'),
-            header: document.createElement('h1'),
-            schedules: document.createElement('div'),
-            addSchedule: new AddButton(
-                'Add schedule',
-                this.addDraftSchedule.bind(this),
-                ['schedule', 'large']
-            ).container
-        };
-        this.containers.main.id = 'schedules-view';
+        // Main container
+        this.container = document.createElement('div');
+        this.container.id = 'schedules-view';
 
         // Header
-        this.containers.header.textContent = 'Schedules';
-        this.containers.main.appendChild(this.containers.header);
-        
-        // Container for all schedules
-        this.containers.schedules.id = 'schedules';
-        this.containers.main.appendChild(this.containers.schedules);
+        this.header = document.createElement('h1');
+        this.header.textContent = 'Schedules';
+        this.container.appendChild(this.header);
 
-        // Button for adding a schedule
-        this.containers.schedules.appendChild(this.containers.addSchedule);
+        this.schedulesList = new AddableList(
+            'schedules',
+            (name) => { this.eventBus.dispatch('addschedule', { name }) },
+            'Add schedule'
+        );
+        this.container.appendChild(this.schedulesList.container);
     }
 
     _reset() {
@@ -43,14 +35,14 @@ class SchedulesView {
         schedules.forEach(this.addSchedule.bind(this));
 
         if (container) {
-            container.appendChild(this.containers.main);
+            container.appendChild(this.container);
         }
     }
 
     addSchedule(scheduleInfo) {
         const schedule = new Schedule(scheduleInfo, this.eventBus);
         this.schedules[scheduleInfo.id] = schedule;
-        this.containers.schedules.insertBefore(schedule.container, this.containers.addSchedule);
+        this.schedulesList.add(schedule.container);
     }
 
     deleteSchedule(id) {
@@ -58,12 +50,6 @@ class SchedulesView {
             this.schedules[id].container.remove();
             delete this.schedules[id];
         }
-    }
-
-    addDraftSchedule() {
-        const draftSchedule = new DraftSchedule(this.eventBus);
-        this.containers.schedules.insertBefore(draftSchedule.container, this.containers.addSchedule);
-        draftSchedule.focus();
     }
 }
 
