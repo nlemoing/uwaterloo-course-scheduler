@@ -9,7 +9,7 @@ class Semester {
         // Main container
         const { id, name, } = this.semester;
         this.container = document.createElement('div');
-        this.container.id = `semester-${id}`;
+        this.container.id = id ? `semester-${id}` : 'semester-misc';
         this.container.classList.add('semester');
         
         // Header
@@ -39,7 +39,7 @@ class Semester {
         this.container.appendChild(form.container);
 
         // Delete button with deletion event
-        if (id !== 'misc') {
+        if (id) {
             const deleteButton = new DeleteButton(
                 'Delete semester',
                 () => { this.eventBus.dispatch('deletesemester', id) },

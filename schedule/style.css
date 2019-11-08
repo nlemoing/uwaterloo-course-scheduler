@@ -170,6 +170,10 @@ select {
     height: 16px;
 }
 
+.course:not(:hover) button {
+    visibility: hidden;
+}
+
 form.add-course.hidden {
     display: none;
 }
