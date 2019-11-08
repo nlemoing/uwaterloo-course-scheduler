@@ -24,10 +24,6 @@ class App {
         }
     }
 
-    login(user) {
-        console.log(user.getAuthResponse().id_token);
-    }
-
     bindEvents() {
         this.eventBus.on('addschedule', this.createSchedule.bind(this));
         this.eventBus.on('deleteschedule', this.deleteSchedule.bind(this));
