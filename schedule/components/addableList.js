@@ -30,7 +30,6 @@ const ESCAPE_KEY = 27;
 
 class Draft {
     constructor(onsubmit) {
-        console.log(onsubmit);
         this.onsubmit = onsubmit;
 
         this.container = document.createElement('div');
