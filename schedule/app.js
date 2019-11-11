@@ -3,10 +3,10 @@ import { getSchedule } from './models/schedule.js';
 
 class App {
     constructor(config) {
-        const { eventBus, container } = config;
+        const { eventBus, containers } = config;
         this.eventBus = eventBus;
-        this.container = container;
-        this.scheduleView = new ScheduleView(eventBus);
+        
+        this.scheduleView = new ScheduleView(eventBus, containers.mainView);
     }
 
     async initialize() {
@@ -26,7 +26,7 @@ class App {
             return this.notFound();
         }
         this.schedule = schedule;
-        this.scheduleView.render(schedule, this.container);
+        this.scheduleView.render(schedule);
     }
 
     warning() {

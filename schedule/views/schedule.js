@@ -4,18 +4,13 @@ import { AddableList } from '../components/addableList.js';
 import { addSemester } from '../models/schedule.js';
 
 class ScheduleView {
-    constructor(eventBus) {
+    constructor(eventBus, containers) {
+        this.containers = containers;
         this.eventBus = eventBus;
         this.semesters = {};
         this.courses = {};
 
-        // Main container
-        this.container = document.createElement('div');
-        this.container.id = 'schedule-view';
-
-        // Header
-        this.header = document.createElement('h1');
-        this.container.appendChild(this.header);
+        const { main } = this.containers;
 
         // Container for all semesters
         this.semestersList = new AddableList(
@@ -23,7 +18,7 @@ class ScheduleView {
             this.addSemester.bind(this),
             'Add a semester'
         );
-        this.container.appendChild(this.semestersList.container);
+        main.appendChild(this.semestersList.container);
 
         // Add miscellaneous courses container
         this.miscSemester = new Semester({ name: 'Other courses', }, this.eventBus);
@@ -40,7 +35,7 @@ class ScheduleView {
     }
 
     _reset() {
-        this.header.textContent = '';
+        this.containers.header.textContent = '';
 
         for (const courseId in this.courses) {
             this.removeCourseContainer(courseId);
@@ -50,20 +45,17 @@ class ScheduleView {
         }
     }
 
-    render(schedule, container) {
+    render(schedule) {
         this._reset();
 
         const { name, semesters, courses, } = this.schedule = schedule;
         // Set header name
-        this.header.textContent = name;
+        this.containers.header.textContent = name;
         // Add each semester
         semesters.forEach(this.createSemesterContainer.bind(this));
         // Add each course
         courses.forEach(this.createCourseContainer.bind(this));
 
-        if (container) {
-            container.appendChild(this.container);
-        }
     }
 
     async addSemester(name) {
