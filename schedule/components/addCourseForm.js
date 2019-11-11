@@ -1,5 +1,6 @@
 import { CourseModel } from '../models/course.js';
 import { CancelButton, SubmitButton } from './button.js';
+import { addCourse } from '../models/schedule.js';
 
 const courseModel = new CourseModel();
 
@@ -112,12 +113,18 @@ class AddCourseForm {
         this.course = this.courseNumberInput.value;
     }
 
-    submit(e) {
+    async submit(e) {
         e.preventDefault();
+        const scheduleId = this.semester.scheduleId;
         const semesterId = this.semester.id !== 'misc' ?
             this.semester.id : undefined;
         const courseId = this.course.id;
-        this.eventBus.dispatch('addcourse', { courseId, semesterId, });
+        const course = await addCourse(scheduleId, { courseId, semesterId });
+        if (!course) {
+            this.eventBus.dispatch('error', { message: 'Unable to add course' });
+            return;
+        }
+        this.eventBus.dispatch('addcourse', course);
     }
 
     get container() {

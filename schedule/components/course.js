@@ -1,11 +1,12 @@
 import { DeleteButton } from './button.js';
+import { deleteCourse } from '../models/schedule.js';
 
 class Course {
     constructor(course, eventBus, ) {
         this.course = course;
         this.eventBus = eventBus;
 
-        const { id, info } = this.course;
+        const { id, scheduleId, info } = this.course;
         const { subject, number } = info;
         const { abbreviation, faculty } = subject;
         // Main container
@@ -27,13 +28,24 @@ class Course {
         // Add delete button and attach delete listener
         const deleteButton = new DeleteButton(
             'Delete course',
-            () => { this.eventBus.dispatch('deletecourse', id) },
+            this.delete.bind(this),
             ['delete-course']
         )
         this.container.appendChild(deleteButton.container);
 
         // Make course container draggable
         this.container.addEventListener('mousedown', this.drag.bind(this));
+    }
+
+    async delete() {
+        let { scheduleId, id } = this.course;
+        id = await deleteCourse(scheduleId, id);
+        if (!id) {
+            this.eventBus.dispatch('error', { message: 'Unable to delete course' });
+            return;
+        }
+        this.eventBus.dispatch('deletecourse', id);
+        this.container.remove();
     }
 
     drag(evt) {

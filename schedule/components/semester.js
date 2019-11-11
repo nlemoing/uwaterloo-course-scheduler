@@ -1,5 +1,6 @@
 import { AddCourseForm } from './addCourseForm.js';
 import { DeleteButton, AddButton } from './button.js';
+import { deleteSemester, editCourse, } from '../models/schedule.js';
 
 class Semester {
     constructor(semester, eventBus) { 
@@ -7,7 +8,7 @@ class Semester {
         this.eventBus = eventBus;
 
         // Main container
-        const { id, name, } = this.semester;
+        const { id, scheduleId, name, } = this.semester;
         this.container = document.createElement('div');
         this.container.id = id ? `semester-${id}` : 'semester-misc';
         this.container.classList.add('semester');
@@ -42,7 +43,7 @@ class Semester {
         if (id) {
             const deleteButton = new DeleteButton(
                 'Delete semester',
-                () => { this.eventBus.dispatch('deletesemester', id) },
+                this.delete.bind(this),
                 ['delete-semester']
             );
             header.appendChild(deleteButton.container);
@@ -55,6 +56,17 @@ class Semester {
 
         this.eventBus.on('coursedrag', this.courseDrag.bind(this));
         this.eventBus.on('coursedrop', this.courseDrop.bind(this));
+    }
+
+    async delete() {
+        let { scheduleId, id } = this.semester;
+        id = await deleteSemester(scheduleId, id);
+        if (!id) {
+            this.eventBus.dispatch('error', { message: 'Unable to delete semester' });
+            return;
+        }
+        this.eventBus.dispatch('deletesemester', id);
+        this.container.remove();
     }
 
     containsCoordinates({ clientX, clientY }) {
@@ -71,13 +83,20 @@ class Semester {
         }
     }
 
-    courseDrop(course, coords) {
+    async courseDrop(course, coords) {
         this.container.classList.remove('highlighted');
-        const { id } = this.semester;
-        if (this.containsCoordinates(coords) && course.semesterId !== id) {
-            const semesterId = id !== 'misc' ? id : undefined;
-            this.eventBus.dispatch('editcourse', course.id, { semesterId, });
+        const { id, scheduleId } = this.semester;
+        // If the drop doesn't affect the current semester, don't do anything
+        if (!this.containsCoordinates(coords) || course.semesterId === id) {
+            return;
         }
+        const semesterId = id !== 'misc' ? id : undefined;
+        course = await editCourse(scheduleId, course.id, { semesterId });
+        if (!course) {
+            this.eventBus.dispatch('error', { message: 'Unable to edit course' });
+            return;
+        }
+        this.eventBus.dispatch('editcourse', course);
     }
 
     addCourse(course) {
