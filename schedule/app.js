@@ -1,4 +1,3 @@
-import { SchedulesView } from './views/schedules.js';
 import { ScheduleView } from './views/schedule.js';
 import { ScheduleModel } from './models/schedule.js';
 
@@ -7,7 +6,6 @@ class App {
         const { eventBus, container } = config;
         this.eventBus = eventBus;
         this.container = container;
-        this.schedulesView = new SchedulesView(eventBus);
         this.scheduleView = new ScheduleView(eventBus);
         this.scheduleModel = new ScheduleModel();
     }
@@ -20,7 +18,7 @@ class App {
             const scheduleId = parseInt(params.get('scheduleId'));
             this.loadSchedule(scheduleId);
         } else {
-            this.loadSchedules();
+            this.notFound();
         }
     }
 
@@ -41,15 +39,6 @@ class App {
         }
         this.schedule = schedule;
         this.scheduleView.render(schedule, this.container);
-    }
-
-    async loadSchedules() {
-        const schedules = await this.scheduleModel.getSchedules();
-        if (!schedules) {
-            return this.notFound();
-        }
-        this.schedules = schedules;
-        this.schedulesView.render(schedules, this.container);
     }
 
     async createSchedule(schedule) {
