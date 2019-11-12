@@ -2,11 +2,13 @@
 class Requirement {
     constructor(parent, name) {
         this.container = document.createElement('div');
-        this.container.classList.add('plan-item');
+        this.container.classList.add('plan-item', 'collapsed');
         
         // Title button is collapsable/expandable contained items
         const title = document.createElement('button');
+        title.classList.add('base-button');
         title.textContent = name;
+        title.addEventListener('click', () => { this.container.classList.toggle('collapsed'); })
         this.container.appendChild(title);
 
         parent.appendChild(this.container);
@@ -33,7 +35,7 @@ class List extends Requirement {
         const itemsContainer = document.createElement('div');
         itemsContainer.classList.add('plan-items');
         this.container.appendChild(itemsContainer);
-        this.reqs = items.map((item) => { createRequirement(itemsContainer, item) });
+        this.reqs = items.map(item => createRequirement(itemsContainer, item));
     }
 }
 
@@ -99,7 +101,6 @@ class Course extends Requirement {
 }
 
 function createRequirement(parent, item) {
-    console.log(item);
     switch (item.type) {
         case 'allOf': return new AllOf(parent, item.items, item.name);
         case 'oneOf': return new OneOf(parent, item.items, item.name);

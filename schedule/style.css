@@ -118,7 +118,8 @@ select {
     padding: 5px 0;
 }
 
-.course {
+.course,
+.plan-item > button {
     background-color: rgb(255, 255, 250);
     width: 160px;
     min-height: 16px;
@@ -127,6 +128,27 @@ select {
     margin: 2px auto;
     border: solid rgb(200, 200, 200) 1px;
     border-left-width: 3px;
+}
+
+.plan-item > button {
+    cursor: pointer;
+}
+
+.plan-item > button:hover,
+.plan-item:not(.collapsed) > button {
+    background-color: rgb(230, 230, 230);
+}
+
+.plan-item.satisfied > button {
+    border-left-color: green;
+}
+
+.plan-item > .plan-items {
+    margin-left: 3px;
+}
+
+.plan-item.collapsed > .plan-items {
+    display: none;
 }
 
 .course.dragging {
