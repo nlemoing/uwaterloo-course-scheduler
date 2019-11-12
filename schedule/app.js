@@ -1,5 +1,7 @@
 import { ScheduleView } from './views/schedule.js';
+import { PlanView } from './views/plan.js';
 import { getSchedule } from './models/schedule.js';
+import { getPlans } from './models/plan.js';
 
 class App {
     constructor(config) {
@@ -7,6 +9,7 @@ class App {
         this.eventBus = eventBus;
         
         this.scheduleView = new ScheduleView(eventBus, containers.mainView);
+        this.planView = new PlanView(eventBus, containers.plans);
     }
 
     async initialize() {
@@ -27,6 +30,10 @@ class App {
         }
         this.schedule = schedule;
         this.scheduleView.render(schedule);
+        const plans = await getPlans(schedule.id);
+        if (plans) {
+            this.planView.render(plans, schedule.courses);
+        }
     }
 
     warning() {

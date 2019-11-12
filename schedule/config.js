@@ -6,6 +6,10 @@ export default {
         mainView: {
             main: document.getElementById('schedule-view'),
             header: document.getElementById('schedule-title'),
+        },
+        plans: {
+            main: document.getElementById('plan-view'),
+            body: document.getElementById('plans-container')
         }
     }
 }
