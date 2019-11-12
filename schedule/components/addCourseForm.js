@@ -1,14 +1,11 @@
-import { CourseModel } from '../models/course.js';
+import { getSubjects, getCoursesForSubject } from '../models/course.js';
 import { CancelButton, SubmitButton } from './button.js';
 import { addCourse } from '../models/schedule.js';
-
-const courseModel = new CourseModel();
 
 class AddCourseForm {
     constructor(semester, eventBus) {
         this.semester = semester;
         this.eventBus = eventBus;
-        this.courseModel = courseModel;
 
         // Subject is changed when the update form's value is changed.
         this._subject = null;
@@ -83,7 +80,7 @@ class AddCourseForm {
     }
 
     async _loadSubjects() {
-        this.subjects = await this.courseModel.getSubjects();
+        this.subjects = await getSubjects();
         let option;
         for (const subject of this.subjects) {
             option = document.createElement('option');
@@ -101,7 +98,7 @@ class AddCourseForm {
         const subjectId = this.subject.id;
         if (!(subjectId in this.numbersBySubject)) {
             this.numbersBySubject[subjectId] = 
-                await this.courseModel.getNumbersForSubject(subjectId);
+                await getCoursesForSubject(subjectId);
         }
         const courses = this.numbersBySubject[subjectId];
         let option;

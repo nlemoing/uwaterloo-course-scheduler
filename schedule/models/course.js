@@ -1,35 +1,30 @@
 import API from '../util/api.js';
 
-class CourseModel {
+let subjects = null;
+const numbersForSubject = {};
 
-    constructor() {
-        this.subjects = null;
-        this.numbersForSubject = {};
-    }
-
-    async getSubjects() {
-        if (!this.subjects) {
-            // If nothing is in the cache, fetch from the API
-            const subjects = await API('/subjects');
-            // If the request failed, return nothing (with potential to try again)
-            if (!subjects.ok) {
-                return [];
-            }
-            this.subjects = await subjects.json();
+async function getSubjects() {
+    if (!subjects) {
+        // If nothing is in the cache, fetch from the API
+        const response = await API('/subjects');
+        // If the request failed, return nothing (with potential to try again)
+        if (!response.ok) {
+            return [];
         }
-        return this.subjects;
+        subjects = await response.json();
     }
-
-    async getNumbersForSubject(subjectId) {
-        if (!(subjectId in this.numbersForSubject)) {
-            const courses = await API(`/subjects/${subjectId}/courses`);
-            if (!courses.ok) {
-                return [];
-            }
-            this.numbersForSubject[subjectId] = await courses.json();
-        }
-        return this.numbersForSubject[subjectId];
-    }
+    return subjects;
 }
 
-export { CourseModel };
+async function getCoursesForSubject(subjectId) {
+    if (!(subjectId in numbersForSubject)) {
+        const courses = await API(`/subjects/${subjectId}/courses`);
+        if (!courses.ok) {
+            return [];
+        }
+        numbersForSubject[subjectId] = await courses.json();
+    }
+    return numbersForSubject[subjectId];
+}
+
+export { getSubjects, getCoursesForSubject };
