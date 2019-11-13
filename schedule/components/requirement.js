@@ -51,18 +51,16 @@ class AllOf extends List {
     }
 
     satisfy(courses) {
-        let ret = {
-            satisfied: true,
-            remainingCourses: courses
-        }
+        let remainingCourses = courses;
+        let satisfied = true;
+        let ret;
         for (const req of this.reqs) {
-            ret = req.satisfy(ret.remainingCourses);
-            if (!ret.satisfied) {
-                break;
-            }
+            ret = req.satisfy(remainingCourses);
+            remainingCourses = ret.remainingCourses;
+            satisfied = satisfied && ret.satisfied;
         }
-        this.updateClass(ret.satisfied);
-        return ret;
+        this.updateClass(satisfied);
+        return { satisfied, remainingCourses };
     }
 }
 
@@ -72,18 +70,16 @@ class OneOf extends List {
     }
 
     satisfy(courses) {
-        let ret = {
-            satisfied: false,
-            remainingCourses: courses
-        }
+        let remainingCourses = courses;
+        let satisfied = false;
+        let ret;
         for (const req of this.reqs) {
-            ret = req.satisfy(ret.remainingCourses);
-            if (ret.satisfied) {
-                break;
-            }
+            ret = req.satisfy(remainingCourses);
+            remainingCourses = ret.remainingCourses;
+            satisfied = satisfied || ret.satisfied;
         }
-        this.updateClass(ret.satisfied);
-        return ret;
+        this.updateClass(satisfied);
+        return { satisfied, remainingCourses };
     }
 }
 
@@ -101,10 +97,13 @@ class Course extends Requirement {
 
     satisfy(courses) {
         const idx = courses.findIndex((course) => {
-            return this._courseId === course.courseId;
+            return this.courseId === course.courseId;
         });
-        const satisfied = idx === -1;
-        const remainingCourses = satisfied ? courses.splice(idx, 1) : courses;
+        const satisfied = idx !== -1;
+        const remainingCourses = courses;
+        if (satisfied) {
+            remainingCourses.splice(idx, 1);
+        }
         this.updateClass(satisfied);
         return { satisfied, remainingCourses };
     }

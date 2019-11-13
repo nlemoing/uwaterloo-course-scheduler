@@ -6,6 +6,9 @@ class PlanView {
         this.containers = containers;
         this.plans = [];
         this.courses = [];
+
+        this.eventBus.on('addcourse', this.addCourse.bind(this));
+        this.eventBus.on('deletecourse', this.deleteCourse.bind(this));
     }
 
     render(plans, courses) {
@@ -18,8 +21,18 @@ class PlanView {
         this.plans.push(createRequirement(this.containers.body, plan));
     }
 
+    addCourse(course) {
+        this.courses.push(course);
+        this.satisfy();
+    }
+
+    deleteCourse(id) {
+        this.courses = this.courses.filter(course => course.id !== id);
+        this.satisfy();
+    }
+
     satisfy() {
-        this.plans.forEach(plan => plan.satisfy(this.courses));
+        this.plans.forEach(plan => plan.satisfy(Array.from(this.courses)));
     }
 }
 
