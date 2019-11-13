@@ -64,20 +64,25 @@ class AllOf extends List {
     }
 }
 
-class OneOf extends List {
-    constructor(parent, items, name = 'One of') {
+class SomeOf extends List {
+    constructor(parent, number, items, name) {
+        name = name || `${number} of`;
         super(parent, items, name);
+        this.number = number
     }
 
     satisfy(courses) {
         let remainingCourses = courses;
-        let satisfied = false;
+        let numSatisfied = 0;
         let ret;
         for (const req of this.reqs) {
             ret = req.satisfy(remainingCourses);
             remainingCourses = ret.remainingCourses;
-            satisfied = satisfied || ret.satisfied;
+            if (ret.satisfied) {
+                numSatisfied += 1;
+            }
         }
+        const satisfied = numSatisfied >= this.number;
         this.updateClass(satisfied);
         return { satisfied, remainingCourses };
     }
@@ -113,7 +118,8 @@ class Course extends Requirement {
 function createRequirement(parent, item) {
     switch (item.type) {
         case 'allOf': return new AllOf(parent, item.items, item.name);
-        case 'oneOf': return new OneOf(parent, item.items, item.name);
+        case 'oneOf': return new SomeOf(parent, 1, item.items, item.name);
+        case 'someOf': return new SomeOf(parent, item.number, item.items, item.name);
         case 'course': return new Course(parent, item.courseId);
         default: return new Unknown(parent);
     }

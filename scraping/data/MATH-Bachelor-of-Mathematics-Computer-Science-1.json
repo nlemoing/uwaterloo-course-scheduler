@@ -1,0 +1,118 @@
+{
+  "type": "allOf",
+  "name": "CS BMath",
+  "items": [
+    {
+      "type": "someOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2066
+        },
+        {
+          "type": "course",
+          "courseId": 2069
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2067
+        },
+        {
+          "type": "course",
+          "courseId": 2070
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3932
+        },
+        {
+          "type": "course",
+          "courseId": 3934
+        },
+        {
+          "type": "course",
+          "courseId": 3936
+        },
+        {
+          "type": "course",
+          "courseId": 3938
+        },
+        {
+          "type": "course",
+          "courseId": 3941
+        },
+        {
+          "type": "course",
+          "courseId": 3945
+        },
+        {
+          "type": "course",
+          "courseId": 3949
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 396
+            },
+            {
+              "type": "course",
+              "courseId": 3953
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 3952
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3950
+        },
+        {
+          "type": "course",
+          "courseId": 3951
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 455
+        },
+        {
+          "type": "course",
+          "courseId": 3993
+        },
+        {
+          "type": "course",
+          "courseId": 3285
+        }
+      ]
+    }
+  ]
+}

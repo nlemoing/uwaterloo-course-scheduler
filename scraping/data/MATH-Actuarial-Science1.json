@@ -1,0 +1,132 @@
+{
+  "type": "allOf",
+  "name": "Actuarial Science",
+  "items": [
+    {
+      "type": "someOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2066
+        },
+        {
+          "type": "course",
+          "courseId": 2069
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 1256
+        },
+        {
+          "type": "course",
+          "courseId": 1784
+        },
+        {
+          "type": "course",
+          "courseId": 1785
+        },
+        {
+          "type": "course",
+          "courseId": 1787
+        },
+        {
+          "type": "course",
+          "courseId": 1788
+        },
+        {
+          "type": "course",
+          "courseId": 1791
+        },
+        {
+          "type": "course",
+          "courseId": 1795
+        },
+        {
+          "type": "course",
+          "courseId": 397
+        },
+        {
+          "type": "course",
+          "courseId": 153
+        },
+        {
+          "type": "course",
+          "courseId": 154
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 1665
+            },
+            {
+              "type": "course",
+              "courseId": 2935
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 2931
+        },
+        {
+          "type": "course",
+          "courseId": 3267
+        },
+        {
+          "type": "course",
+          "courseId": 3268
+        },
+        {
+          "type": "course",
+          "courseId": 3270
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3273
+        },
+        {
+          "type": "course",
+          "courseId": 3274
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 1310
+        },
+        {
+          "type": "course",
+          "courseId": 3279
+        },
+        {
+          "type": "course",
+          "courseId": 3280
+        },
+        {
+          "type": "course",
+          "courseId": 3286
+        },
+        {
+          "type": "course",
+          "courseId": 3288
+        }
+      ]
+    }
+  ]
+}
