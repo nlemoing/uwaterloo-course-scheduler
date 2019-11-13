@@ -60,9 +60,17 @@ select {
 }
 
 /* Page specific styles */
+#main-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 #schedule-view {
     width: 800px;
-    margin: auto;
+}
+
+#plan-view {
+    width: 200px;
 }
 
 #semesters > * {
