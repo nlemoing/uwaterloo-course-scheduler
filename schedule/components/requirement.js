@@ -91,6 +91,7 @@ class Course extends Requirement {
         this.courseId = courseId;
 
         getCourse(courseId).then(course => {
+            if (!course) return;
             this.setName(`${course.subject.abbreviation} ${course.number}`);
         });
     }
