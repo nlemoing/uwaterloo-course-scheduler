@@ -2,5 +2,9 @@
   {
     "id": 1,
     "name": "My schedule"
+  },
+  {
+    "id": 2,
+    "name": "Blank schedule"
   }
 ]
