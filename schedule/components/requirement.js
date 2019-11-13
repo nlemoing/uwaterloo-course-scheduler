@@ -1,3 +1,4 @@
+import { getCourse } from '../models/course.js';
 
 class Requirement {
     constructor(parent, name) {
@@ -5,13 +6,18 @@ class Requirement {
         this.container.classList.add('plan-item', 'collapsed');
         
         // Title button is collapsable/expandable contained items
-        const title = document.createElement('button');
-        title.classList.add('base-button');
-        title.textContent = name;
-        title.addEventListener('click', () => { this.container.classList.toggle('collapsed'); })
-        this.container.appendChild(title);
+        this.title = document.createElement('button');
+        this.title.classList.add('base-button');
+        this.title.addEventListener('click', () => { this.container.classList.toggle('collapsed'); })
+        this.container.appendChild(this.title);
+
+        this.setName(name);
 
         parent.appendChild(this.container);
+    }
+
+    setName(name) {
+        this.title.textContent = name;
     }
 
     updateClass(val) {
@@ -84,9 +90,13 @@ class OneOf extends List {
 class Course extends Requirement {
     constructor(parent, courseId) {
         // Later, use courseModel to get display name of course
-        const name = `${courseId}`;
-        super(parent, name)
+        let name = `${courseId}`;
+        super(parent, name);
         this.courseId = courseId;
+
+        getCourse(courseId).then(course => {
+            this.setName(`${course.subject.abbreviation} ${course.number}`);
+        });
     }
 
     satisfy(courses) {

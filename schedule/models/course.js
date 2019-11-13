@@ -1,7 +1,7 @@
 import API from '../util/api.js';
 
 let subjects = null;
-const numbersForSubject = {};
+const coursesForSubject = {};
 
 async function getSubjects() {
     if (!subjects) {
@@ -17,14 +17,22 @@ async function getSubjects() {
 }
 
 async function getCoursesForSubject(subjectId) {
-    if (!(subjectId in numbersForSubject)) {
+    if (!(subjectId in coursesForSubject)) {
         const courses = await API(`/subjects/${subjectId}/courses`);
         if (!courses.ok) {
             return [];
         }
-        numbersForSubject[subjectId] = await courses.json();
+        coursesForSubject[subjectId] = await courses.json();
     }
-    return numbersForSubject[subjectId];
+    return coursesForSubject[subjectId];
 }
 
-export { getSubjects, getCoursesForSubject };
+async function getCourse(courseId) {
+    const course = await API(`/courses/${courseId}`);
+    if (!course.ok) {
+        return null;
+    }
+    return await course.json();
+}
+
+export { getSubjects, getCoursesForSubject, getCourse };
