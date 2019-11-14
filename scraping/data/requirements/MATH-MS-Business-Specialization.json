@@ -1,0 +1,176 @@
+{
+  "type": "allOf",
+  "name": "Business Specialization",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 1278
+            },
+            {
+              "type": "course",
+              "courseId": 1786
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 1783
+        },
+        {
+          "type": "course",
+          "courseId": 1784
+        },
+        {
+          "type": "course",
+          "courseId": 1788
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 1256
+        },
+        {
+          "type": "course",
+          "courseId": 1257
+        },
+        {
+          "type": "course",
+          "courseId": 153
+        },
+        {
+          "type": "course",
+          "courseId": 154
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 1262
+            },
+            {
+              "type": "course",
+              "courseId": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 26
+            },
+            {
+              "type": "course",
+              "courseId": 2143
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 423
+        },
+        {
+          "type": "course",
+          "courseId": 424
+        },
+        {
+          "type": "course",
+          "courseId": 425
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 426
+        },
+        {
+          "type": "course",
+          "courseId": 433
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 2,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3928
+        },
+        {
+          "type": "course",
+          "courseId": 3944
+        },
+        {
+          "type": "course",
+          "courseId": 3957
+        },
+        {
+          "type": "course",
+          "courseId": 3273
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3942
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3265
+        },
+        {
+          "type": "course",
+          "courseId": 3266
+        }
+      ]
+    }
+  ]
+}

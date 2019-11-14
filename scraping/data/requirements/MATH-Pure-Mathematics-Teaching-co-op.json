@@ -1,0 +1,238 @@
+{
+  "type": "allOf",
+  "name": "Pure Mathematics/Teaching (co-op only)",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2066
+        },
+        {
+          "type": "course",
+          "courseId": 2069
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2067
+        },
+        {
+          "type": "course",
+          "courseId": 2070
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 395
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 396
+            },
+            {
+              "type": "course",
+              "courseId": 3953
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 397
+        },
+        {
+          "type": "course",
+          "courseId": 398
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2901
+        },
+        {
+          "type": "course",
+          "courseId": 2902
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2907
+        },
+        {
+          "type": "course",
+          "courseId": 2910
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 400
+            },
+            {
+              "type": "course",
+              "courseId": 2904
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 2906
+        },
+        {
+          "type": "course",
+          "courseId": 2912
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 2,
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 401
+            },
+            {
+              "type": "course",
+              "courseId": 2905
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 2901
+        },
+        {
+          "type": "course",
+          "courseId": 2902
+        },
+        {
+          "type": "course",
+          "courseId": 2903
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 2908
+            },
+            {
+              "type": "course",
+              "courseId": 2910
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 2909
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 435
+        },
+        {
+          "type": "course",
+          "courseId": 452
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2933
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 3797
+            },
+            {
+              "type": "course",
+              "courseId": 3798
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3800
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 3801
+            },
+            {
+              "type": "course",
+              "courseId": 3802
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

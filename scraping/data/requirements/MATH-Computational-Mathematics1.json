@@ -1,0 +1,261 @@
+{
+  "type": "allOf",
+  "name": "Computational Mathematics",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2066
+        },
+        {
+          "type": "course",
+          "courseId": 2069
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2067
+        },
+        {
+          "type": "course",
+          "courseId": 2070
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 396
+            },
+            {
+              "type": "course",
+              "courseId": 3953
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3929
+        },
+        {
+          "type": "course",
+          "courseId": 3934
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3931
+        },
+        {
+          "type": "course",
+          "courseId": 3932
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 4,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 402
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 424
+            },
+            {
+              "type": "course",
+              "courseId": 425
+            }
+          ]
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 3936
+            },
+            {
+              "type": "course",
+              "courseId": 2903
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 3938
+        },
+        {
+          "type": "course",
+          "courseId": 3977
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 3273
+            },
+            {
+              "type": "course",
+              "courseId": 3274
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 4,
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 409
+            },
+            {
+              "type": "course",
+              "courseId": 785
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 413
+        },
+        {
+          "type": "course",
+          "courseId": 430
+        },
+        {
+          "type": "course",
+          "courseId": 431
+        },
+        {
+          "type": "course",
+          "courseId": 432
+        },
+        {
+          "type": "course",
+          "courseId": 433
+        },
+        {
+          "type": "course",
+          "courseId": 434
+        },
+        {
+          "type": "course",
+          "courseId": 443
+        },
+        {
+          "type": "course",
+          "courseId": 444
+        },
+        {
+          "type": "course",
+          "courseId": 446
+        },
+        {
+          "type": "course",
+          "courseId": 447
+        },
+        {
+          "type": "course",
+          "courseId": 454
+        },
+        {
+          "type": "course",
+          "courseId": 455
+        },
+        {
+          "type": "course",
+          "courseId": 3945
+        },
+        {
+          "type": "course",
+          "courseId": 3968
+        },
+        {
+          "type": "course",
+          "courseId": 3975
+        },
+        {
+          "type": "course",
+          "courseId": 3978
+        },
+        {
+          "type": "course",
+          "courseId": 3979
+        },
+        {
+          "type": "course",
+          "courseId": 3980
+        },
+        {
+          "type": "course",
+          "courseId": 3982
+        },
+        {
+          "type": "course",
+          "courseId": 3984
+        },
+        {
+          "type": "course",
+          "courseId": 2916
+        },
+        {
+          "type": "course",
+          "courseId": 3285
+        },
+        {
+          "type": "course",
+          "courseId": 3286
+        },
+        {
+          "type": "course",
+          "courseId": 3287
+        },
+        {
+          "type": "course",
+          "courseId": 3289
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "type": "allOf",
+  "name": "Bachelor of Computer Science",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3920
+        },
+        {
+          "type": "course",
+          "courseId": 3922
+        },
+        {
+          "type": "course",
+          "courseId": 3926
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3923
+        },
+        {
+          "type": "course",
+          "courseId": 3927
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2043
+        },
+        {
+          "type": "course",
+          "courseId": 2047
+        },
+        {
+          "type": "course",
+          "courseId": 2051
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2044
+        },
+        {
+          "type": "course",
+          "courseId": 2048
+        },
+        {
+          "type": "course",
+          "courseId": 2052
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2045
+        },
+        {
+          "type": "course",
+          "courseId": 2049
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2046
+        },
+        {
+          "type": "course",
+          "courseId": 2050
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2067
+        },
+        {
+          "type": "course",
+          "courseId": 2070
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3260
+        },
+        {
+          "type": "course",
+          "courseId": 3262
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3261
+        },
+        {
+          "type": "course",
+          "courseId": 3263
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3932
+        },
+        {
+          "type": "course",
+          "courseId": 3934
+        },
+        {
+          "type": "course",
+          "courseId": 3936
+        },
+        {
+          "type": "course",
+          "courseId": 3938
+        },
+        {
+          "type": "course",
+          "courseId": 3941
+        },
+        {
+          "type": "course",
+          "courseId": 3945
+        },
+        {
+          "type": "course",
+          "courseId": 3949
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "subject": "CS",
+      "low": "340",
+      "high": "398"
+    },
+    {
+      "type": "range",
+      "subject": "CS",
+      "low": "440",
+      "high": "489"
+    },
+    {
+      "type": "range",
+      "subject": "CS",
+      "low": "440",
+      "high": "489"
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 455
+        },
+        {
+          "type": "course",
+          "courseId": 3993
+        },
+        {
+          "type": "course",
+          "courseId": 3285
+        },
+        {
+          "type": "group",
+          "subject": "CS",
+          "levels": [
+            6,
+            7
+          ]
+        },
+        {
+          "type": "group",
+          "subject": "CS",
+          "levels": [
+            6,
+            7
+          ]
+        }
+      ]
+    }
+  ]
+}

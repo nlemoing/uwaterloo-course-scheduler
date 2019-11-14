@@ -1,0 +1,52 @@
+{
+  "type": "allOf",
+  "name": "Computer Science Minor",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2067
+        },
+        {
+          "type": "course",
+          "courseId": 2070
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3920
+        },
+        {
+          "type": "course",
+          "courseId": 3922
+        },
+        {
+          "type": "course",
+          "courseId": 3926
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3923
+        },
+        {
+          "type": "course",
+          "courseId": 3927
+        }
+      ]
+    }
+  ]
+}

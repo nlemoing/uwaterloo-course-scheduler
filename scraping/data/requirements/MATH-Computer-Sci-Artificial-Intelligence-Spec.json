@@ -1,0 +1,137 @@
+{
+  "type": "allOf",
+  "name": "Artificial Intelligence Specialization",
+  "items": [
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3983
+        },
+        {
+          "type": "course",
+          "courseId": 3988
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3979
+        },
+        {
+          "type": "course",
+          "courseId": 3982
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 1019
+        },
+        {
+          "type": "course",
+          "courseId": 3786
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 3,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 432
+        },
+        {
+          "type": "course",
+          "courseId": 447
+        },
+        {
+          "type": "course",
+          "courseId": 449
+        },
+        {
+          "type": "course",
+          "courseId": 450
+        },
+        {
+          "type": "course",
+          "courseId": 3969
+        },
+        {
+          "type": "course",
+          "courseId": 3979
+        },
+        {
+          "type": "course",
+          "courseId": 3981
+        },
+        {
+          "type": "course",
+          "courseId": 3982
+        },
+        {
+          "type": "course",
+          "courseId": 3274
+        },
+        {
+          "type": "course",
+          "courseId": 3285
+        },
+        {
+          "type": "course",
+          "courseId": 3286
+        },
+        {
+          "type": "course",
+          "courseId": 3289
+        },
+        {
+          "type": "course",
+          "courseId": 1036
+        },
+        {
+          "type": "course",
+          "courseId": 1059
+        },
+        {
+          "type": "course",
+          "courseId": 1061
+        },
+        {
+          "type": "course",
+          "courseId": 1062
+        },
+        {
+          "type": "course",
+          "courseId": 1768
+        },
+        {
+          "type": "course",
+          "courseId": 1897
+        },
+        {
+          "type": "course",
+          "courseId": 3340
+        },
+        {
+          "type": "course",
+          "courseId": 3349
+        },
+        {
+          "type": "course",
+          "courseId": 3357
+        }
+      ]
+    }
+  ]
+}

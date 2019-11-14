@@ -1,0 +1,108 @@
+{
+  "type": "allOf",
+  "name": "Joint Pure Mathematics",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2066
+        },
+        {
+          "type": "course",
+          "courseId": 2069
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 400
+            },
+            {
+              "type": "course",
+              "courseId": 2904
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 2906
+        },
+        {
+          "type": "course",
+          "courseId": 2912
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 401
+            },
+            {
+              "type": "course",
+              "courseId": 2905
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 2913
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2067
+        },
+        {
+          "type": "course",
+          "courseId": 2070
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 2,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2907
+        },
+        {
+          "type": "course",
+          "courseId": 2908
+        },
+        {
+          "type": "course",
+          "courseId": 2910
+        },
+        {
+          "type": "course",
+          "courseId": 2911
+        }
+      ]
+    }
+  ]
+}

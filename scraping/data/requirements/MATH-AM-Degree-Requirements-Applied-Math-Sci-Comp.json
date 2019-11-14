@@ -1,0 +1,115 @@
+{
+  "type": "allOf",
+  "name": "Applied Mathematics with Scientific Computing",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2066
+        },
+        {
+          "type": "course",
+          "courseId": 2069
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 395
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 396
+            },
+            {
+              "type": "course",
+              "courseId": 3953
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 398
+        },
+        {
+          "type": "course",
+          "courseId": 402
+        },
+        {
+          "type": "course",
+          "courseId": 413
+        },
+        {
+          "type": "course",
+          "courseId": 3929
+        },
+        {
+          "type": "course",
+          "courseId": 3931
+        },
+        {
+          "type": "course",
+          "courseId": 3977
+        },
+        {
+          "type": "course",
+          "courseId": 3274
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 424
+        },
+        {
+          "type": "course",
+          "courseId": 425
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "AMATH",
+      "levels": [
+        4
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "AMATH",
+      "levels": [
+        4
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "AMATH",
+      "levels": [
+        3,
+        4
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "AMATH",
+      "levels": [
+        3,
+        4
+      ]
+    }
+  ]
+}

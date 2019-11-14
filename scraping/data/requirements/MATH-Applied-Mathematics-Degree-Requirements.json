@@ -1,0 +1,164 @@
+{
+  "type": "allOf",
+  "name": "Applied Mathematics",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2066
+        },
+        {
+          "type": "course",
+          "courseId": 2069
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 395
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 396
+            },
+            {
+              "type": "course",
+              "courseId": 3953
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 398
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 401
+            },
+            {
+              "type": "course",
+              "courseId": 2905
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 402
+        },
+        {
+          "type": "course",
+          "courseId": 405
+        },
+        {
+          "type": "course",
+          "courseId": 406
+        },
+        {
+          "type": "course",
+          "courseId": 3455
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "AMATH",
+      "levels": [
+        4
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "AMATH",
+      "levels": [
+        4
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "AMATH",
+      "levels": [
+        4
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 400
+            },
+            {
+              "type": "course",
+              "courseId": 2904
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 5,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2067
+        },
+        {
+          "type": "course",
+          "courseId": 2070
+        },
+        {
+          "type": "course",
+          "courseId": 424
+        },
+        {
+          "type": "course",
+          "courseId": 425
+        },
+        {
+          "type": "course",
+          "courseId": 3977
+        },
+        {
+          "type": "course",
+          "courseId": 2907
+        },
+        {
+          "type": "course",
+          "courseId": 2908
+        },
+        {
+          "type": "course",
+          "courseId": 2915
+        },
+        {
+          "type": "course",
+          "courseId": 3268
+        },
+        {
+          "type": "course",
+          "courseId": 3270
+        }
+      ]
+    }
+  ]
+}

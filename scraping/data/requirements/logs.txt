@@ -1,0 +1,25 @@
+parse_one <p>Two additional 300- or 400-level math courses with a course prefix other than CO. </p>
+parse_one <p>One additional 300- or 400-level math course. </p>
+parse_one <p>Three additional math courses.</p>
+parse_one <p>Two additional 300- or 400-level math courses with a course prefix other than CO. </p>
+parse_one <p>One additional 300- or 400-level math course. </p>
+parse_one <p>Three additional math courses.</p>
+parse_one CS 440 - CS 498 
+parse_one <p>Three additional courses labelled ACTSC, AMATH, CO, PMATH, STAT, excluding the following:</p>
+parse_one <p>Ten 300- or 400-level math courses.</p>
+parse_course No course id found for CS 432
+parse_one <p> Seven additional math courses (3.5 units).</p>
+parse_one <p>A minimum of 10 300- or 400-level math courses (5.0 units), including any taken to satisfy the requirements above.</p>
+parse_one <p>Eight 300- or 400-level math courses, including any taken to satisfy the above requirements.</p>
+parse_one <p>Two additional 400-level math courses. </p>
+parse_one An additional PMATH course 
+parse_one <p>Three additional PMATH courses.</p>
+parse_one <p>One additional PMATH course. </p>
+parse_one <p>Three additional 300- or 400-level math courses. </p>
+parse_one <p>Two additional math courses.</p>
+parse_one <p>Four additional courses (2.0 units). </p>
+parse_one <p>A minimum of eight CS courses including: </p>
+parse_one <p>Two additional 300- or 400-level math courses. </p>
+parse_one <p>At least three additional math courses for a minimum of 26 math courses.</p>
+parse_one <p>Four additional 300- or 400-level math courses. </p>
+parse_one <p>At least three additional math courses for a minimum of 26 math courses.</p>

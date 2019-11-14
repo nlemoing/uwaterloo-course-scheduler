@@ -1,0 +1,61 @@
+{
+  "type": "allOf",
+  "name": "Actuarial Science Minor",
+  "items": [
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 1784
+        },
+        {
+          "type": "course",
+          "courseId": 1785
+        },
+        {
+          "type": "course",
+          "courseId": 1787
+        },
+        {
+          "type": "course",
+          "courseId": 1788
+        },
+        {
+          "type": "course",
+          "courseId": 1791
+        },
+        {
+          "type": "course",
+          "courseId": 1256
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 2066
+            },
+            {
+              "type": "course",
+              "courseId": 2069
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 2931
+        },
+        {
+          "type": "course",
+          "courseId": 3267
+        },
+        {
+          "type": "course",
+          "courseId": 3270
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "type": "allOf",
+  "name": "Digital Hardware Specialization",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 2,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3969
+        },
+        {
+          "type": "course",
+          "courseId": 3970
+        },
+        {
+          "type": "course",
+          "courseId": 3971
+        },
+        {
+          "type": "course",
+          "courseId": 3972
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 990
+        },
+        {
+          "type": "course",
+          "courseId": 1888
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 1037
+        },
+        {
+          "type": "course",
+          "courseId": 3967
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 861
+        },
+        {
+          "type": "course",
+          "courseId": 1871
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 970
+        },
+        {
+          "type": "course",
+          "courseId": 1008
+        },
+        {
+          "type": "course",
+          "courseId": 1036
+        }
+      ]
+    }
+  ]
+}

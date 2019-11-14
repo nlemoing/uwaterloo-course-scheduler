@@ -1,0 +1,63 @@
+{
+  "type": "allOf",
+  "name": "Statistics Minor",
+  "items": [
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 2066
+            },
+            {
+              "type": "course",
+              "courseId": 2069
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 3,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3267
+        },
+        {
+          "type": "course",
+          "courseId": 3268
+        },
+        {
+          "type": "course",
+          "courseId": 3269
+        },
+        {
+          "type": "course",
+          "courseId": 3270
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "STAT",
+      "levels": [
+        3,
+        4
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "STAT",
+      "levels": [
+        3,
+        4
+      ]
+    }
+  ]
+}

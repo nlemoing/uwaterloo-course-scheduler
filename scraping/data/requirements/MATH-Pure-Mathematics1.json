@@ -1,0 +1,84 @@
+{
+  "type": "allOf",
+  "name": "Pure Mathematics",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2066
+        },
+        {
+          "type": "course",
+          "courseId": 2069
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2067
+        },
+        {
+          "type": "course",
+          "courseId": 2070
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2910
+        },
+        {
+          "type": "course",
+          "courseId": 2911
+        },
+        {
+          "type": "course",
+          "courseId": 2912
+        },
+        {
+          "type": "course",
+          "courseId": 2913
+        },
+        {
+          "type": "course",
+          "courseId": 2915
+        },
+        {
+          "type": "course",
+          "courseId": 2924
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "PMATH",
+      "levels": [
+        4
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "PMATH",
+      "levels": [
+        4
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "PMATH",
+      "levels": [
+        4
+      ]
+    }
+  ]
+}

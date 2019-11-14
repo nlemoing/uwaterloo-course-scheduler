@@ -1,0 +1,79 @@
+{
+  "type": "allOf",
+  "name": "Actuarial Science/Finance Option",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 1310
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 1802
+            },
+            {
+              "type": "course",
+              "courseId": 1322
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 396
+            },
+            {
+              "type": "course",
+              "courseId": 3953
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 3952
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 1257
+        },
+        {
+          "type": "course",
+          "courseId": 1789
+        },
+        {
+          "type": "course",
+          "courseId": 1794
+        },
+        {
+          "type": "course",
+          "courseId": 3978
+        },
+        {
+          "type": "course",
+          "courseId": 3273
+        }
+      ]
+    }
+  ]
+}

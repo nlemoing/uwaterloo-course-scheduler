@@ -1,0 +1,92 @@
+{
+  "type": "allOf",
+  "name": "Pure Mathematics Minor",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2033
+        },
+        {
+          "type": "course",
+          "courseId": 2035
+        },
+        {
+          "type": "course",
+          "courseId": 2036
+        },
+        {
+          "type": "course",
+          "courseId": 2037
+        },
+        {
+          "type": "course",
+          "courseId": 2046
+        },
+        {
+          "type": "course",
+          "courseId": 2050
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2034
+        },
+        {
+          "type": "course",
+          "courseId": 2038
+        },
+        {
+          "type": "course",
+          "courseId": 2039
+        },
+        {
+          "type": "course",
+          "courseId": 2043
+        },
+        {
+          "type": "course",
+          "courseId": 2047
+        },
+        {
+          "type": "course",
+          "courseId": 2051
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2040
+        },
+        {
+          "type": "course",
+          "courseId": 2041
+        },
+        {
+          "type": "course",
+          "courseId": 2044
+        },
+        {
+          "type": "course",
+          "courseId": 2048
+        },
+        {
+          "type": "course",
+          "courseId": 2052
+        }
+      ]
+    }
+  ]
+}

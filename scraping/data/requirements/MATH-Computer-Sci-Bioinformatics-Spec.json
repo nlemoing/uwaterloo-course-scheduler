@@ -1,0 +1,63 @@
+{
+  "type": "allOf",
+  "name": "Bioinformatics Specialization",
+  "items": [
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "course",
+          "courseId": 740
+        },
+        {
+          "type": "course",
+          "courseId": 741
+        },
+        {
+          "type": "course",
+          "courseId": 746
+        },
+        {
+          "type": "course",
+          "courseId": 747
+        },
+        {
+          "type": "course",
+          "courseId": 748
+        },
+        {
+          "type": "course",
+          "courseId": 758
+        },
+        {
+          "type": "course",
+          "courseId": 779
+        },
+        {
+          "type": "course",
+          "courseId": 812
+        },
+        {
+          "type": "course",
+          "courseId": 1177
+        },
+        {
+          "type": "course",
+          "courseId": 1178
+        },
+        {
+          "type": "course",
+          "courseId": 1179
+        },
+        {
+          "type": "course",
+          "courseId": 1180
+        },
+        {
+          "type": "course",
+          "courseId": 3980
+        }
+      ]
+    }
+  ]
+}

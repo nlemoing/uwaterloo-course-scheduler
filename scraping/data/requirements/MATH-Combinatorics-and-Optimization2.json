@@ -1,0 +1,121 @@
+{
+  "type": "allOf",
+  "name": "Combinatorics and Optimization",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2067
+        },
+        {
+          "type": "course",
+          "courseId": 2070
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 424
+        },
+        {
+          "type": "course",
+          "courseId": 425
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 427
+        },
+        {
+          "type": "course",
+          "courseId": 429
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 430
+        },
+        {
+          "type": "course",
+          "courseId": 431
+        },
+        {
+          "type": "course",
+          "courseId": 432
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 3,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 427
+        },
+        {
+          "type": "course",
+          "courseId": 428
+        },
+        {
+          "type": "course",
+          "courseId": 429
+        },
+        {
+          "type": "course",
+          "courseId": 430
+        },
+        {
+          "type": "course",
+          "courseId": 431
+        },
+        {
+          "type": "course",
+          "courseId": 432
+        },
+        {
+          "type": "range",
+          "subject": "CO",
+          "low": "430",
+          "high": "487"
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 2908
+            },
+            {
+              "type": "course",
+              "courseId": 2910
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

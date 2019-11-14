@@ -1,0 +1,65 @@
+{
+  "type": "allOf",
+  "name": "Applied Mathematics Minor",
+  "items": [
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 2066
+            },
+            {
+              "type": "course",
+              "courseId": 2069
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 395
+        },
+        {
+          "type": "course",
+          "courseId": 398
+        },
+        {
+          "type": "course",
+          "courseId": 405
+        },
+        {
+          "type": "course",
+          "courseId": 406
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "AMATH",
+      "levels": [
+        3,
+        4
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "AMATH",
+      "levels": [
+        3,
+        4
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "AMATH",
+      "levels": [
+        3,
+        4
+      ]
+    }
+  ]
+}

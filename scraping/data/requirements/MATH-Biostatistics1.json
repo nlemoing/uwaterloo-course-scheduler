@@ -1,0 +1,137 @@
+{
+  "type": "allOf",
+  "name": "Biostatistics",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 2066
+        },
+        {
+          "type": "course",
+          "courseId": 2069
+        }
+      ]
+    },
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 1665
+            },
+            {
+              "type": "course",
+              "courseId": 2935
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 3267
+        },
+        {
+          "type": "course",
+          "courseId": 3268
+        },
+        {
+          "type": "course",
+          "courseId": 3269
+        },
+        {
+          "type": "course",
+          "courseId": 3270
+        },
+        {
+          "type": "course",
+          "courseId": 3272
+        },
+        {
+          "type": "course",
+          "courseId": 3279
+        },
+        {
+          "type": "course",
+          "courseId": 3283
+        },
+        {
+          "type": "course",
+          "courseId": 3284
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 395
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 396
+            },
+            {
+              "type": "course",
+              "courseId": 3953
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 397
+        },
+        {
+          "type": "course",
+          "courseId": 2067
+        },
+        {
+          "type": "course",
+          "courseId": 2070
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 1,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 746
+        },
+        {
+          "type": "course",
+          "courseId": 1067
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "STAT",
+      "levels": [
+        3,
+        4
+      ]
+    },
+    {
+      "type": "group",
+      "subject": "STAT",
+      "levels": [
+        3,
+        4
+      ]
+    }
+  ]
+}

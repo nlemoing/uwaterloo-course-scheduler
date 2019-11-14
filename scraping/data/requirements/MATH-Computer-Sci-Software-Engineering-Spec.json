@@ -1,0 +1,133 @@
+{
+  "type": "allOf",
+  "name": "Software Engineering Specialization",
+  "items": [
+    {
+      "type": "allOf",
+      "items": [
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 3962
+            },
+            {
+              "type": "course",
+              "courseId": 1042
+            }
+          ]
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 3963
+            },
+            {
+              "type": "course",
+              "courseId": 1043
+            }
+          ]
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 3964
+            },
+            {
+              "type": "course",
+              "courseId": 1044
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 3988
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 2,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3946
+        },
+        {
+          "type": "course",
+          "courseId": 3947
+        },
+        {
+          "type": "course",
+          "courseId": 3948
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 2,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3961
+        },
+        {
+          "type": "course",
+          "courseId": 3965
+        },
+        {
+          "type": "course",
+          "courseId": 3966
+        },
+        {
+          "type": "course",
+          "courseId": 3967
+        },
+        {
+          "type": "course",
+          "courseId": 3969
+        },
+        {
+          "type": "course",
+          "courseId": 3970
+        },
+        {
+          "type": "course",
+          "courseId": 3971
+        },
+        {
+          "type": "course",
+          "courseId": 3972
+        },
+        {
+          "type": "course",
+          "courseId": 3973
+        },
+        {
+          "type": "course",
+          "courseId": 3981
+        },
+        {
+          "type": "course",
+          "courseId": 3982
+        },
+        {
+          "type": "course",
+          "courseId": 3983
+        },
+        {
+          "type": "course",
+          "courseId": 3985
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "type": "allOf",
+  "name": "Business Specialization",
+  "items": [
+    {
+      "type": "someOf",
+      "number": 2,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 3947
+        },
+        {
+          "type": "course",
+          "courseId": 3970
+        },
+        {
+          "type": "course",
+          "courseId": 3987
+        }
+      ]
+    },
+    {
+      "type": "someOf",
+      "number": 6,
+      "items": [
+        {
+          "type": "course",
+          "courseId": 1784
+        },
+        {
+          "type": "course",
+          "courseId": 1788
+        },
+        {
+          "type": "course",
+          "courseId": 1789
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 1256
+            },
+            {
+              "type": "course",
+              "courseId": 1261
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 1257
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 1262
+            },
+            {
+              "type": "course",
+              "courseId": 20
+            }
+          ]
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 26
+            },
+            {
+              "type": "course",
+              "courseId": 2143
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 45
+        },
+        {
+          "type": "course",
+          "courseId": 153
+        },
+        {
+          "type": "course",
+          "courseId": 154
+        },
+        {
+          "type": "course",
+          "courseId": 1249
+        },
+        {
+          "type": "course",
+          "courseId": 2142
+        },
+        {
+          "type": "someOf",
+          "number": 1,
+          "items": [
+            {
+              "type": "course",
+              "courseId": 1732
+            },
+            {
+              "type": "course",
+              "courseId": 3811
+            }
+          ]
+        },
+        {
+          "type": "course",
+          "courseId": 1742
+        },
+        {
+          "type": "course",
+          "courseId": 1769
+        }
+      ]
+    }
+  ]
+}
