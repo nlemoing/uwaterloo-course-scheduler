@@ -1,0 +1,105 @@
+[
+    {
+        "name": "MAT",
+        "longname": "Mathematics",
+        "programs": [
+            {
+                "name": "Actuarial Science",
+                "plans": [
+                    "MATH-Actuarial-Science1",
+                    "MATH-Actuarial-Science-Finance-Option",
+                    "MATH-Actuarial-Science-Predictive-Analytics-Option",
+                    "MATH-Joint-Actuarial-Science1",
+                    "MATH-Actuarial-Science-Mathematical-Finance1",
+                    "MATH-Actuarial-Science-Minor"
+                ]
+            },
+            {
+                "name": "Applied Mathematics",
+                "plans": [
+                    "MATH-Applied-Mathematics-Degree-Requirements",
+                    "MATH-AM-Degree-Requirements-Joint-Applied-Math",
+                    "MATH-AM-Degree-Requirements-Applied-Math-Sci-Comp",
+                    "MATH-Applied-Mathematics-Minor1",
+                    "MATH-Combinatorics-and-Optimization2"
+                ]
+            },
+            {
+                "name": "Combinatorics and Optimization",
+                "plans": [
+                    "MATH-Combinatorics-and-Optimization2",
+                    "MATH-Joint-Combinatorics-and-Optimization1"
+                ]
+            },
+            {
+                "name": "Computational Mathematics",
+                "plans": [
+                    "MATH-Computational-Mathematics1"
+                ]
+            },
+            {
+                "name": "Computer Science",
+                "plans": [
+                    "MATH-Bachelor-of-Computer-Science-1",
+                    "MATH-Bachelor-of-Computer-Science-Data-Science",
+                    "MATH-Bachelor-of-Mathematics-Computer-Science-1",
+                    "MATH-Joint-Bachelor-of-Computer-Science-1",
+                    "MATH-Computer-Sci-Computing-Option",
+                    "MATH-Computer-Sci-Artificial-Intelligence-Spec",
+                    "MATH-Computer-Sci-Bioinformatics-Spec",
+                    "MATH-Computer-Sci-Business-Spec",
+                    "MATH-Computer-Sci-Computational-Fine-Art-Spec",
+                    "MATH-Computer-Sci-Digital-Hardware-Spec",
+                    "MATH-Computer-Sci-Human-Computer-Interaction-Spec",
+                    "MATH-Computer-Sci-Software-Engineering-Spec",
+                    "MATH-Computer-Science-Minor-2"
+                ]
+            },
+            {
+                "name": "Computing and Financial Management",
+                "plans": [
+                    "MATH-Computing-Financial-Mngt-Overview-Degree-Req"
+                ]
+            },
+            {
+                "name": "Mathematical Optimization",
+                "plans": [
+                    "MATH-Mathematical-Optimization1"
+                ]
+            },
+            {
+                "name": "Mathematical Studies",
+                "plans": [
+                    "MATH-MS-Degree-Requirements-Mathematical-Studies",
+                    "MATH-MS-Business-Specialization"
+                ]
+            },
+            {
+                "name": "Mathematics/Teaching",
+                "plans": [
+                    "MATH-Mathematics-Teaching-co-op"
+                ]
+            },
+            {
+                "name": "Pure Mathematics",
+                "plans": [
+                    "MATH-Pure-Mathematics1",
+                    "MATH-Joint-Pure-Mathematics1",
+                    "MATH-Pure-Mathematics-Teaching-co-op",
+                    "MATH-Pure-Mathematics-Mathematical-Finance1",
+                    "MATH-Pure-Mathematics-Minor1"
+                ]
+            },
+            {
+                "name": "Statistics",
+                "plans": [
+                    "MATH-Statistics1",
+                    "MATH-Joint-Statistics1",
+                    "MATH-Biostatistics1",
+                    "MATH-Data-Science1",
+                    "MATH-Statistics-Minor"
+                ]
+            }
+        ]
+    }
+]

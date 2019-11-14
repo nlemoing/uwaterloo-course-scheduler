@@ -11,8 +11,12 @@ def scrape_one(path):
         json.dump(req, f, indent=2)
 
 def scrape_all():
-    with open('data/requirements/pages.json') as f:
-        paths = json.load(f)
+    with open('data/plans.json') as f:
+        faculties = json.load(f)
+    paths = []
+    for fac in faculties:
+        for program in fac['programs']
+            paths.extend(program['plans'])
     with cf.ThreadPoolExecutor(max_workers=THREADS) as executor:
         for path in paths:
             executor.submit(scrape_one, path)
