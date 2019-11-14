@@ -115,6 +115,46 @@ class Course extends Requirement {
     }
 }
 
+class Range extends Requirement {
+    constructor(parent, { subject, low, high }) {
+        const name = `${subject} ${low}-${high}`;
+        super(parent, name)
+        this.subject = subject;
+        this.low = low;
+        this.high = high;
+    }
+
+    satisfy(courses) {
+        // TODO: Need a good way to get course ids from range or names from course range
+        // Alternatively, use subject/number as courseId instead of an integer 
+        return { satisfied: false, remainingCourses: courses }
+    }
+}
+
+class Group extends Requirement {
+    constructor(parent, { subject, levels }) {
+        let name;
+        if (!subject && !levels) {
+            name = 'Any course';
+        } else if (!subject) {
+            
+        } else if (!levels) {
+            name = `${subject} course`;
+        } else {
+            name = `${formatLevels(levels)} ${subject} course}`
+        }
+        super(parent, name);
+        
+        this.subject = subject;
+        this.levels = levels; 
+    }
+
+    satisfy(courses) {
+        // TODO construct predicates (need to be able to get subject, number from course)
+        return { satisfied: false, remainingCourses: courses }
+    }
+}
+
 function createRequirement(parent, item) {
     switch (item.type) {
         case 'allOf': return new AllOf(parent, item.items, item.name);

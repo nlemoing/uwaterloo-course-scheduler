@@ -419,6 +419,14 @@ function getPlans(scheduleId) {
                     "courseId": 3288
                   }
                 ]
+              },
+              {
+                "type": "group",
+                "subject": "ACTSC",
+                "levels": [
+                  3,
+                  4
+                ]
               }
             ]
           }
