@@ -5,7 +5,6 @@ import concurrent.futures as cf
 THREADS = 10
 
 def scrape_one(path):
-    print(f'Scraping plan {path}')
     req = requirements(path)
     with open(f'data/requirements/{path}.json', 'w') as f:
         json.dump(req, f, indent=2)
@@ -15,7 +14,7 @@ def scrape_all():
         faculties = json.load(f)
     paths = []
     for fac in faculties:
-        for program in fac['programs']
+        for program in fac['programs']:
             paths.extend(program['plans'])
     with cf.ThreadPoolExecutor(max_workers=THREADS) as executor:
         for path in paths:

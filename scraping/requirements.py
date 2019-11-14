@@ -39,8 +39,10 @@ def requirements(path):
             # parse one
             req = parse_one(reqs[i])
             i += 1
-            
-        if req is not None:
+        
+        if isinstance(req, list):
+            planReq['items'].extend(req)
+        elif req is not None:
             planReq['items'].append(req)
     
     return planReq
@@ -51,7 +53,10 @@ NUMBER_MAP = {
     'Three': 3,
     'Four': 4,
     'Five': 5,
-    'Six': 6
+    'Six': 6,
+    'Seven': 7,
+    'Eight': 8,
+    'Nine': 9
 }
 
 def parse_type(item):
@@ -95,7 +100,7 @@ def parse_section(section):
         if ' to ' in mid.string and a1.name == 'a' and a2.name == 'a':
             subject, low = a1.string.split(' ')
             _, high = a2.string.split(' ')
-            return create_group(course_range=[{ 'subject': subject, 'low': low, 'high': high }])
+            return { 'type': 'range', 'subject': subject, 'low': low, 'high': high }
 
     if section[0].name == 'a':
         return parse_course(section[0])
@@ -117,17 +122,12 @@ course_range_regex = re.compile(course_range)
 
 def create_group(number=None, subject=None, levels=None, course_range=None):
     group = { 'type': 'group' }
-    if number in NUMBER_MAP:
-        group['number'] = NUMBER_MAP[number]
-    else:
-        group['number'] = 1
+    number = NUMBER_MAP[number] if number in NUMBER_MAP else 1
     if subject:
         group['subject'] = subject
     if levels:
         group['levels'] = [int(level[0]) for level in levels]
-    if course_range:
-        group['range'] = course_range
-    return group
+    return [group for _ in range(number)]
         
 def parse_single_level(inp):
     match = single_level_regex.search(inp)
@@ -160,9 +160,8 @@ def parse_range(inp):
     number = None
     if amount:
         number = amount.group()
-    course_range = [{ 'subject': subject, 'low': low, 'high': high } \
-                        for subject, low, high in ranges ]
-    return create_group(number=number, course_range=course_range)
+    return [{ 'type': 'range', 'subject': subject, 'low': low, 'high': high } \
+                for subject, low, high in ranges ]
 
 def parse_one(p):
     if not p.string:
@@ -201,7 +200,9 @@ def parse_two(p, quote):
     items = []
     for section in sections:
         item = parse_section(section)
-        if item is not None:
+        if isinstance(item, list):
+            items.extend(item)
+        elif item is not None:
             items.append(item)
     req['items'] = items
     return req
