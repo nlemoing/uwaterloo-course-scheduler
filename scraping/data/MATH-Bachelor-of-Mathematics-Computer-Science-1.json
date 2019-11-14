@@ -98,11 +98,49 @@
       ]
     },
     {
+      "type": "group",
+      "number": 1,
+      "range": [
+        {
+          "subject": "CS",
+          "low": "340",
+          "high": "398"
+        },
+        {
+          "subject": "CS",
+          "low": "440",
+          "high": "489"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "number": 2,
+      "range": [
+        {
+          "subject": "CS",
+          "low": "440",
+          "high": "489"
+        }
+      ]
+    },
+    {
       "type": "someOf",
       "items": [
         {
           "type": "course",
           "courseId": 455
+        },
+        {
+          "type": "group",
+          "number": 1,
+          "range": [
+            {
+              "subject": "CS",
+              "low": "440",
+              "high": "498"
+            }
+          ]
         },
         {
           "type": "course",
@@ -111,6 +149,15 @@
         {
           "type": "course",
           "courseId": 3285
+        },
+        {
+          "type": "group",
+          "number": 1,
+          "subject": "CS",
+          "levels": [
+            6,
+            7
+          ]
         }
       ]
     }

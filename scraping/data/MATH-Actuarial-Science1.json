@@ -104,8 +104,24 @@
       ]
     },
     {
+      "type": "group",
+      "number": 3,
+      "subject": "ACTSC",
+      "levels": [
+        4
+      ]
+    },
+    {
       "type": "someOf",
       "items": [
+        {
+          "type": "group",
+          "number": 1,
+          "subject": "ACTSC",
+          "levels": [
+            4
+          ]
+        },
         {
           "type": "course",
           "courseId": 1310

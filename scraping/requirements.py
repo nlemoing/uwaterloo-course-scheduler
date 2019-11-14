@@ -100,23 +100,64 @@ def parse_section(section):
 
 amount = "|".join(NUMBER_MAP)
 subject = "[A-Z]{2,6}"
-number = "([0-9]{3})"
-single_level = f"{number}-level"
-double_level = f"{number}-(level | |)or {number}-level"
+number = "[0-9]{3}"
+single_level = f"({number})-level"
+double_level = f"({number})-(level | |)or ({number})-level"
+course_range = f"({subject}) ({number})-{subject} ({number})"
 single_level_regex = re.compile(f"({amount}|).*({single_level}) ({subject})")
 double_level_regex = re.compile(f"({amount}|).*({double_level}) ({subject})")
 alt_double_level_regex = re.compile(f"({subject}) ({amount}|).*({double_level})")
+amount_regex = re.compile(amount)
+course_range_regex = re.compile(course_range)
 
+def create_group(number=None, subject=None, levels=None, course_range=None):
+    group = { 'type': 'group' }
+    if number in NUMBER_MAP:
+        group['number'] = NUMBER_MAP[number]
+    else:
+        group['number'] = 1
+    if subject:
+        group['subject'] = subject
+    if levels:
+        group['levels'] = [int(level[0]) for level in levels]
+    if course_range:
+        group['range'] = course_range
+    return group
+        
 def parse_single_level(inp):
     match = single_level_regex.search(inp)
-    return match
+    if not match:
+        return
+    number = match.group(1)
+    level = match.group(3)
+    subject = match.group(4)
+    return create_group(number=number, levels=[level], subject=subject)
 
 def parse_double_level(inp):
     match = double_level_regex.search(inp)
     if match is not None:
-        return match
-    match = alt_double_level_regex(inp)
-    return match
+        number = match.group(1)
+        levels = match.group(3, 5)
+        subject = match.group(6)
+        return create_group(number=number, levels=levels, subject=subject)
+    match = alt_double_level_regex.search(inp)
+    if match is not None:
+        subject = match.group(1)
+        number = match.group(2)
+        levels = match.group(4, 6)
+        return create_group(number=number, levels=levels, subject=subject)
+
+def parse_range(inp):
+    ranges = course_range_regex.findall(inp)
+    if len(ranges) == 0:
+        return
+    amount = amount_regex.match(inp)
+    number = None
+    if amount:
+        number = amount.group()
+    course_range = [{ 'subject': subject, 'low': low, 'high': high } \
+                        for subject, low, high in ranges ]
+    return create_group(number=number, course_range=course_range)
 
 def parse_one(p):
     if not p.string:
@@ -125,12 +166,12 @@ def parse_one(p):
     
     for f in [
         parse_single_level,
-        parse_double_level
+        parse_double_level,
+        parse_range
     ]:
         match = f(input_text)
         if match:
-            print('MATCH', match.group(1, 3, 4))
-            return
+            return match
     print('parse_one', p)
         
 
