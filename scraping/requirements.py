@@ -9,18 +9,19 @@ def idFromCourse(subject, number):
         if course['subject'] == subject and course['number'] == number:
             return course['id']
 
-def requirements(plan):
+def requirements(path):
     url = "http://ugradcalendar.uwaterloo.ca/page/{}"
     try:
-        page = urlopen(url.format(plan['path']))
+        page = urlopen(url.format(path))
     except:
         # HTTP error opening page, return None
         return None
     soup = BeautifulSoup(page, 'html.parser')
+    name = soup.find(id='ctl00_contentMain_lblPageTitle').string
     reqs = [c for c in soup.find(id='ctl00_contentMain_lblContent').contents if c.name]
     planReq = {
         'type': 'allOf',
-        'name': plan['name'],
+        'name': name,
         'items': []
     }
     i = 0
@@ -42,8 +43,7 @@ def requirements(plan):
         if req is not None:
             planReq['items'].append(req)
     
-    with open('data/{}.json'.format(plan['path']), 'w') as f:
-        json.dump(planReq, f, indent=2)
+    return planReq
 
 NUMBER_MAP = {
     'One': 1,
@@ -62,7 +62,7 @@ def parse_type(item):
     elif any(x.lower() in item.string.lower() for x in NUMBER_MAP):
         req['type'] = 'someOf'
         for number in NUMBER_MAP:
-            if number in item.string.lower():
+            if number.lower() in item.string.lower():
                 req['number'] = NUMBER_MAP[number]
                 break
     else:
@@ -85,13 +85,18 @@ def parse_section(section):
     req = {}
     # Cross-listed course: treat as one of
     if len(section) > 3:
-        a1, slash, a2, *rest = section
-        if slash.string.strip() == '/' and a1.name == 'a' and a2.name == 'a':
+        a1, mid, a2, *rest = section
+        if (mid.string.strip() == '/' or ' or ' in mid.string) and a1.name == 'a' and a2.name == 'a':
             return {
                 'type': 'someOf',
                 'number': 1,
                 'items': [parse_course(a) for a in (section[0], section[2])]
             }
+        if ' to ' in mid.string and a1.name == 'a' and a2.name == 'a':
+            subject, low = a1.string.split(' ')
+            _, high = a2.string.split(' ')
+            return create_group(course_range=[{ 'subject': subject, 'low': low, 'high': high }])
+
     if section[0].name == 'a':
         return parse_course(section[0])
     if len(section) == 1:
@@ -165,8 +170,8 @@ def parse_one(p):
     input_text = p.string.strip()
     
     for f in [
-        parse_single_level,
         parse_double_level,
+        parse_single_level,
         parse_range
     ]:
         match = f(input_text)
@@ -200,13 +205,3 @@ def parse_two(p, quote):
             items.append(item)
     req['items'] = items
     return req
-    
-
-requirements({
-    'path': 'MATH-Actuarial-Science1',
-    'name': 'Actuarial Science'
-})
-requirements({
-    'path': 'MATH-Bachelor-of-Mathematics-Computer-Science-1',
-    'name': 'CS BMath'
-})
