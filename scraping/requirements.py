@@ -98,28 +98,39 @@ def parse_section(section):
         return parse_one(section[0])
     print('parse_section', section)
 
+amount = "|".join(NUMBER_MAP)
+subject = "[A-Z]{2,6}"
+number = "([0-9]{3})"
+single_level = f"{number}-level"
+double_level = f"{number}-(level | |)or {number}-level"
+single_level_regex = re.compile(f"({amount}|).*({single_level}) ({subject})")
+double_level_regex = re.compile(f"({amount}|).*({double_level}) ({subject})")
+alt_double_level_regex = re.compile(f"({subject}) ({amount}|).*({double_level})")
+
+def parse_single_level(inp):
+    match = single_level_regex.search(inp)
+    return match
+
+def parse_double_level(inp):
+    match = double_level_regex.search(inp)
+    if match is not None:
+        return match
+    match = alt_double_level_regex(inp)
+    return match
 
 def parse_one(p):
     if not p.string:
         return
     input_text = p.string.strip()
-
-    amount = "|".join(NUMBER_MAP)
-    subject = "[A-Z]{2,6}"
-    number = "([0-9]00)-"
-    single_level = f"{number}level"
-    double_level = f"{number}(level | |)or {number}level"
     
-    single_level_regex = re.compile(f"({amount}|).*({single_level}) ({subject})")
-    match = single_level_regex.search(input_text)
-    if match:
-        print('MATCH', match.group(1, 3, 4))
-        return
-    double_level_regex = re.compile(f"({amount}|).*({double_level}) ({subject})")
-    match = single_level_regex.search(input_text)
-    if match:
-        print('MATCH', match.group(1, 2, 3, 4, 5))
-        return
+    for f in [
+        parse_single_level,
+        parse_double_level
+    ]:
+        match = f(input_text)
+        if match:
+            print('MATCH', match.group(1, 3, 4))
+            return
     print('parse_one', p)
         
 
