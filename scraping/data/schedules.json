@@ -1,7 +1,8 @@
 [
   {
     "id": 1,
-    "name": "My schedule"
+    "name": "My schedule",
+    "plans": ["MATH-Bachelor-of-Mathematics-Computer-Science-1"]
   },
   {
     "id": 2,

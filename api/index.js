@@ -9,9 +9,16 @@ const CourseModel = require('./models/course.js');
 const ScheduleController = require('./controllers/schedule.js');
 const ScheduleModel = require('./models/schedule.js');
 
+const PlanController = require('./controllers/plan.js');
+const PlanModel = require('./models/plan.js');
+
+
 const courseModel = new CourseModel();
+const scheduleModel = new ScheduleModel(courseModel);
+const planModel = new PlanModel
 const course = CourseController(courseModel);
-const schedule = ScheduleController(new ScheduleModel(courseModel));
+const schedule = ScheduleController(scheduleModel);
+const plan = PlanController(planModel);
 
 const init = async () => {
     const server = new Server({ 
@@ -245,6 +252,24 @@ const init = async () => {
                 },
             },
         },
+        {
+            method: 'GET',
+            path: '/schedules/{scheduleId}/plans',
+            handler: plan.getForSchedule,
+            options: {
+                pre: [
+                    {
+                        method: schedule.getSchedule,
+                        assign: 'schedule'
+                    }
+                ],
+                validate: {
+                    params: Joi.object({
+                        scheduleId: Joi.number()
+                    })
+                }
+            }
+        }
     ]);
 
     await server.start();
