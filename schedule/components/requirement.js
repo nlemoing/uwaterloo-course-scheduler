@@ -31,7 +31,7 @@ class Unknown extends Requirement {
     }
 
     satisfy(courses) {
-        return { satisfy: false, remainingCourses: courses };
+        return { satisfied: false, remainingCourses: courses };
     }
 }
 
