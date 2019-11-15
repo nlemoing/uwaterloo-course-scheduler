@@ -63,10 +63,10 @@ class AllOf extends List {
         return { satisfied, remainingCourses };
     }
 }
-
+const WORD_FOR_NUMBER = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
 class SomeOf extends List {
     constructor(parent, number, items, name) {
-        name = name || `${number} of`;
+        name = name || `${WORD_FOR_NUMBER[number]} of`;
         super(parent, items, name);
         this.number = number
     }
@@ -125,32 +125,71 @@ class Range extends Requirement {
     }
 
     satisfy(courses) {
-        // TODO: Need a good way to get course ids from range or names from course range
-        // Alternatively, use subject/number as courseId instead of an integer 
+        let subject, number;
+        for (const course of courses) {
+            subject = course.info.subject.abbreviation;
+            if (subject !== this.subject) {
+                continue
+            }
+            number = course.info.number;
+            if (number < this.low || number > this.high) {
+                continue;
+            }
+            this.updateClass(true);
+            return { 
+                satisfied: true, 
+                remainingCourses: courses.filter(c => c.id !== course.id)
+            }
+        }
+        this.updateClass(false);
         return { satisfied: false, remainingCourses: courses }
     }
 }
 
 class Group extends Requirement {
     constructor(parent, { subject, levels }) {
+        function formatLevels(levels) {
+            function formatLevel(i) {
+                switch (i) {
+                    case 1: return '1st';
+                    case 2: return '2nd';
+                    case 3: return '3rd';
+                    default: return `${i}th`
+                }
+            }
+            return `${levels.map(formatLevel).join(' or ')} year`;
+        }
+
         let name;
         if (!subject && !levels) {
             name = 'Any course';
         } else if (!subject) {
-            
+            name = `${formatLevels(levels)} course`;
         } else if (!levels) {
             name = `${subject} course`;
         } else {
-            name = `${formatLevels(levels)} ${subject} course}`
+            name = `${formatLevels(levels)} ${subject} course`
         }
         super(parent, name);
-        
-        this.subject = subject;
-        this.levels = levels; 
+        this.predicates = [];
+        if (subject) {
+            this.predicates.push(course => course.info.subject.abbreviation === subject)
+        }
+        if (levels) {
+            this.predicates.push(course => levels.some(level => Number(course.info.number[0]) === level))
+        }
     }
 
     satisfy(courses) {
-        // TODO construct predicates (need to be able to get subject, number from course)
+        for (const course of courses) {
+            if (this.predicates.every(pred => pred(course))) {
+                this.updateClass(true);
+                return { 
+                    satisfied: true, 
+                    remainingCourses: courses.filter(c => c.id !== course.id)
+                }
+            }
+        }
         return { satisfied: false, remainingCourses: courses }
     }
 }
@@ -160,6 +199,8 @@ function createRequirement(parent, item) {
         case 'allOf': return new AllOf(parent, item.items, item.name);
         case 'oneOf': return new SomeOf(parent, 1, item.items, item.name);
         case 'someOf': return new SomeOf(parent, item.number, item.items, item.name);
+        case 'range': return new Range(parent, item);
+        case 'group': return new Group(parent, item);
         case 'course': return new Course(parent, item.courseId);
         default: return new Unknown(parent);
     }
